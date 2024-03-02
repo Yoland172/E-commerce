@@ -1,8 +1,14 @@
 import React from "react";
 import { createRoot } from "react-dom/client";
-
-import styles from "./index.module.scss";
+import App from "./components/app/App";
+import "./lib/i18n";
+import { Provider } from "react-redux";
+import store from "./store";
 
 const container = document.getElementById("app-root")!;
 const root = createRoot(container);
-root.render(<h1 className={styles.testName}>Hello React!</h1>);
+root.render(
+  <Provider store={store}>
+    <App />
+  </Provider>
+);
