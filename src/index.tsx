@@ -4,10 +4,11 @@ import App from "./components/app/App";
 import "./lib/i18n";
 import { Provider } from "react-redux";
 import store from "./store";
+import "./styles/index.scss";
+
 
 const container = document.getElementById("app-root")!;
-const root = createRoot(container);
-root.render(
+createRoot(container).render(
   <Provider store={store}>
     <App />
   </Provider>

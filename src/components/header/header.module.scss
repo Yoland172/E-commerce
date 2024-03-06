@@ -1,0 +1,83 @@
+@import "../../styles/variabls.scss";
+@import "../../styles/mixin.scss";
+
+.mainContainer {
+  width: 100%;
+  height: 20vh;
+  min-height: 100px;
+  background-color: $light-white;
+
+
+
+  .main {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: 1fr;
+    height: 100%;
+    .mainLogo {
+        grid-area: 1 / 1 / 2 / 2; 
+        @include flexbox(row,center, center);
+      &>h1 {
+        font-size:3em;
+        letter-spacing: -4px;
+      }
+    }
+
+    .searchContainer{
+        grid-area: 1 / 3 / 2 / 5;
+        @include flexbox(row,center, center);
+
+        .searchInput{
+            border: 1px solid $black;
+            background-color: $light-white;
+            box-sizing: border-box;
+            padding: 0px 6px;
+            height: 30px;
+            width: 60%;
+            font-weight: 300;
+        }
+
+        .searchButton{
+            background-color: $light-white;
+            border: 1px solid $black;
+            border-left: none;
+            height: 30px;
+            width: 15%;
+            cursor: pointer;
+            font-weight: 300;
+            transition: all 250ms;
+
+            &:hover{
+                background-color: $black;
+                color: $light-white;
+
+            }
+        }
+    }
+  }
+
+  .navBarContainer{
+    grid-area: 1 / 5 / 2 / 6;
+    @include flexbox(row,center,center);
+    column-gap: 20px;
+
+    &>h3{
+        cursor: pointer;
+        font-weight: 300;
+        transition: color 250ms;
+        cursor: pointer;
+
+        &:hover{
+            color: $green;
+        }
+    }
+  }
+
+  .dividingLine {
+    width: 43%;
+    box-sizing: border-box;
+    height: 2px;
+    background-color: $black;
+    padding: 0px 40px;
+  }
+}
