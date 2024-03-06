@@ -1,22 +1,38 @@
 import React, { useEffect } from "react";
-import { useTranslation } from "react-i18next";
+import "./app.module.scss";
+import LoginContainer from "../login/LoginContainer";
 import { useSelector } from "react-redux";
-import { RootState } from "../../store";
-import { useDispatch } from "react-redux";
-import { down, up } from "./appSlice";
+import { RootState, useAppDispatch } from "../../store";
+import { getTokenFromStorage } from "../../lib/helpers/authenticateHelper";
+import { setSuccesLogin } from "../../store/sharedSlice/authSlice";
+import StartPage from "../startPage/StartPage";
+import Header from "../header/Header";
 
 const App = () => {
-    const {value, isOk} = useSelector((state:RootState) => state.appState);
-    const dispatch = useDispatch();
+  const { token, IsAuthenticated } = useSelector(
+    (state: RootState) => state.authState
+  );
+  const dispatch = useAppDispatch();
 
-    useEffect(() => {
-        console.log(isOk);
-    },[isOk])
+  useEffect(() => {
+    if (!token) {
+      console.log("sdcnjk");
+      dispatch(setSuccesLogin(getTokenFromStorage()));
+    }
+  }, []);
+
   return (
     <div>
-        <h1>{value}</h1>
-        <button onClick={() => {dispatch(up())}}>up</button>
-        <button onClick={() => {dispatch(down())}}>down</button>
+      {token ? (
+        <>
+          <Header />
+          <StartPage />
+        </>
+      ) : (
+        <>
+          <LoginContainer />
+        </>
+      )}
     </div>
   );
 };

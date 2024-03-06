@@ -1,0 +1,126 @@
+@import "../../styles/variabls.scss";
+
+.mainContainer {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .main {
+    width: 60vw;
+    height: 60vh;
+    border: 2px $black solid;
+    border-radius: 3px;
+
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: 1fr;
+
+    .imageContainer {
+      grid-area: 1 / 1 / 2 / 2;
+
+      overflow: hidden;
+      & > img {
+        width: 100%;
+      }
+    }
+
+    .registerContainer {
+      grid-area: 1 / 2 / 2 / 3;
+      background-color: $light-white;
+      width: 100%;
+
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      row-gap: 100px;
+
+      .registerForm {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        row-gap: 40px;
+        width: 100%;
+
+        .inputForm {
+          width: 65%;
+          min-width: 100px;
+          max-width: 400px;
+          height: 35px;
+          .inputContainer {
+            position: relative;
+
+            .input {
+              background: 0;
+              border: 0;
+              color: $black;
+              outline: none;
+              width: 100%;
+              font-family: "Montserrat" !important;
+              font-weight: 300;
+              font-size: 1em;
+
+              &:focus + .line {
+                &:after {
+                  transform: scaleX(1);
+                }
+              }
+            }
+            .line {
+              width: 100%;
+              height: 1px;
+              position: absolute;
+              bottom: -5px;
+              background: $grey;
+
+              &:after {
+                content: " ";
+                position: absolute;
+                float: right;
+                width: 100%;
+                height: 1px;
+
+                transform: scalex(0);
+                transition: transform 0.3s ease;
+
+                background: $black;
+              }
+
+              &.error{
+                background-color: red;
+              }
+            }
+          }
+
+          .errorMessage{
+            font-weight: 400;
+            font-size: 0.9em;
+            padding-top: 10px;
+            color: red;
+          }
+        }
+
+        .submitButton {
+          margin-top: 50px;
+          background: none;
+          width: 9vw;
+          height: 3vh;
+          color: $black;
+          font-weight: 400;
+          border: 2px solid $black;
+          border-radius: 3px;
+          transition: all 250ms;
+          cursor: pointer;
+
+          &:hover {
+            background-color: $black;
+            color: $light-white;
+          }
+        }
+      }
+    }
+  }
+}
