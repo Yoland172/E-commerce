@@ -5,8 +5,9 @@ import { useSelector } from "react-redux";
 import { RootState, useAppDispatch } from "../../store";
 import { getTokenFromStorage } from "../../lib/helpers/authenticateHelper";
 import { setSuccesLogin } from "../../store/sharedSlice/authSlice";
-import StartPage from "../startPage/StartPage";
 import Header from "../header/Header";
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
+import MainPageContainer from "../mainPage/MainPageContainer";
 
 const App = () => {
   const { token, IsAuthenticated } = useSelector(
@@ -23,16 +24,21 @@ const App = () => {
 
   return (
     <div>
-      {token ? (
-        <>
-          <Header />
-          <StartPage />
-        </>
-      ) : (
-        <>
-          <LoginContainer />
-        </>
-      )}
+      <BrowserRouter>
+        <Routes>
+          <Route
+            path="/mainPage"
+            element={
+              <>
+                <Header />
+                <MainPageContainer />
+              </>
+            }
+          />
+          <Route path="/login" element={<LoginContainer />} />
+          <Route path="*" element={<Navigate to={"/mainPage"} />} />
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 };

@@ -1,0 +1,6 @@
+@import "../../styles/mixin.scss";
+@import "../../styles/variabls.scss";
+.main {
+    @include flexbox(row, start,start);
+    column-gap: 30px;
+}

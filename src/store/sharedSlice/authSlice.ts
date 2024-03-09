@@ -18,8 +18,8 @@ const appSlice = createSlice({
   initialState,
   reducers: {
     setSuccesLogin: (state, action: PayloadAction<string>) => {
-      console.log(action);
-      (state.token = action.payload), (state.IsAuthenticated = true);
+      state.token = action.payload, 
+      state.IsAuthenticated = true;
     },
   },
 });
@@ -29,7 +29,6 @@ export const login = (username: string, password: string):AppThunk => {
     try {
       const res = await loginAPI(username, password);
       if (res) {
-        console.log(res.data);
         dispatch(setSuccesLogin(res.token));
         setTokenToStorage(res.token);
       }
