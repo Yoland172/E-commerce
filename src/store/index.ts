@@ -2,10 +2,12 @@ import { Action, ThunkAction, configureStore } from "@reduxjs/toolkit";
 import authSlice from "./sharedSlice/authSlice";
 import { useDispatch } from "react-redux";
 import logger from "redux-logger";
+import mainPageSlice from "../components/mainPage/mainPageSlice";
 
 const store = configureStore({
   reducer: {
     authState: authSlice,
+    mainPageState:mainPageSlice
   },
   middleware: (getDefaultMiddleware) =>
     process.env.NODE_ENV === "production"
