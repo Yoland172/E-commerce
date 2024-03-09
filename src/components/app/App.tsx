@@ -6,18 +6,16 @@ import { RootState, useAppDispatch } from "../../store";
 import { getTokenFromStorage } from "../../lib/helpers/authenticateHelper";
 import { setSuccesLogin } from "../../store/sharedSlice/authSlice";
 import Header from "../header/Header";
-import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
+import { HashRouter as  BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import MainPageContainer from "../mainPage/MainPageContainer";
-
+import Footer from "../footer/Footer";
 const App = () => {
   const { token, IsAuthenticated } = useSelector(
     (state: RootState) => state.authState
   );
   const dispatch = useAppDispatch();
-
   useEffect(() => {
     if (!token) {
-      console.log("sdcnjk");
       dispatch(setSuccesLogin(getTokenFromStorage()));
     }
   }, []);
@@ -32,9 +30,12 @@ const App = () => {
               <>
                 <Header />
                 <MainPageContainer />
+                <Footer/>
               </>
             }
           />
+          <Route path="/product/:id" element={<></>}/>
+
           <Route path="/login" element={<LoginContainer />} />
           <Route path="*" element={<Navigate to={"/mainPage"} />} />
         </Routes>
