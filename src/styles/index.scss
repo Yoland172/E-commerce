@@ -1,30 +1,46 @@
 @import "./variabls.scss";
 @import "https://fonts.fontstorage.com/import/fog6.css";
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
 
 body {
-    background-color: $white ;
+  background-color: $white;
 }
 
 * {
-    box-sizing: border-box;
-    margin: 0;
+  box-sizing: border-box;
+  margin: 0;
 }
 
-h1{
-    font-family: 'FoglihtenNo06';
+h1 {
+  font-family: "FoglihtenNo06";
 }
 
 input {
-    outline: none;
+  outline: none;
 }
 
-h1,h2,h3,p{
-    color: $black;
+h1,
+h2,
+h3,
+p {
+  color: $black;
 }
 
+a {
+  text-decoration: none;
+  color: $black;
+}
+
+li {
+  list-style-type: none;
+}
+
+ul {
+  margin-left: 0;
+  padding-left: 0;
+}
 
 * {
-    font-family: "Montserrat";
-    font-weight: 200;
+  font-family: "Montserrat";
+  font-weight: 200;
 }
