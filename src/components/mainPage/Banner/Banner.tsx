@@ -35,3 +35,4 @@ const Banner = ({ products }: BannerProps) => {
 };
 
 export default Banner;
+

@@ -9,7 +9,6 @@ import Header from "../header/Header";
 import { HashRouter as  BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import MainPageContainer from "../mainPage/MainPageContainer";
 import Footer from "../footer/Footer";
-
 const App = () => {
   const { token, IsAuthenticated } = useSelector(
     (state: RootState) => state.authState
@@ -36,7 +35,6 @@ const App = () => {
             }
           />
           <Route path="/product/:id" element={<></>}/>
-
 
           <Route path="/login" element={<LoginContainer />} />
           <Route path="*" element={<Navigate to={"/mainPage"} />} />
