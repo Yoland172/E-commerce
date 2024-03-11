@@ -3,11 +3,13 @@ import authSlice from "./sharedSlice/authSlice";
 import { useDispatch } from "react-redux";
 import logger from "redux-logger";
 import mainPageSlice from "../components/mainPage/mainPageSlice";
+import profileSlice from "./sharedSlice/profileSlice";
 
 const store = configureStore({
   reducer: {
     authState: authSlice,
-    mainPageState:mainPageSlice
+    mainPageState:mainPageSlice,
+    profileState:profileSlice
   },
   middleware: (getDefaultMiddleware) =>
     process.env.NODE_ENV === "production"

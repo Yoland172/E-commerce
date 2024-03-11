@@ -4,18 +4,21 @@ import { useSelector } from "react-redux";
 import { RootState, useAppDispatch } from "../../store";
 import Login from "./Login";
 import { setTokenToStorage } from "../../lib/helpers/authenticateHelper";
+import { useNavigate } from "react-router-dom";
+import { getredirectAfterLoginURL, setredirectAfterLoginURL } from "../../lib/helpers/redirectHelpers";
 
 const LoginContainer = () => {
-    const {token, IsAuthenticated} = useSelector((state: RootState) => state.authState);
     const dispatch = useAppDispatch();
-
-    useEffect(() => {
-        console.log(token);
-        console.log(IsAuthenticated);
-    },[token, IsAuthenticated])
+    const navigate = useNavigate();
     
+    const redireactAfterLogin = () => {
+        const path = getredirectAfterLoginURL();
+        navigate(path);
+        setredirectAfterLoginURL("")
+    }
+
     const authenticate = async(username:string, password:string) => {
-        dispatch( login(username,password));
+        dispatch( login(username,password,redireactAfterLogin));
     }
 
     return <Login setLogin={authenticate}/>

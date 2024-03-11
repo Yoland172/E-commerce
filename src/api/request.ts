@@ -1,5 +1,7 @@
 import axios from "axios";
 
+//auth
+
 export const login = async (username: string, password: string) => {
   const res = await axios.post(
     `${process.env.API_AUTH_URL}`,
@@ -19,8 +21,13 @@ export const currentUserToken = async (token: string) => {
       Authorization: `Bearer ${token}`,
     },
   });
-  return res;
+  return res.data;
 };
+
+
+
+
+//products
 
 export const getItemCategories = async () => {
   const res = await axios.get(`${process.env.API_GET_ITEM_CATEGORIES}`);
@@ -31,3 +38,4 @@ export const getBannerProducts = async () => {
   const res = await axios.get(`${process.env.API_GET_PRODUCTS}?limit=20`);
   return res.data;
 }
+

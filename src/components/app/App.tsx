@@ -9,14 +9,18 @@ import Header from "../header/Header";
 import { HashRouter as  BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import MainPageContainer from "../mainPage/MainPageContainer";
 import Footer from "../footer/Footer";
+import { loginByToken } from "../../store/sharedSlice/profileSlice";
+import HeaderContainer from "../header/HeaderContainer";
 const App = () => {
   const { token, IsAuthenticated } = useSelector(
     (state: RootState) => state.authState
   );
   const dispatch = useAppDispatch();
+  const localStorageToken = getTokenFromStorage();
   useEffect(() => {
-    if (!token) {
-      dispatch(setSuccesLogin(getTokenFromStorage()));
+    if (!token && localStorageToken) {
+      console.log(localStorageToken);
+      dispatch(loginByToken(localStorageToken));
     }
   }, []);
 
@@ -28,13 +32,14 @@ const App = () => {
             path="/mainPage"
             element={
               <>
-                <Header />
+                <HeaderContainer />
                 <MainPageContainer />
                 <Footer/>
               </>
             }
           />
           <Route path="/product/:id" element={<></>}/>
+          <Route path="/profile" element={<>gigi</>}/>
 
           <Route path="/login" element={<LoginContainer />} />
           <Route path="*" element={<Navigate to={"/mainPage"} />} />

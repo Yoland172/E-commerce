@@ -13,24 +13,28 @@ const initialState: authState = {
   IsAuthenticated: false,
 };
 
-const appSlice = createSlice({
-  name: "appSlice",
+const authSlice = createSlice({
+  name: "authSlice",
   initialState,
   reducers: {
     setSuccesLogin: (state, action: PayloadAction<string>) => {
-      state.token = action.payload, 
-      state.IsAuthenticated = true;
+      (state.token = action.payload), (state.IsAuthenticated = true);
+    },
+    clearToken: (state) => {
+      (state.token = ""), (state.IsAuthenticated = false);
+      console.log("checkToken")
     },
   },
 });
 
-export const login = (username: string, password: string):AppThunk => {
+export const login = (username: string, password: string, redirectAfterLogin: () =>void): AppThunk => {
   return async (dispatch) => {
     try {
       const res = await loginAPI(username, password);
       if (res) {
         dispatch(setSuccesLogin(res.token));
         setTokenToStorage(res.token);
+        redirectAfterLogin()
       }
     } catch (err) {
       console.log(err);
@@ -38,12 +42,19 @@ export const login = (username: string, password: string):AppThunk => {
   };
 };
 
-export const checkToken = (token:string) => {
-  return async() => {
-    const res = await currentUserToken(token);
-    console.log(res);
-  }
-}
+export const checkToken = (token: string): AppThunk => {
+  return async (dispatch) => {
+    try {
+      const res = await currentUserToken(token);
+      console.log(res);
+      if (res.name === "TokenExpiredError") {
+        dispatch(clearToken());
+      } else {
 
-export const { setSuccesLogin } = appSlice.actions;
-export default appSlice.reducer;
+      }
+    } catch (err) {}
+  };
+};
+
+export const { setSuccesLogin, clearToken } = authSlice.actions;
+export default authSlice.reducer;

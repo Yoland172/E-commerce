@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import styles from "./login.module.scss";
 import { SubmitHandler, useForm } from "react-hook-form";
 import classNames from "classnames";
+import { getredirectAfterLoginURL, setredirectAfterLoginURL } from "../../lib/helpers/redirectHelpers";
 
 interface AuthPprops {
   setLogin: (username:string, password:string) => void
@@ -13,13 +14,16 @@ interface AuthInputs {
 }
 
 const Login = ({setLogin}:AuthPprops) => {
+
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm<AuthInputs>();
 
-  const onSubmit: SubmitHandler<AuthInputs> = ({username,password}:AuthInputs) => {setLogin(username,password)};
+  const onSubmit: SubmitHandler<AuthInputs> = ({username,password}:AuthInputs) => {
+    setLogin(username,password);
+  };
 
   return (
     <div className={styles.mainContainer}>
