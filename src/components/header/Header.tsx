@@ -1,6 +1,5 @@
 import React from "react";
 import styles from "./header.module.scss";
-import { Link, Router, useNavigate } from "react-router-dom";
 
 interface HeaderProps {
   IsAuthenticated: boolean,
@@ -8,12 +7,6 @@ interface HeaderProps {
 }
 
 const Header = ({ onProfileClick }: HeaderProps) => {
-
-
-
-
- 
-
   return (
     <div className={styles.mainContainer}>
       <div className={styles.main}>

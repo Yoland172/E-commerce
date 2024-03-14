@@ -1,8 +1,8 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import styles from "./banner.module.scss";
 import { ProductItem } from "../../../api/types";
 import HeartIcon from "../../ui/icon/HeartIcon";
-import { Link } from "react-router-dom";
 
 interface BannerProps {
   products: ProductItem[];
@@ -19,7 +19,7 @@ const Banner = ({ products }: BannerProps) => {
               <img src={el.thumbnail} alt="product" />
             </Link>
             <div className={styles.productInfo}>
-              <Link to={`/product/${el.id}`}  className={styles.productName}>
+              <Link to={`/product/${el.id}`} className={styles.productName}>
                 {el.title}
               </Link>
               <h3 className={styles.price}>{el.price} $</h3>
@@ -35,4 +35,3 @@ const Banner = ({ products }: BannerProps) => {
 };
 
 export default Banner;
-

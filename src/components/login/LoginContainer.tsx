@@ -1,27 +1,32 @@
-import React, { useEffect } from "react";
-import { login} from "../../store/sharedSlice/authSlice";
-import { useSelector } from "react-redux";
-import { RootState, useAppDispatch } from "../../store";
-import Login from "./Login";
-import { setTokenToStorage } from "../../lib/helpers/authenticateHelper";
+import React from "react";
 import { useNavigate } from "react-router-dom";
-import { getredirectAfterLoginURL, setredirectAfterLoginURL } from "../../lib/helpers/redirectHelpers";
+import { login } from "../../store/sharedSlice/authSlice";
+import { useAppDispatch, useAppSelector } from "../../store";
+import Login from "./Login";
+import {
+  getredirectAfterLoginURL,
+  setredirectAfterLoginURL,
+} from "../../lib/helpers/redirectHelpers";
 
 const LoginContainer = () => {
-    const dispatch = useAppDispatch();
-    const navigate = useNavigate();
-    
-    const redireactAfterLogin = () => {
-        const path = getredirectAfterLoginURL();
-        navigate(path);
-        setredirectAfterLoginURL("")
-    }
+  const dispatch = useAppDispatch();
+  const navigate = useNavigate();
 
-    const authenticate = async(username:string, password:string) => {
-        dispatch( login(username,password,redireactAfterLogin));
-    }
+  const redireactAfterLogin = () => {
+    const path = getredirectAfterLoginURL();
+    navigate(path);
+    setredirectAfterLoginURL("");
+  };
 
-    return <Login setLogin={authenticate}/>
-}
+  const { error, isFetching } = useAppSelector((state) => state.authState);
+
+  const authenticate = async (username: string, password: string) => {
+    dispatch(login(username, password, redireactAfterLogin));
+  };
+
+  return (
+    <Login setLogin={authenticate} error={error} isFetching={isFetching} />
+  );
+};
 
 export default LoginContainer;

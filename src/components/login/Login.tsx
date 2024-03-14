@@ -1,11 +1,13 @@
-import React, { useEffect } from "react";
-import styles from "./login.module.scss";
-import { SubmitHandler, useForm } from "react-hook-form";
+import React from "react";
 import classNames from "classnames";
-import { getredirectAfterLoginURL, setredirectAfterLoginURL } from "../../lib/helpers/redirectHelpers";
+import { SubmitHandler, useForm } from "react-hook-form";
+import styles from "./login.module.scss";
+import Loader from "../ui/loader/Loader";
 
 interface AuthPprops {
-  setLogin: (username:string, password:string) => void
+  setLogin: (username: string, password: string) => void;
+  isFetching: boolean;
+  error: string;
 }
 
 interface AuthInputs {
@@ -13,16 +15,18 @@ interface AuthInputs {
   password: string;
 }
 
-const Login = ({setLogin}:AuthPprops) => {
-
+const Login = ({ setLogin, error, isFetching }: AuthPprops) => {
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm<AuthInputs>();
 
-  const onSubmit: SubmitHandler<AuthInputs> = ({username,password}:AuthInputs) => {
-    setLogin(username,password);
+  const onSubmit: SubmitHandler<AuthInputs> = ({
+    username,
+    password,
+  }: AuthInputs) => {
+    setLogin(username, password);
   };
 
   return (
@@ -35,7 +39,10 @@ const Login = ({setLogin}:AuthPprops) => {
           />
         </div>
         <div className={styles.registerContainer}>
-          <h1>LOG IN</h1>
+          <div className={styles.headerContainer}>
+            <h1>LOG IN</h1>
+            {error && <p>Username or password are incorrect</p>}
+          </div>
           <form
             className={styles.registerForm}
             onSubmit={handleSubmit(onSubmit)}
@@ -53,7 +60,9 @@ const Login = ({setLogin}:AuthPprops) => {
                 />
                 <div className={styles.line}></div>
               </div>
-              {errors.username && <p className={styles.errorMessage}>{errors.username.message}</p>}
+              {errors.username && (
+                <p className={styles.errorMessage}>{errors.username.message}</p>
+              )}
             </div>
             <div className={styles.inputForm}>
               <div className={styles.inputContainer}>
@@ -62,14 +71,23 @@ const Login = ({setLogin}:AuthPprops) => {
                   placeholder="Password"
                   className={styles.input}
                   {...register("password", {
-                    required: "Password is required"
+                    required: "Password is required",
                   })}
                 />
-                <div className={classNames(styles.line, errors.password && styles.error)}></div>
+                <div
+                  className={classNames(
+                    styles.line,
+                    errors.password && styles.error
+                  )}
+                ></div>
               </div>
-              {errors.password && <p className={styles.errorMessage}>{errors.password.message}</p>}
+              {errors.password && (
+                <p className={styles.errorMessage}>{errors.password.message}</p>
+              )}
             </div>
-            <button className={styles.submitButton}>Log in</button>
+            <button className={styles.submitButton} disabled={isFetching}>
+              {isFetching ? <Loader /> : <span>Log in</span>}
+            </button>
           </form>
         </div>
       </div>

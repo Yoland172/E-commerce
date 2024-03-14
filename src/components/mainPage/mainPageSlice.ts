@@ -39,25 +39,22 @@ export const setItemCategoriesThunk = (): AppThunk => {
     try {
       const res = await getItemCategories();
       res && dispatch(setItemCategories(res));
-    } catch (error) {
-      console.log(error);
-    }
+    } catch (error) {}
   };
 };
 
-export const setBannerProductsThunk= (): AppThunk => {
-    return async (dispatch) => {
-        try {
-            setBannerFetching();
-            const res = await getBannerProducts(); 
-            if(res) {
-                dispatch(setBannerProducts(res.products));
-            }
-        } catch (error) {
-            console.log(error)
-        }
-    }
-}
+export const setBannerProductsThunk = (): AppThunk => {
+  return async (dispatch) => {
+    try {
+      setBannerFetching();
+      const res = await getBannerProducts();
+      if (res) {
+        dispatch(setBannerProducts(res.products));
+      }
+    } catch (error) {}
+  };
+};
 
-export const { setItemCategories,setBannerFetching,setBannerProducts } = mainPageSlice.actions;
+export const { setItemCategories, setBannerFetching, setBannerProducts } =
+  mainPageSlice.actions;
 export default mainPageSlice.reducer;

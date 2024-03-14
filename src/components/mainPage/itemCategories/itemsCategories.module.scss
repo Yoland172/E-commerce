@@ -1,15 +1,15 @@
-@import "../../../styles/variabls.scss";
+@import "../../../styles/variables.scss";
 @import "../../../styles/mixin.scss";
 
 .main {
-    padding: 20px;
+  padding: 20px;
 
-    &>h1{
-        padding-bottom: 20px;
-        font-family: $Montserrat;
-        font-weight: 400;
-        text-transform: uppercase;
-    }
+  & > h1 {
+    padding-bottom: 20px;
+    font-family: $Montserrat;
+    font-weight: 400;
+    text-transform: uppercase;
+  }
 
   .categoriesContainer {
     width: fit-content;
@@ -30,7 +30,7 @@
       position: relative;
       cursor: pointer;
       text-decoration: none;
-      text-transform:uppercase;
+      text-transform: uppercase;
 
       &::after {
         content: "";

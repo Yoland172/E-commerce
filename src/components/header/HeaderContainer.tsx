@@ -1,16 +1,25 @@
-import React from "react";
-import Header from "./Header";
-import { useSelector } from "react-redux";
-import { RootState, useAppDispatch } from "../../store";
+import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { checkToken } from "../../store/sharedSlice/authSlice";
+import Header from "./Header";
+import { useAppDispatch, useAppSelector } from "../../store";
 import { setredirectAfterLoginURL } from "../../lib/helpers/redirectHelpers";
+import { getProfileInfo } from "../../store/sharedSlice/profileSlice";
+import { getTokenFromStorage } from "../../lib/helpers/authenticateHelper";
 
 const HeaderContainer = () => {
-  const { token, IsAuthenticated } = useSelector(
-    (state: RootState) => state.authState
-  );
   const navigate = useNavigate();
+  const dispatch = useAppDispatch();
+
+  const IsAuthenticated = useAppSelector(
+    (state) => state.authState.IsAuthenticated
+  );
+  const token =
+    useAppSelector((state) => state.authState.token) || getTokenFromStorage();
+
+  useEffect(() => {
+    token && dispatch(getProfileInfo(token));
+  }, []);
+
   const onProfileClick = () => {
     if (IsAuthenticated) {
       navigate("/profile");
