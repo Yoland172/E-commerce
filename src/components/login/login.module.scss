@@ -1,5 +1,5 @@
-@import "../../styles/variabls.scss";
-
+@import "../../styles/variables.scss";
+@import "../../styles/mixin.scss";
 .mainContainer {
   width: 100vw;
   height: 100vh;
@@ -35,7 +35,16 @@
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      row-gap: 100px;
+      row-gap: 75px;
+
+      .headerContainer {
+        @include flexbox(column, start, center);
+
+        & > p {
+          color: $red;
+          font-weight: 300;
+        }
+      }
 
       .registerForm {
         display: flex;
@@ -89,17 +98,17 @@
                 background: $black;
               }
 
-              &.error{
-                background-color: red;
+              &.error {
+                background-color: $red;
               }
             }
           }
 
-          .errorMessage{
+          .errorMessage {
             font-weight: 400;
             font-size: 0.9em;
             padding-top: 10px;
-            color: red;
+            color: $red;
           }
         }
 
@@ -109,7 +118,6 @@
           width: 9vw;
           height: 3vh;
           color: $black;
-          font-weight: 400;
           border: 2px solid $black;
           border-radius: 3px;
           transition: all 250ms;
@@ -118,6 +126,14 @@
           &:hover {
             background-color: $black;
             color: $light-white;
+
+            & > svg > circle {
+              stroke: $white;
+            }
+          }
+
+          & > span {
+            font-weight: 400;
           }
         }
       }

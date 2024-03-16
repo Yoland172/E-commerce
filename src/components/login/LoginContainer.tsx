@@ -1,24 +1,32 @@
-import React, { useEffect } from "react";
-import { login} from "../../store/sharedSlice/authSlice";
-import { useSelector } from "react-redux";
-import { RootState, useAppDispatch } from "../../store";
+import React from "react";
+import { useNavigate } from "react-router-dom";
+import { login } from "../../store/sharedSlice/authSlice";
+import { useAppDispatch, useAppSelector } from "../../store";
 import Login from "./Login";
-import { setTokenToStorage } from "../../lib/helpers/authenticateHelper";
+import {
+  getredirectAfterLoginURL,
+  setredirectAfterLoginURL,
+} from "../../lib/helpers/redirectHelpers";
 
 const LoginContainer = () => {
-    const {token, IsAuthenticated} = useSelector((state: RootState) => state.authState);
-    const dispatch = useAppDispatch();
+  const dispatch = useAppDispatch();
+  const navigate = useNavigate();
 
-    useEffect(() => {
-        console.log(token);
-        console.log(IsAuthenticated);
-    },[token, IsAuthenticated])
-    
-    const authenticate = async(username:string, password:string) => {
-        dispatch( login(username,password));
-    }
+  const redirectAfterLogin = () => {
+    const path = getredirectAfterLoginURL();
+    navigate(path);
+    setredirectAfterLoginURL("");
+  };
 
-    return <Login setLogin={authenticate}/>
-}
+  const { error, isFetching } = useAppSelector((state) => state.authState);
+
+  const authenticate = async (username: string, password: string) => {
+    dispatch(login(username, password, redirectAfterLogin));
+  };
+
+  return (
+    <Login setLogin={authenticate} error={error} isFetching={isFetching} />
+  );
+};
 
 export default LoginContainer;

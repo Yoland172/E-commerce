@@ -1,4 +1,4 @@
-@import "../../styles/variabls.scss";
+@import "../../styles/variables.scss";
 @import "../../styles/mixin.scss";
 
 .main {
@@ -92,48 +92,48 @@
       font-weight: 300;
     }
 
-    .languageContainer{
-        @include flexbox(row,start,start);
-        column-gap: 7px;
+    .languageContainer {
+      @include flexbox(row, start, start);
+      column-gap: 7px;
 
-        &>p{
-            color: $black;
-            transition: all 250ms;
-            position: relative;
-            font-weight: 300;
-            cursor: pointer;
-            text-decoration: none;
-    
-            &::after {
-              content: "";
-              display: block;
-              position: absolute;
-              right: 0;
-              bottom: -3px;
-              width: 0;
-              height: 0.5px;
-              background-color: $black;
-              transition: width 250ms;
-            }
-    
-            &:hover::after {
-              content: "";
-              width: 100%;
-              display: block;
-              position: absolute;
-              left: 0;
-              bottom: -3px;
-              height: 0.5px;
-              background-color: $black;
-              transition: width 250ms;
-            }
+      & > p {
+        color: $black;
+        transition: all 250ms;
+        position: relative;
+        font-weight: 300;
+        cursor: pointer;
+        text-decoration: none;
+
+        &::after {
+          content: "";
+          display: block;
+          position: absolute;
+          right: 0;
+          bottom: -3px;
+          width: 0;
+          height: 0.5px;
+          background-color: $black;
+          transition: width 250ms;
         }
 
-        &>div{
-            height: 20px;
-            width: .5px;
-            background-color: $black;
+        &:hover::after {
+          content: "";
+          width: 100%;
+          display: block;
+          position: absolute;
+          left: 0;
+          bottom: -3px;
+          height: 0.5px;
+          background-color: $black;
+          transition: width 250ms;
         }
+      }
+
+      & > div {
+        height: 20px;
+        width: 0.5px;
+        background-color: $black;
+      }
     }
   }
 }

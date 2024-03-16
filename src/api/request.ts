@@ -1,8 +1,10 @@
 import axios from "axios";
+import { AUTH_URL, CHECK_TOKEN, GET_ITEM_CATEGORIES, GET_PRODUCTS } from "./constants";
 
+//auth
 export const login = async (username: string, password: string) => {
   const res = await axios.post(
-    `${process.env.API_AUTH_URL}`,
+    AUTH_URL,
     { username, password },
     {
       headers: {
@@ -14,20 +16,22 @@ export const login = async (username: string, password: string) => {
 };
 
 export const currentUserToken = async (token: string) => {
-  const res = await axios.get(`${process.env.API_CHECK_TOKEN}`, {
+  const res = await axios.get(CHECK_TOKEN, {
     headers: {
       Authorization: `Bearer ${token}`,
     },
   });
-  return res;
-};
-
-export const getItemCategories = async () => {
-  const res = await axios.get(`${process.env.API_GET_ITEM_CATEGORIES}`);
   return res.data;
 };
 
-export const getBannerProducts = async () => {
-  const res = await axios.get(`${process.env.API_GET_PRODUCTS}?limit=20`);
+//products
+export const getItemCategories = async () => {
+  const res = await axios.get(GET_ITEM_CATEGORIES);
+  return res.data;
+};
+
+export const getProducts = async (limit: number) => {
+  const res = await axios.get(`${GET_PRODUCTS}?limit=${limit}`);
   return res.data;
 }
+
