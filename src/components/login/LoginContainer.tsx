@@ -12,7 +12,7 @@ const LoginContainer = () => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
-  const redireactAfterLogin = () => {
+  const redirectAfterLogin = () => {
     const path = getredirectAfterLoginURL();
     navigate(path);
     setredirectAfterLoginURL("");
@@ -21,7 +21,7 @@ const LoginContainer = () => {
   const { error, isFetching } = useAppSelector((state) => state.authState);
 
   const authenticate = async (username: string, password: string) => {
-    dispatch(login(username, password, redireactAfterLogin));
+    dispatch(login(username, password, redirectAfterLogin));
   };
 
   return (

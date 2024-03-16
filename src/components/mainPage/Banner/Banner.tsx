@@ -13,7 +13,7 @@ const Banner = ({ products }: BannerProps) => {
     <div className={styles.main}>
       <h1>TOP PRODUCTS</h1>
       <div className={styles.productsContainer}>
-        {products.map((el, index) => (
+        {products.map((el) => (
           <div className={styles.productContainer} key={el.id}>
             <Link to={`/product/${el.id}`}>
               <img src={el.thumbnail} alt="product" />

@@ -1,5 +1,5 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
-import { getBannerProducts, getItemCategories } from "../../api/request";
+import { getProducts, getItemCategories } from "../../api/request";
 import { AppThunk } from "../../store";
 import { ProductItem } from "../../api/types";
 
@@ -47,7 +47,7 @@ export const setBannerProductsThunk = (): AppThunk => {
   return async (dispatch) => {
     try {
       setBannerFetching();
-      const res = await getBannerProducts();
+      const res = await getProducts(20);
       if (res) {
         dispatch(setBannerProducts(res.products));
       }

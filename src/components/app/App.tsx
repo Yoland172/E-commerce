@@ -26,9 +26,6 @@ const App = () => {
               </>
             }
           />
-          <Route path="/product/:id" element={<></>} />
-          <Route path="/profile" element={<>gigi</>} />
-
           <Route path="/login" element={<LoginContainer />} />
           <Route path="*" element={<Navigate to={"/mainPage"} />} />
         </Routes>
