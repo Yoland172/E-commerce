@@ -10,6 +10,7 @@ import MainPageContainer from "../mainPage/MainPageContainer";
 import Footer from "../footer/Footer";
 import HeaderContainer from "../header/HeaderContainer";
 import "./app.module.scss";
+import ProfilePageRouting from "../profile/ProfilePageRouting";
 
 const App = () => {
   return (
@@ -17,7 +18,17 @@ const App = () => {
       <BrowserRouter>
         <Routes>
           <Route
-            path="/mainPage"
+            path="profile/:tab"
+            element={
+              <>
+                <HeaderContainer />
+                <ProfilePageRouting/>
+                <Footer />
+              </>
+            }
+          />
+          <Route
+            path="mainPage"
             element={
               <>
                 <HeaderContainer />
@@ -27,7 +38,7 @@ const App = () => {
             }
           />
           <Route path="/login" element={<LoginContainer />} />
-          <Route path="*" element={<Navigate to={"/mainPage"} />} />
+          {/* <Route path="*" element={<Navigate to={"/mainPage"} />} /> */}
         </Routes>
       </BrowserRouter>
     </div>

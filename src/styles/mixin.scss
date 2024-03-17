@@ -4,3 +4,21 @@
   align-items: $ai-position;
   flex-direction: $direction;
 }
+
+
+@mixin styledButton($width, $height) {
+  background: none;
+  width: $width;
+  height: $height;
+  color: $black;
+  border: 1px solid $black;
+  border-radius: 3px;
+  transition: all 250ms;
+  font-weight: 400;
+  cursor: pointer;
+
+  &:hover {
+    background-color: $black;
+    color: $light-white;
+  }
+}
