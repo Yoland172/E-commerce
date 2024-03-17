@@ -1,9 +1,10 @@
 import React from "react";
+import Settings from "./Settings";
 
-const Settings = () => {
+const SettingsContainer = () => {
     return (
         <Settings/>
     )
 }
 
-export default Settings;
+export default SettingsContainer;

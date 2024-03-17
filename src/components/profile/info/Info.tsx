@@ -1,7 +1,20 @@
 import React from "react";
 import styles from "./info.module.scss";
 
-const Info = () => {
+interface UserInfo {
+  id: number | null;
+  firstName: string;
+  lastName: string;
+  email: string;
+  username: string;
+  phone: string;
+}
+interface InfoProps {
+  userInfo: UserInfo
+}
+
+
+const Info = ({userInfo}:InfoProps) => {
 
   return (
     <div className={styles.main}>
@@ -10,28 +23,28 @@ const Info = () => {
         <div className={styles.infoContainer}>
           <div className={styles.info}>
             <h2>Email</h2>
-            <p>testmail@gmail.com</p>
+            <p>{userInfo.email}</p>
           </div>
           <button>Change</button>
         </div>
         <div className={styles.infoContainer}>
           <div className={styles.info}>
             <h2>Password</h2>
-            <p>************</p>
+            <p>********</p>
           </div>
           <button>Change</button>
         </div>
         <div className={styles.infoContainer}>
           <div className={styles.info}>
             <h2>Username</h2>
-            <p>kminchleee</p>
+            <p>{userInfo.username}</p>
           </div>
           <button>Change</button>
         </div>
         <div className={styles.infoContainer}>
           <div className={styles.info}>
-            <h2>Username</h2>
-            <p>kminchleee</p>
+            <h2>Phone</h2>
+            <p>{userInfo.phone}</p>
           </div>
           <button>Change</button>
         </div>

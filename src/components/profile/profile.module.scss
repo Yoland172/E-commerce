@@ -1,7 +1,7 @@
 @import "../../styles/variables.scss";
 @import "../../styles/mixin.scss";
 
-.main {
+.navBar {
   padding: 20px;
   .navBar {
     @include flexbox(row, start, start);
@@ -11,6 +11,15 @@
       padding: 10px;
       border: 1px solid $black;
       background-color: $light-white;
+
+      &.active {
+        font-weight: 400;
+      }
     }
   }
+}
+
+
+.tabContainer{
+  height: 65vh;
 }
