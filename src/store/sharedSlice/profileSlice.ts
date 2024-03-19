@@ -10,7 +10,7 @@ interface ProfileState {
   lastName: string;
   email: string;
   username: string;
-  image: string;
+  phone: string;
 }
 
 const initialState: ProfileState = {
@@ -19,7 +19,7 @@ const initialState: ProfileState = {
   lastName: "",
   email: "",
   username: "",
-  image: "",
+  phone: "",
 };
 
 const profileSlice = createSlice({
@@ -32,7 +32,7 @@ const profileSlice = createSlice({
       state.lastName = action.payload.lastName,
       state.email = action.payload.email,
       state.username = action.payload.username,
-      state.image = action.payload.image;
+      state.phone = action.payload.phone;
     },
   },
 });

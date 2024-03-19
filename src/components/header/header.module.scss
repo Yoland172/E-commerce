@@ -15,7 +15,7 @@
     .mainLogo {
       grid-area: 1 / 1 / 2 / 2;
       @include flexbox(row, center, center);
-      & > h1 {
+      & > a>h1 {
         font-size: 3em;
         letter-spacing: -4px;
       }

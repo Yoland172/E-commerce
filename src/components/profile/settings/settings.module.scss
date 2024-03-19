@@ -1,0 +1,36 @@
+@import "../../../styles/variables.scss";
+@import "../../../styles//mixin.scss";
+
+  .main {
+    @include flexbox(column, start, start);
+    width: fit-content;
+    height: fit-content;
+    margin-left: 20px;
+    margin-bottom: 20px;
+    border: 1px solid $black;
+    background-color: $light-white;
+    padding: 20px;
+    row-gap: 30px;
+
+    .container {
+      @include flexbox(row, space-between, center);
+      width: 100%;
+      column-gap: 40px;
+      .articleContainer {
+        & > h2 {
+          font-size: 1.2em;
+          font-weight: 400;
+        }
+        & > p {
+          font-size: 1em;
+          padding-top: 7px;
+          font-weight: 300;
+        }
+      }
+
+      & > svg {
+        transform: rotate(90deg);
+      }
+    }
+  }
+

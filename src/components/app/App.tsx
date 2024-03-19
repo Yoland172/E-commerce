@@ -1,14 +1,10 @@
 import React from "react";
-import {
-  HashRouter as BrowserRouter,
-  Navigate,
-  Route,
-  Routes,
-} from "react-router-dom";
+import { HashRouter as BrowserRouter, Route, Routes } from "react-router-dom";
 import LoginContainer from "../login/LoginContainer";
 import MainPageContainer from "../mainPage/MainPageContainer";
 import Footer from "../footer/Footer";
 import HeaderContainer from "../header/HeaderContainer";
+import ProfilePageRouting from "../profile/ProfilePageRouting";
 import "./app.module.scss";
 
 const App = () => {
@@ -17,7 +13,17 @@ const App = () => {
       <BrowserRouter>
         <Routes>
           <Route
-            path="/mainPage"
+            path="profile/:tab"
+            element={
+              <>
+                <HeaderContainer />
+                <ProfilePageRouting />
+                <Footer />
+              </>
+            }
+          />
+          <Route
+            path="mainPage"
             element={
               <>
                 <HeaderContainer />
@@ -27,7 +33,7 @@ const App = () => {
             }
           />
           <Route path="/login" element={<LoginContainer />} />
-          <Route path="*" element={<Navigate to={"/mainPage"} />} />
+          {/* <Route path="*" element={<Navigate to={"/mainPage"} />} /> */}
         </Routes>
       </BrowserRouter>
     </div>

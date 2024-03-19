@@ -1,17 +1,20 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import styles from "./header.module.scss";
-
 interface HeaderProps {
-  IsAuthenticated: boolean,
-  onProfileClick: () => void
+  IsAuthenticated: boolean;
+  onProfileClick: () => void;
+  username?: string;
 }
 
-const Header = ({ onProfileClick }: HeaderProps) => {
+const Header = ({ onProfileClick, username }: HeaderProps) => {
   return (
     <div className={styles.mainContainer}>
       <div className={styles.main}>
         <div className={styles.mainLogo}>
-          <h1>Commercy</h1>
+          <Link to={"/mainPage"}>
+            <h1>Commercy</h1>
+          </Link>
         </div>
         <div className={styles.searchContainer}>
           <input type="text" className={styles.searchInput} />
@@ -19,7 +22,7 @@ const Header = ({ onProfileClick }: HeaderProps) => {
         </div>
         <div className={styles.navBarContainer}>
           <h3>Liked</h3>
-            <h3 onClick={onProfileClick}>Profile</h3>
+          <h3 onClick={onProfileClick}>{username ? username : "Profile"}</h3>
         </div>
       </div>
       <div className={styles.dividingLine}></div>

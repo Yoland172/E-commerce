@@ -16,21 +16,22 @@ const HeaderContainer = () => {
   const token =
     useAppSelector((state) => state.authState.token) || getTokenFromStorage();
 
+  const username = useAppSelector((state) => state.profileState.username);
   useEffect(() => {
     token && dispatch(getProfileInfo(token));
   }, []);
 
   const onProfileClick = () => {
     if (IsAuthenticated) {
-      navigate("/profile");
+      navigate("/profile/info");
     } else {
       navigate("/login");
-      setredirectAfterLoginURL("/profile");
+      setredirectAfterLoginURL("/profile/info");
     }
   };
 
   return (
-    <Header IsAuthenticated={IsAuthenticated} onProfileClick={onProfileClick} />
+    <Header IsAuthenticated={IsAuthenticated} onProfileClick={onProfileClick} username={username}/>
   );
 };
 
