@@ -1,6 +1,6 @@
 import React from "react";
-import ProfileNavBar from "./ProfileNavBar";
 import { useParams } from "react-router-dom";
+import ProfileNavBar from "./ProfileNavBar";
 import InfoContainer from "./info/InfoContainer";
 import SettingsContainer from "./settings/SettingsContainer";
 import styles from "./profile.module.scss";

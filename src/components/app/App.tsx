@@ -1,16 +1,11 @@
 import React from "react";
-import {
-  HashRouter as BrowserRouter,
-  Navigate,
-  Route,
-  Routes,
-} from "react-router-dom";
+import { HashRouter as BrowserRouter, Route, Routes } from "react-router-dom";
 import LoginContainer from "../login/LoginContainer";
 import MainPageContainer from "../mainPage/MainPageContainer";
 import Footer from "../footer/Footer";
 import HeaderContainer from "../header/HeaderContainer";
-import "./app.module.scss";
 import ProfilePageRouting from "../profile/ProfilePageRouting";
+import "./app.module.scss";
 
 const App = () => {
   return (
@@ -22,7 +17,7 @@ const App = () => {
             element={
               <>
                 <HeaderContainer />
-                <ProfilePageRouting/>
+                <ProfilePageRouting />
                 <Footer />
               </>
             }
