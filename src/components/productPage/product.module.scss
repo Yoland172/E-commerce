@@ -1,0 +1,150 @@
+@import "../../styles/variables.scss";
+@import "../../styles/mixin.scss";
+
+.main {
+  height: 85vh;
+  width: 100%;
+  @include flexbox(row, center,start);
+  padding-top: 75px;
+  column-gap: 70px;
+
+  .sliderContainer {
+    width: 30vw;
+    height: 100%;
+
+    .slider {
+      width: auto;
+      height: auto;
+      .sliderImageItem {
+        width: 30vw !important;
+        height: 70vh;
+        object-fit: cover;
+      }
+
+      .dotsContainer {
+        width: 30vw;
+        height: 50vh;
+        margin-top: -50vh;
+        margin-left: 45px;
+        @include flexbox(column, end, end);
+
+        & > li {
+          filter: opacity(45%);
+        }
+
+        & > li > a > img {
+          width: 40px;
+          height: 40px;
+          object-fit: fill;
+          cursor: pointer;
+        }
+      }
+
+      .dotsContainer :global(li.slick-active) {
+        filter: opacity(100%);
+      }
+    }
+  }
+
+  .productContainer {
+    width: 22vw;
+    height: fit-content;
+    border: 1px solid $black;
+    background-color: $light-white;
+
+    .productInfoContainer {
+      height: fit-content;
+      width: 100%;
+      border-bottom: 1px solid $black;
+      padding: 20px;
+
+      .title {
+        font-size: 1.2em;
+        font-weight: 500;
+        text-transform: uppercase;
+      }
+
+      .description {
+        font-size: 0.8em;
+        font-weight: 300;
+        padding-top: 5px;
+      }
+
+      .topicTittle {
+        font-size: 1.1em;
+        font-weight: 400;
+      }
+
+      .topicText {
+        font-weight: 300;
+      }
+      .reviewsContainer {
+        padding-top: 10px;
+      }
+
+      .categoryContainer {
+        padding-top: 10px;
+        @include flexbox(row, start, center);
+        column-gap: 7px;
+      }
+    }
+
+    .buyContainer {
+      padding: 20px;
+
+      .priceContainer {
+        @include flexbox(row, space-between, start);
+        .discount {
+          font-size: 0.8em;
+          text-decoration: line-through $black;
+        }
+
+        .addToCartsButton {
+          border: none;
+          background: none;
+          cursor: pointer;
+          &:hover {
+            & > svg {
+              fill: $green;
+            }
+          }
+        }
+      }
+
+      .buyButton {
+        margin-top: 40px;
+        @include styledButton(100%, 3vh);
+      }
+    }
+  }
+}
+
+.link {
+  position: relative;
+  cursor: pointer;
+  text-decoration: none;
+
+  &::after {
+    content: "";
+    display: block;
+    position: absolute;
+    right: 0;
+    bottom: -3px;
+    width: 0;
+    height: 0.5px;
+    background-color: $black;
+    transition: width 250ms;
+  }
+
+  &:hover::after {
+    content: "";
+    width: 100%;
+    display: block;
+    position: absolute;
+    left: 0;
+    bottom: -3px;
+    height: 0.5px;
+    background-color: $black;
+    transition: width 250ms;
+  }
+}

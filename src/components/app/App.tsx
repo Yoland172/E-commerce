@@ -6,6 +6,7 @@ import Footer from "../footer/Footer";
 import HeaderContainer from "../header/HeaderContainer";
 import ProfilePageRouting from "../profile/ProfilePageRouting";
 import "./app.module.scss";
+import ProductContainer from "../productPage/ProductContainer";
 
 const App = () => {
   return (
@@ -32,7 +33,19 @@ const App = () => {
               </>
             }
           />
+
+          <Route
+            path="product/:id"
+            element={
+              <>
+                <HeaderContainer />
+                <ProductContainer />
+                <Footer />
+              </>
+            }
+          />
           <Route path="/login" element={<LoginContainer />} />
+
           {/* <Route path="*" element={<Navigate to={"/mainPage"} />} /> */}
         </Routes>
       </BrowserRouter>

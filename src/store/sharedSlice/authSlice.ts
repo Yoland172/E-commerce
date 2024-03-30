@@ -1,20 +1,21 @@
-import { PayloadAction, createSlice} from "@reduxjs/toolkit";
+import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 import { AppThunk } from "..";
 import { currentUserToken, login as loginAPI } from "../../api/request";
 import { setTokenToStorage } from "../../lib/helpers/authenticateHelper";
+import { AxiosError } from "axios";
 
 interface AuthState {
-  token: string,
-  IsAuthenticated: boolean,
-  isFetching:boolean,
-  error:string
+  token: string;
+  IsAuthenticated: boolean;
+  isFetching: boolean;
+  error: string;
 }
 
 const initialState: AuthState = {
   token: "",
   IsAuthenticated: false,
   isFetching: false,
-  error:""
+  error: "",
 };
 
 const authSlice = createSlice({
@@ -22,25 +23,23 @@ const authSlice = createSlice({
   initialState,
   reducers: {
     setSuccesLogin: (state, action: PayloadAction<string>) => {
-      state.token = action.payload, 
-      state.IsAuthenticated = true,
-      state.isFetching =false,
-      state.error = ""
+      (state.token = action.payload),
+        (state.IsAuthenticated = true),
+        (state.isFetching = false),
+        (state.error = "");
     },
     clearToken: (state) => {
-      state.token = "", 
-      state.IsAuthenticated = false;
+      (state.token = ""), (state.IsAuthenticated = false);
     },
     setIsFetching: (state) => {
-      state.isFetching = true
-    }
-    ,
-    setFailedLogin: (state) => {
-      state.token = "",
-      state.IsAuthenticated = false,
-      state.isFetching = false,
-      state.error = "Invalid credentials"
-    }
+      state.isFetching = true;
+    },
+    setError: (state, action: PayloadAction<string>) => {
+      (state.token = ""),
+        (state.IsAuthenticated = false),
+        (state.isFetching = false),
+        (state.error = action.payload);
+    },
   },
 });
 
@@ -58,8 +57,18 @@ export const login = (
         setTokenToStorage(res.token);
         redirectAfterLogin();
       }
-    } catch (err) {
-      dispatch(setFailedLogin())
+    } catch (err: AxiosError | any) {
+      switch (err.code) {
+        case "ERR_NETWORK":
+          dispatch(setError("Network error"));
+          break;
+        case "ERR_BAD_REQUEST":
+        dispatch(setError("Username or password are incorrect"));
+        break;
+        default:
+          dispatch(setError("Server Error"));
+          break;
+      }
     }
   };
 };
@@ -72,11 +81,10 @@ export const checkToken = (token: string): AppThunk => {
         dispatch(clearToken());
       } else {
       }
-    } catch (err) {
-
-    }
+    } catch (err) {}
   };
 };
 
-export const { setSuccesLogin, clearToken, setIsFetching, setFailedLogin } = authSlice.actions;
+export const { setSuccesLogin, clearToken, setIsFetching, setError } =
+  authSlice.actions;
 export default authSlice.reducer;

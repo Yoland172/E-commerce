@@ -35,3 +35,7 @@ export const getProducts = async (limit: number) => {
   return res.data;
 }
 
+export const getProduct = async(id:string) => {
+  const res = await axios.get(`${GET_PRODUCTS}/${id}`);
+  return res.data;
+}
