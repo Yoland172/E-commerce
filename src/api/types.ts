@@ -11,3 +11,7 @@ export interface ProductItem {
   thumbnail: string;
   images: string[];
 }
+
+export interface SampleArrowProps {
+  onClick?: () => void
+}

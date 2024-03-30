@@ -5,6 +5,7 @@ import logger from "redux-logger";
 import authSlice from "./sharedSlice/authSlice";
 import mainPageSlice from "../components/mainPage/mainPageSlice";
 import profileSlice from "./sharedSlice/profileSlice";
+import productSlice from "../components/productPage/productSlice";
 
 
 const store = configureStore({
@@ -12,6 +13,7 @@ const store = configureStore({
     authState: authSlice,
     mainPageState: mainPageSlice,
     profileState: profileSlice,
+    productState:productSlice
   },
   middleware: (getDefaultMiddleware) =>
     process.env.NODE_ENV === "production"
