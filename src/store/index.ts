@@ -6,6 +6,7 @@ import authSlice from "./sharedSlice/authSlice";
 import mainPageSlice from "../components/mainPage/mainPageSlice";
 import profileSlice from "./sharedSlice/profileSlice";
 import productSlice from "../components/productPage/productSlice";
+import cartSlice from "./sharedSlice/cartSlice";
 
 
 const store = configureStore({
@@ -13,7 +14,8 @@ const store = configureStore({
     authState: authSlice,
     mainPageState: mainPageSlice,
     profileState: profileSlice,
-    productState:productSlice
+    productState:productSlice,
+    cartState:cartSlice
   },
   middleware: (getDefaultMiddleware) =>
     process.env.NODE_ENV === "production"

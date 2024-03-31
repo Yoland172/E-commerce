@@ -1,5 +1,5 @@
 import axios from "axios";
-import { AUTH_URL, CHECK_TOKEN, GET_ITEM_CATEGORIES, GET_PRODUCTS } from "./constants";
+import { AUTH_URL, CHECK_TOKEN, GET_CART, GET_ITEM_CATEGORIES, GET_PRODUCTS } from "./constants";
 
 //auth
 export const login = async (username: string, password: string) => {
@@ -37,5 +37,12 @@ export const getProducts = async (limit: number) => {
 
 export const getProduct = async(id:string) => {
   const res = await axios.get(`${GET_PRODUCTS}/${id}`);
+  return res.data;
+}
+
+//cart
+export const getCartOfUser = async(id:number) => {
+  console.log('snjd');
+  const res = await axios.get(`https://dummyjson.com/carts/user/${id}`);
   return res.data;
 }

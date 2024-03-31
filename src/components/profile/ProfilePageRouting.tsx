@@ -4,6 +4,7 @@ import ProfileNavBar from "./ProfileNavBar";
 import InfoContainer from "./info/InfoContainer";
 import SettingsContainer from "./settings/SettingsContainer";
 import styles from "./profile.module.scss";
+import WishlistContainer from "./whishlist/WhishlistContainer";
 
 const ProfilePageRouting = () => {
   const tab = useParams().tab;
@@ -15,7 +16,7 @@ const ProfilePageRouting = () => {
         return <SettingsContainer />;
 
       case "wishlist":
-        return <p>sdnj</p>;
+        return <WishlistContainer/>;
 
       default:
         null
