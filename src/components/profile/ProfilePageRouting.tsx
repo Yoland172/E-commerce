@@ -16,19 +16,17 @@ const ProfilePageRouting = () => {
         return <SettingsContainer />;
 
       case "wishlist":
-        return <WishlistContainer/>;
+        return <WishlistContainer />;
 
       default:
-        null
+        null;
         break;
     }
   };
   return (
     <>
       <ProfileNavBar tab={tab} />
-      <div className={styles.tabContainer}>
-      {renderUserUI()}
-      </div>
+      <div className={styles.tabContainer}>{renderUserUI()}</div>
     </>
   );
 };

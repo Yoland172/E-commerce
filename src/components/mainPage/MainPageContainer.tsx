@@ -15,7 +15,12 @@ const MainPageContainer = () => {
   useEffect(() => {
     dispatch(setItemCategoriesThunk());
     dispatch(setBannerProductsThunk());
+    console.log(itemsCategories)
   }, []);
+
+  useEffect(() => {
+    console.log(itemsCategories);
+  }, [itemsCategories])
 
   return <MainPage itemsCategories={itemsCategories} products={products} />;
 };

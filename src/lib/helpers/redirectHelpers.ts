@@ -4,5 +4,5 @@ export const setredirectAfterLoginURL = (url: string) => {
 
 export const getredirectAfterLoginURL = () => {
   const path = localStorage.getItem("redirectAfterLoginURL");
-  return path || "/startPage";
+  return path || "/mainPage";
 };

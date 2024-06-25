@@ -1,5 +1,5 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
-import { AppThunk } from "..";
+import { AppDispatch, AppThunk } from "..";
 import {
   currentUserToken,
   getCartOfUser,
@@ -44,23 +44,31 @@ const cartSlice = createSlice({
     },
     setIsFetching: (state) => {
       state.isFetching = true
+    },
+    deleteCart: (state, action: PayloadAction <number>) => {
+      console.log('delete');
+      const editedArray = state.products;
+      editedArray.splice(action.payload,1);
+      state.products=editedArray;
     }
   },
 });
 
 export const getUserCartThunk = (id: number): AppThunk => {
   return async (dispatch) => {
+    console.log(id);
     try {
       dispatch(setIsFetching())
-      console.log('state');
       const res = await getCartOfUser(id);
       if (res) {
-        dispatch(setCart(res.carts[0]));
-        setUserCartTotorage(res.carts[0]);
+        console.log(res);
+        dispatch(setCart(res));
+        setUserCartTotorage(res);
       }
     } catch (err: AxiosError | any) {}
   };
 };
 
-export const { setCart,setIsFetching } = cartSlice.actions;
+
+export const { setCart,setIsFetching,deleteCart } = cartSlice.actions;
 export default cartSlice.reducer;

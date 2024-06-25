@@ -42,7 +42,6 @@ export const getProduct = async(id:string) => {
 
 //cart
 export const getCartOfUser = async(id:number) => {
-  console.log('snjd');
-  const res = await axios.get(`https://dummyjson.com/carts/user/${id}`);
+  const res = await axios.get(`https://dummyjson.com/carts/${id}`);
   return res.data;
 }

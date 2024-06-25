@@ -2,9 +2,10 @@ import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 import { getProducts, getItemCategories } from "../../api/request";
 import { AppThunk } from "../../store";
 import { ProductItem } from "../../api/types";
+import { ItemCategory } from "../../types/types";
 
 interface MainPageState {
-  itemsCategories: string[];
+  itemsCategories: ItemCategory[];
   products: ProductItem[];
   isProductsFetching: boolean;
   errors: string[];
@@ -21,7 +22,7 @@ const mainPageSlice = createSlice({
   name: "mainPageSlice",
   initialState,
   reducers: {
-    setItemCategories: (state, action: PayloadAction<string[]>) => {
+    setItemCategories: (state, action: PayloadAction<ItemCategory[]>) => {
       state.itemsCategories = action.payload;
     },
     setBannerFetching: (state) => {

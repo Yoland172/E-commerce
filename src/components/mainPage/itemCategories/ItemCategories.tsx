@@ -1,8 +1,11 @@
 import React from "react";
 import styles from "./itemsCategories.module.scss";
+import { ItemCategory } from "../../../types/types";
+
+
 
 interface ItemsCategoriesProps {
-  items: string[];
+  items: ItemCategory[];
 }
 
 const ItemsCategories = ({ items }: ItemsCategoriesProps) => {
@@ -10,9 +13,9 @@ const ItemsCategories = ({ items }: ItemsCategoriesProps) => {
     <div className={styles.main}>
       <h1>categories</h1>
       <div className={styles.categoriesContainer}>
-        {items.map((el, index) => (
-          <h3 key={index}>{el}</h3>
-        ))}
+        {items ? items.map((el, index) => (
+          <h3 key={index}>{el.name}</h3>
+        )) : <></>} 
       </div>
     </div>
   );

@@ -13,3 +13,10 @@ export interface CartItem {
   discountedPrice: number;
   thumbnail: string;
 }
+
+
+export interface ItemCategory {
+  slug: string;
+  name: string;
+  url:string;
+}
