@@ -46,8 +46,7 @@ const cartSlice = createSlice({
     setIsFetching: (state) => {
       state.isFetching = true;
     },
-    deleteCart: (state, action: PayloadAction<number>) => {
-      console.log("delete");
+    deleteItem: (state, action: PayloadAction<number>) => {
       const editedArray = state.products;
       editedArray.splice(action.payload, 1);
       state.products = editedArray;
@@ -96,13 +95,12 @@ export const getUserCartThunk = (id: number): AppThunk => {
 
 export const putChangedQuantityProductThunk = (
   userId: number,
-  changeQuantity: extractedProductsList[]
+  idAndQuantityUserCart: extractedProductsList[]
 ): AppThunk => {
   return async (dispatch) => {
     try {
       dispatch(setIsFetching());
-      const res = await putChangedQuantityProduct(userId,changeQuantity);
-      console.log(res);
+      const res = await putChangedQuantityProduct(userId,idAndQuantityUserCart);
       if (res) {
         dispatch(setCart(res))
         setUserCartTotorage(res);
@@ -111,6 +109,6 @@ export const putChangedQuantityProductThunk = (
   };
 };
 
-export const { setCart, setIsFetching, deleteCart } =
+export const { setCart, setIsFetching, deleteItem } =
   cartSlice.actions;
 export default cartSlice.reducer;

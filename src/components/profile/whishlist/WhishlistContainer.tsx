@@ -3,7 +3,7 @@ import Wishlist from "./Whishlist";
 import { getUserCartFromStorage } from "../../../lib/helpers/cartHelper";
 import { useAppDispatch, useAppSelector } from "../../../store";
 import {
-  deleteCart,
+  deleteItem,
   getUserCartThunk,
   putChangedQuantityProductThunk,
   setCart,
@@ -33,15 +33,13 @@ const WishlistContainer = () => {
      }
    }, []);
 
-   const handleChangeQuantity = (changeQuantity: extractedProductsList[]) => {
-    console.log('ffdg');
+   const handleChangeQuantity = (idAndQuantityUserCar: extractedProductsList[]) => {
     if (userId) {
   
-      dispatch(putChangedQuantityProductThunk(userId,  changeQuantity));
+      dispatch(putChangedQuantityProductThunk(userId,  idAndQuantityUserCar));
     } else {
       console.warn("No user ID provided, cannot change quantity");
     }
-    console.log(changeQuantity);
   };
 
 
@@ -54,8 +52,7 @@ const WishlistContainer = () => {
       totalProducts={totalProducts}
       totalQuantity={totalQuantity}
       isFetching={isFetching}
-      deleleteCart = {(index:number) => dispatch(deleteCart(index))}
-      increaseProductQuantity={handleChangeQuantity}
+      changeProductQuantity={handleChangeQuantity}
     />
   );
 };
