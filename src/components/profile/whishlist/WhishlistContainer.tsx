@@ -5,8 +5,10 @@ import { useAppDispatch, useAppSelector } from "../../../store";
 import {
   deleteCart,
   getUserCartThunk,
+  putChangedQuantityProductThunk,
   setCart,
 } from "../../../store/sharedSlice/cartSlice";
+import { extractedProductsList } from "../../../types/types";
 
 const WishlistContainer = () => {
   const dispatch = useAppDispatch();
@@ -22,21 +24,27 @@ const WishlistContainer = () => {
     isFetching,
   } = useAppSelector((state) => state.cartState);
    useEffect(() => {
-    console.log(userId);
      if (cartfromStorage == null && userId) {
-      console.log("from server;")
        dispatch(getUserCartThunk(userId));
      
      } else {
-      console.log("from storage;")
        dispatch(setCart(cartfromStorage));
 
      }
    }, []);
 
-  useEffect(() => {
-    console.log(cartfromStorage);
-  },[cartfromStorage])
+   const handleChangeQuantity = (changeQuantity: extractedProductsList[]) => {
+    console.log('ffdg');
+    if (userId) {
+  
+      dispatch(putChangedQuantityProductThunk(userId,  changeQuantity));
+    } else {
+      console.warn("No user ID provided, cannot change quantity");
+    }
+    console.log(changeQuantity);
+  };
+
+
   return (
     <Wishlist
       id={id}
@@ -47,6 +55,7 @@ const WishlistContainer = () => {
       totalQuantity={totalQuantity}
       isFetching={isFetching}
       deleleteCart = {(index:number) => dispatch(deleteCart(index))}
+      increaseProductQuantity={handleChangeQuantity}
     />
   );
 };

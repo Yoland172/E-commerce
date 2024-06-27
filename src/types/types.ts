@@ -10,7 +10,8 @@ export interface CartItem {
   quantity: number;
   total: number;
   discountPercentage: number;
-  discountedPrice: number;
+  discountedTotal?: number;
+  discountedPrice?: number;
   thumbnail: string;
 }
 
@@ -19,4 +20,11 @@ export interface ItemCategory {
   slug: string;
   name: string;
   url:string;
+}
+
+
+
+export interface extractedProductsList {
+  id:number,
+  quantity: number
 }

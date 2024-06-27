@@ -1,5 +1,6 @@
 import axios from "axios";
 import { AUTH_URL, CHECK_TOKEN, GET_CART, GET_ITEM_CATEGORIES, GET_PRODUCTS } from "./constants";
+import { extractedProductsList } from "../types/types";
 
 //auth
 export const login = async (username: string, password: string) => {
@@ -43,5 +44,15 @@ export const getProduct = async(id:string) => {
 //cart
 export const getCartOfUser = async(id:number) => {
   const res = await axios.get(`https://dummyjson.com/carts/${id}`);
+  return res.data;
+}
+
+export const putChangedQuantityProduct = async(userId:number, changeQuantity: extractedProductsList[] ) => {
+  const res = await axios.put(`https://dummyjson.com/carts/${userId}`, {
+    merge: true, 
+    products: changeQuantity
+  }, {
+    headers: { 'Content-Type': 'application/json' }
+  })
   return res.data;
 }
