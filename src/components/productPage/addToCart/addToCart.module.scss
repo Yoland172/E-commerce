@@ -1,0 +1,64 @@
+@import "../../../styles/mixin.scss";
+@import "../../../styles/variables.scss";
+
+.main{
+    width: auto;
+    height: auto;
+
+
+    .headerContainer{
+        padding: 10px 10px 0 10px;
+        @include flexbox(row, space-between,center);
+
+        &>h1{
+            font-size: 1.6em;
+        }
+
+       &> button {
+            cursor: pointer;
+        &>svg{
+            fill: $black;
+            transition: 250ms all;
+        }
+
+        &:hover>svg{
+            fill: $green;
+        }
+       }
+    }
+
+    .sectionLine{
+        height: .5px;
+        width: 100%;
+        background-color: $black;
+        margin: 5px 0;
+    }
+
+    .productInfoContainer{
+        @include flexbox(row, start, center);
+        column-gap: 50px;
+        padding-right: 100px;
+        &>img {
+            width: 7vw;
+            height: auto;
+        }
+        &>h3 {
+            font-size: 1.3em;
+        }
+    }
+
+    .submitContainer{
+        padding-top: 10px;
+        padding-right: 20px;
+        padding-bottom: 30px;
+        @include flexbox(row, end,center);
+        column-gap: 15px;
+        &>button {
+            @include styledButton(7vw,3vh)
+        }
+
+        .cancelButton{
+        width: 5vw !important;
+        }
+    }
+}

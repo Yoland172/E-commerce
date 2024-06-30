@@ -10,13 +10,14 @@ const ProductContainer = () => {
   useEffect(() => {
     if (id) {
       dispatch(getProductThunk(id));
-    };
+    }
     return () => {
       dispatch(clearProductInfo());
     };
   }, [id]);
 
   const {
+    id:productId,
     title,
     description,
     price,
@@ -27,10 +28,11 @@ const ProductContainer = () => {
     category,
     thumbnail,
     images,
-    isFetching
+    isFetching,
   } = useAppSelector((state) => state.productState);
   return (
     <Product
+      id={productId}
       title={title}
       description={description}
       price={price}

@@ -1,0 +1,29 @@
+@import "../../../styles/mixin.scss";
+@import "../../../styles/variables.scss";
+
+.quantityContainer{
+    @include flexbox(row,start,start);
+    &>button{
+      cursor: pointer;
+      &>svg{
+        fill: $black;
+        stroke: $light-white;
+        stroke-width: 21;
+        transition: 250ms all ;
+      }
+
+      &:hover{
+        &>svg{
+          fill: $green;
+        }
+      }
+
+      &:disabled {
+        cursor: default;
+        &>svg{
+          fill: $black
+        }
+      }
+    }
+    
+  }

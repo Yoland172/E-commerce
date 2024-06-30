@@ -5,6 +5,7 @@ import CancelCross from "../../ui/icon/CancelCross";
 import { Link } from "react-router-dom";
 import MinimalisticArrowLeft from "../../ui/icon/MinimalisticArrowLeft";
 import MinimalisticArrowRight from "../../ui/icon/MinimalisticArrowRight";
+import QunatityCounter from "../../ui/qunatityCounter/QunatityCounter";
 
 interface WishlistProp {
   id: number | null;
@@ -14,7 +15,9 @@ interface WishlistProp {
   totalProducts: number | null;
   totalQuantity: number | null;
   isFetching: boolean;
-  changeProductQuantity: (idAndQuantityUserCar: extractedProductsList[]) => void;
+  changeProductQuantity: (
+    idAndQuantityUserCar: extractedProductsList[]
+  ) => void;
 }
 
 const extractIdAndQuantity = (
@@ -87,16 +90,10 @@ const Wishlist = ({
                             $
                           </h3>
                         </div>
-                        <div className={styles.quantityContainer}>
+                        {/* <div className={styles.quantityContainer}>
                           <button
                             onClick={() => {
-                              changeProductQuantity(
-                                extractIdAndQuantity(
-                                  products,
-                                  el.id,
-                                  el.quantity - 1
-                                )
-                              );
+                              
                             }}
                             disabled={isFetching || el.quantity < 2}
                           >
@@ -117,7 +114,30 @@ const Wishlist = ({
                           >
                             <MinimalisticArrowRight width={25} height={25} />
                           </button>
-                        </div>
+                        </div> */}
+
+                        <QunatityCounter
+                          quantity={el.quantity}
+                          isFetching={isFetching}
+                          decrement={() => {
+                            changeProductQuantity(
+                              extractIdAndQuantity(
+                                products,
+                                el.id,
+                                el.quantity - 1
+                              )
+                            );
+                          }}
+                          increment={() => {
+                            changeProductQuantity(
+                              extractIdAndQuantity(
+                                products,
+                                el.id,
+                                el.quantity + 1
+                              )
+                            );
+                          }}
+                        />
                         <h3 className={styles.action}></h3>
                       </div>
                       <div className={styles.sectionLine}></div>
