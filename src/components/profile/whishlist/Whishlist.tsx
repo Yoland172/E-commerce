@@ -7,6 +7,7 @@ import MinimalisticArrowLeft from "../../ui/icon/MinimalisticArrowLeft";
 import MinimalisticArrowRight from "../../ui/icon/MinimalisticArrowRight";
 import QunatityCounter from "../../ui/qunatityCounter/QunatityCounter";
 
+
 interface WishlistProp {
   id: number | null;
   products: CartItem[];
@@ -16,27 +17,13 @@ interface WishlistProp {
   totalQuantity: number | null;
   isFetching: boolean;
   changeProductQuantity: (
-    idAndQuantityUserCar: extractedProductsList[]
+    productId: number,
+    quantity: number
   ) => void;
+  deleteItem: (productId:number) => void
 }
 
-const extractIdAndQuantity = (
-  products: CartItem[],
-  productId: number,
-  quantity: number
-) => {
-  const extratedArray = products.map((product) => {
-    return {
-      id: product.id,
-      quantity: product.quantity,
-    };
-  });
-  const findedElIndex = extratedArray.findIndex((el) => el.id === productId);
-  if (findedElIndex >= 0) {
-    extratedArray[findedElIndex].quantity = quantity;
-  }
-  return extratedArray;
-};
+
 const Wishlist = ({
   products,
   totalProducts,
@@ -45,6 +32,7 @@ const Wishlist = ({
   total,
   isFetching,
   changeProductQuantity,
+  deleteItem
 }: WishlistProp) => {
   return (
     <>
@@ -67,9 +55,7 @@ const Wishlist = ({
                         <div className={styles.deleteItemContainer}>
                           <button
                             onClick={() => {
-                              changeProductQuantity(
-                                extractIdAndQuantity(products, el.id, 0)
-                              );
+                              deleteItem(el.id);
                             }}
                           >
                             <CancelCross width={25} height={25} />
@@ -120,22 +106,10 @@ const Wishlist = ({
                           quantity={el.quantity}
                           isFetching={isFetching}
                           decrement={() => {
-                            changeProductQuantity(
-                              extractIdAndQuantity(
-                                products,
-                                el.id,
-                                el.quantity - 1
-                              )
-                            );
+                            changeProductQuantity(el.id, el.quantity-1);
                           }}
                           increment={() => {
-                            changeProductQuantity(
-                              extractIdAndQuantity(
-                                products,
-                                el.id,
-                                el.quantity + 1
-                              )
-                            );
+                            changeProductQuantity(el.id, el.quantity+1);
                           }}
                         />
                         <h3 className={styles.action}></h3>

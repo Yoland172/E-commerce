@@ -2,16 +2,18 @@ import React, { useEffect, useState } from "react";
 import styles from "./addToCart.module.scss";
 import CancelCross from "../../ui/icon/CancelCross";
 import QunatityCounter from "../../ui/qunatityCounter/QunatityCounter";
-import { getQunatityProductByIdFromStorage, updateQuantityProduct } from "../../../lib/helpers/cartHelper";
+import { getQunatityProductByIdFromStorage } from "../../../lib/helpers/cartHelper";
 
 interface AddToCartProps {
   id: number;
   title: string;
   price: number;
   quantity: number | null;
-  discountPercentage: number ;
+  discountPercentage: number;
   thumbnail: string;
   closWindow: (status: boolean) => void;
+  changedQuantityProduct: (quantity: number) => void;
+  quntityForUserCart: number | null;
 }
 
 const AddToCart = ({
@@ -22,9 +24,11 @@ const AddToCart = ({
   discountPercentage,
   thumbnail,
   closWindow,
+  changedQuantityProduct,
+  quntityForUserCart
 }: AddToCartProps) => {
   const [newQuantity, setNewQuantity] = useState<any>(
-    getQunatityProductByIdFromStorage(id) ? getQunatityProductByIdFromStorage(id) : 1
+    quntityForUserCart ? quntityForUserCart : 1
   );
 
   useEffect(() => {
@@ -61,13 +65,22 @@ const AddToCart = ({
         <h3>
           {price &&
             discountPercentage &&
-          Math.round(newQuantity * (price - (price * discountPercentage) / 100)).toFixed(2)}
+            Math.round(
+              newQuantity * (price - (price * discountPercentage) / 100)
+            ).toFixed(2)}
           $
         </h3>
       </div>
       <div className={styles.submitContainer}>
-        <button className={styles.cancelButton}>Cancel</button>
-        <button onClick={() => {updateQuantityProduct(id,newQuantity, price,discountPercentage )}}>Add</button>
+        <button className={styles.cancelButton} onClick={() => {closWindow(false)}}>Cancel</button>
+        <button
+          onClick={() => {
+            changedQuantityProduct(newQuantity);
+            closWindow(false);
+          }}
+        >
+          Add
+        </button>
       </div>
     </div>
   );

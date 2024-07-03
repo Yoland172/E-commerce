@@ -11,6 +11,7 @@ interface ProfileState {
   email: string;
   username: string;
   phone: string;
+  isFetching: boolean
 }
 
 const initialState: ProfileState = {
@@ -20,6 +21,7 @@ const initialState: ProfileState = {
   email: "",
   username: "",
   phone: "",
+  isFetching:false
 };
 
 const profileSlice = createSlice({
@@ -33,13 +35,18 @@ const profileSlice = createSlice({
       state.email = action.payload.email,
       state.username = action.payload.username,
       state.phone = action.payload.phone;
+      state.isFetching = false
     },
+    setIsFetching: (state ) => {
+      state.isFetching = true;
+    }
   },
 });
 
 export const getProfileInfo = (token: string): AppThunk => {
   return async (dispatch) => {
     try {
+      dispatch(setIsFetching())
       const res = await currentUserToken(token);
       if (res) {
         dispatch(setProfileInfo(res));
@@ -53,5 +60,5 @@ export const getProfileInfo = (token: string): AppThunk => {
   };
 };
 
-export const { setProfileInfo } = profileSlice.actions;
+export const { setProfileInfo,setIsFetching } = profileSlice.actions;
 export default profileSlice.reducer;

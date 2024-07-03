@@ -31,7 +31,7 @@ interface SettingForSlider {
 }
 
 interface ProductProps {
-  id:number;
+  id: number;
   title: string;
   description: string;
   price: number | null;
@@ -43,6 +43,8 @@ interface ProductProps {
   thumbnail: string;
   images: string[];
   isFetching: boolean;
+  changedQuantityProduct: (quantity: number) => void;
+  qunatityForAddToCart: number | null;
 }
 const Product = ({
   title,
@@ -56,7 +58,9 @@ const Product = ({
   thumbnail,
   images,
   isFetching,
-  id
+  id,
+  changedQuantityProduct,
+  qunatityForAddToCart
 }: ProductProps) => {
   const settingsForSlider: SettingForSlider = {
     dots: true,
@@ -150,11 +154,20 @@ const Product = ({
           <button className={styles.buyButton}>Buy</button>
         </div>
       </div>
-     <PopUp active={activePopUp} setActive={setActivePopUp}>
-      {
-        activePopUp && 
-        <AddToCart id = {id} price={price ? price : 0}  title={title} quantity={8} discountPercentage={discountPercentage ?discountPercentage : 0 } closWindow={setActivePopUp} thumbnail={thumbnail}/>
-      }
+      <PopUp active={activePopUp} setActive={setActivePopUp}>
+        {activePopUp && (
+          <AddToCart
+            id={id}
+            price={price ? price : 0}
+            title={title}
+            quantity={8}
+            discountPercentage={discountPercentage ? discountPercentage : 0}
+            closWindow={setActivePopUp}
+            thumbnail={thumbnail}
+            changedQuantityProduct={changedQuantityProduct}
+            quntityForUserCart = {qunatityForAddToCart}
+          />
+        )}
       </PopUp>
     </div>
   );

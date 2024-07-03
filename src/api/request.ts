@@ -1,5 +1,11 @@
 import axios from "axios";
-import { AUTH_URL, CHECK_TOKEN, GET_CART, GET_ITEM_CATEGORIES, GET_PRODUCTS } from "./constants";
+import {
+  AUTH_URL,
+  CHECK_TOKEN,
+  GET_CART,
+  GET_ITEM_CATEGORIES,
+  GET_PRODUCTS,
+} from "./constants";
 import { extractedProductsList } from "../types/types";
 
 //auth
@@ -34,25 +40,31 @@ export const getItemCategories = async () => {
 export const getProducts = async (limit: number) => {
   const res = await axios.get(`${GET_PRODUCTS}?limit=${limit}`);
   return res.data;
-}
+};
 
-export const getProduct = async(id:string) => {
+export const getProduct = async (id: string) => {
   const res = await axios.get(`${GET_PRODUCTS}/${id}`);
   return res.data;
-}
+};
 
 //cart
-export const getCartOfUser = async(id:number) => {
+export const getCartOfUser = async (id: number) => {
   const res = await axios.get(`https://dummyjson.com/carts/${id}`);
   return res.data;
-}
+};
 
-export const putChangedQuantityProduct = async(userId:number, changeQuantity: extractedProductsList[] ) => {
-  const res = await axios.put(`https://dummyjson.com/carts/${userId}`, {
-    merge: true, 
-    products: changeQuantity
-  }, {
-    headers: { 'Content-Type': 'application/json' }
-  })
+export const putChangedQuantityProduct = async (
+  userId: number,
+  changeQuantity: extractedProductsList[]
+) => {
+  const res = await axios.put(
+    `https://dummyjson.com/carts/${userId}`,
+    {
+      products: changeQuantity,
+    },
+    {
+      headers: { "Content-Type": "application/json" },
+    }
+  );
   return res.data;
-}
+};
