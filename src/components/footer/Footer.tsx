@@ -1,5 +1,6 @@
 import React from "react";
 import styles from "./footer.module.scss";
+import LinkElement from "../ui/linkElement/LinkElement";
 
 const Footer = () => {
   const socilas = [
@@ -26,7 +27,7 @@ const Footer = () => {
       <div className={styles.sectionLine}></div>
       <ul className={styles.socialsContainer}>
         {socilas.map((el) => {
-          return <li className={styles.social}>{el}</li>;
+       return <LinkElement title={el} link="/" fontSize="0.8em"/>;
         })}
       </ul>
 
@@ -34,19 +35,19 @@ const Footer = () => {
         <ul className={styles.infoSection}>
           <li className={styles.title}> Help</li>
           {helpContainer.map((el) => {
-            return <li className={styles.info}>{el}</li>;
+          return <LinkElement title={el} link="/" fontSize="0.8em"/>;
           })}
         </ul>
         <ul className={styles.infoSection}>
           <li className={styles.title}>Company</li>
           {companyContainer.map((el) => {
-            return <li className={styles.info}>{el}</li>;
+             return <LinkElement title={el} link="/" fontSize="0.8em"/>;
           })}
         </ul>
         <ul className={styles.infoSection}>
           <li className={styles.title}>Policies</li>
           {policiesContainer.map((el) => {
-            return <li className={styles.info}>{el}</li>;
+            return <LinkElement title={el} link="/" fontSize="0.8em"/>;
           })}
         </ul>
       </div>

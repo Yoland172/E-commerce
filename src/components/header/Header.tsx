@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import styles from "./header.module.scss";
+import LinkElement from "../ui/linkElement/LinkElement";
 interface HeaderProps {
   IsAuthenticated: boolean;
   onProfileClick: () => void;
@@ -21,8 +22,8 @@ const Header = ({ onProfileClick, username }: HeaderProps) => {
           <button className={styles.searchButton}>Search</button>
         </div>
         <div className={styles.navBarContainer}>
-          <h3>Liked</h3>
-          <h3 onClick={onProfileClick}>{username || "Profile"}</h3>
+          <LinkElement title="Liked" fontSize="1em" link="/"/>
+          <div onClick={onProfileClick}><LinkElement title={username || "Profile"} link="*" fontSize="1em"/></div>
         </div>
       </div>
       <div className={styles.dividingLine}></div>
