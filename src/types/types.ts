@@ -15,14 +15,11 @@ export interface CartItem {
   thumbnail: string;
 }
 
-
 export interface ItemCategory {
   slug: string;
   name: string;
   url:string;
 }
-
-
 
 export interface extractedProductsList {
   id:number,

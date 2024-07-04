@@ -41,7 +41,7 @@ const Login = ({ setLogin, error, isFetching }: AuthPprops) => {
         <div className={styles.registerContainer}>
           <div className={styles.headerContainer}>
             <h1>LOG IN</h1>
-            {error && <p>{error}</p>}
+            <p className={error && styles.active}>{error}</p>
           </div>
           <form
             className={styles.registerForm}
@@ -67,7 +67,7 @@ const Login = ({ setLogin, error, isFetching }: AuthPprops) => {
             <div className={styles.inputForm}>
               <div className={styles.inputContainer}>
                 <input
-                  type="text"
+                  type="password"
                   placeholder="Password"
                   className={styles.input}
                   {...register("password", {

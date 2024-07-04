@@ -1,10 +1,8 @@
 import React from "react";
 import styles from "./wishlist.module.scss";
 import { CartItem, extractedProductsList } from "../../../types/types";
-import CancelCross from "../../ui/icon/CancelCross";
+import CancelCross from "../../ui/icon/CancelCrossIcon";
 import { Link } from "react-router-dom";
-import MinimalisticArrowLeft from "../../ui/icon/MinimalisticArrowLeft";
-import MinimalisticArrowRight from "../../ui/icon/MinimalisticArrowRight";
 import QunatityCounter from "../../ui/qunatityCounter/QunatityCounter";
 
 

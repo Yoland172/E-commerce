@@ -13,9 +13,9 @@ const ItemsCategories = ({ items }: ItemsCategoriesProps) => {
     <div className={styles.main}>
       <h1>categories</h1>
       <div className={styles.categoriesContainer}>
-        {items ? items.map((el, index) => (
+        {items && items.map((el, index) => (
           <h3 key={index}>{el.name}</h3>
-        )) : <></>} 
+        )) } 
       </div>
     </div>
   );

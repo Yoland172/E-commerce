@@ -148,7 +148,6 @@ export const deleteProductFromCart = (
         productsQuantityAndId,
         productId
       );
-      console.log(editedProductsQuantityAndId);
       const res = await putChangedQuantityProduct(
         userId,
         editedProductsQuantityAndId

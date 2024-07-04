@@ -8,9 +8,13 @@ import {
 } from "./constants";
 import { extractedProductsList } from "../types/types";
 
+const instance = axios.create({
+  baseURL:process.env.API_SERVER_URL
+})
+
 //auth
 export const login = async (username: string, password: string) => {
-  const res = await axios.post(
+  const res = await instance.post(
     AUTH_URL,
     { username, password },
     {
@@ -23,7 +27,7 @@ export const login = async (username: string, password: string) => {
 };
 
 export const currentUserToken = async (token: string) => {
-  const res = await axios.get(CHECK_TOKEN, {
+  const res = await instance.get(CHECK_TOKEN, {
     headers: {
       Authorization: `Bearer ${token}`,
     },
@@ -32,24 +36,24 @@ export const currentUserToken = async (token: string) => {
 };
 
 //products
-export const getItemCategories = async () => {
-  const res = await axios.get(GET_ITEM_CATEGORIES);
+export const getItemsCategories = async () => {
+  const res = await instance.get(GET_ITEM_CATEGORIES);
   return res.data;
 };
 
 export const getProducts = async (limit: number) => {
-  const res = await axios.get(`${GET_PRODUCTS}?limit=${limit}`);
+  const res = await instance.get(`${GET_PRODUCTS}?limit=${limit}`);
   return res.data;
 };
 
 export const getProduct = async (id: string) => {
-  const res = await axios.get(`${GET_PRODUCTS}/${id}`);
+  const res = await instance.get(`${GET_PRODUCTS}/${id}`);
   return res.data;
 };
 
 //cart
 export const getCartOfUser = async (id: number) => {
-  const res = await axios.get(`https://dummyjson.com/carts/${id}`);
+  const res = await instance.get(`https://dummyjson.com/carts/${id}`);
   return res.data;
 };
 
@@ -57,7 +61,7 @@ export const putChangedQuantityProduct = async (
   userId: number,
   changeQuantity: extractedProductsList[]
 ) => {
-  const res = await axios.put(
+  const res = await instance.put(
     `https://dummyjson.com/carts/${userId}`,
     {
       products: changeQuantity,

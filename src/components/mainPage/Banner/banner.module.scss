@@ -15,38 +15,6 @@
     column-gap: 20px;
     row-gap: 38px;
     padding-bottom: 60px;
-    .productContainer {
-      width: fit-content;
-      height: fit-content;
-
-      img {
-        width: 350px;
-        height: 230px;
-      }
-
-      .productInfo {
-        width: 350px;
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        grid-template-rows: repeat(2, 1fr);
-        box-sizing: border-box;
-
-        .productName {
-          grid-area: 1 / 1 / 2 / 4;
-          font-size: 1em;
-          font-weight: 400;
-        }
-        .price {
-          grid-area: 2 / 1 / 3 / 4;
-          font-size: 0.9em;
-          font-weight: 300;
-        }
-
-        .saveContainer {
-          grid-area: 1 / 4 / 3 / 5;
-          @include flexbox(row, end, center);
-        }
-      }
-    }
+    
   }
 }

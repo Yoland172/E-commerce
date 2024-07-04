@@ -48,7 +48,6 @@ export const mergeStockArray = (
   const findedProductIndex = copyInitArray.findIndex((el) => el.id == id);
   if (findedProductIndex == -1) {
     copyInitArray.push({ id, quantity });
-    console.log(copyInitArray);
   } else {
     copyInitArray[findedProductIndex].quantity = quantity;
   }

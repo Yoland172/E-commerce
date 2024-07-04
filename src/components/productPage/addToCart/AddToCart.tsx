@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import styles from "./addToCart.module.scss";
-import CancelCross from "../../ui/icon/CancelCross";
+import CancelCrossIcon from "../../ui/icon/CancelCrossIcon";
 import QunatityCounter from "../../ui/qunatityCounter/QunatityCounter";
 import { getQunatityProductByIdFromStorage } from "../../../lib/helpers/cartHelper";
 
@@ -31,9 +31,6 @@ const AddToCart = ({
     quntityForUserCart ? quntityForUserCart : 1
   );
 
-  useEffect(() => {
-    console.log(newQuantity);
-  }, [newQuantity]);
   return (
     <div className={styles.main}>
       <div className={styles.headerContainer}>
@@ -43,7 +40,7 @@ const AddToCart = ({
             closWindow(false);
           }}
         >
-          <CancelCross width={20} height={20} />
+          <CancelCrossIcon width={20} height={20} />
         </button>
       </div>
       <div className={styles.sectionLine}></div>

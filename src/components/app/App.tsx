@@ -1,13 +1,13 @@
 import React from "react";
 import { HashRouter as BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import LoginContainer from "../login/LoginContainer";
-import MainPageContainer from "../mainPage/MainPageContainer";
 import Footer from "../footer/Footer";
 import HeaderContainer from "../header/HeaderContainer";
 import ProfilePageRouting from "../profile/ProfilePageRouting";
 import "./app.module.scss";
 import ProductContainer from "../productPage/ProductContainer";
 import { useAppSelector } from "../../store";
+import MainPage from "../mainPage/MainPage";
 
 const App = () => {
 
@@ -31,7 +31,7 @@ const App = () => {
             element={
               <>
                 <HeaderContainer />
-                <MainPageContainer />
+                <MainPage />
                 <Footer />
               </>
             }

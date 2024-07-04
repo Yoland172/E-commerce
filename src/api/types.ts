@@ -12,6 +12,3 @@ export interface ProductItem {
   images: string[];
 }
 
-export interface SampleArrowProps {
-  onClick?: () => void
-}

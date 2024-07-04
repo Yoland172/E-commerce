@@ -1,7 +1,7 @@
 import React from 'react'
 import { IconProps } from '../../../types/types'
 
-const MinimalisticArrowRight = ({width,height}:IconProps) => {
+const MinimalisticArrowRightIcon = ({width,height}:IconProps) => {
   return (
 <svg fill="#000000" width={width} height={height} viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
 
@@ -21,4 +21,4 @@ const MinimalisticArrowRight = ({width,height}:IconProps) => {
   )
 }
 
-export default MinimalisticArrowRight
+export default MinimalisticArrowRightIcon

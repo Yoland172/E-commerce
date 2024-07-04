@@ -22,7 +22,7 @@ const Header = ({ onProfileClick, username }: HeaderProps) => {
         </div>
         <div className={styles.navBarContainer}>
           <h3>Liked</h3>
-          <h3 onClick={onProfileClick}>{username ? username : "Profile"}</h3>
+          <h3 onClick={onProfileClick}>{username || "Profile"}</h3>
         </div>
       </div>
       <div className={styles.dividingLine}></div>

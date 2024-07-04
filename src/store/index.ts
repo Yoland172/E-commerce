@@ -3,16 +3,18 @@ import { useDispatch, useSelector } from "react-redux";
 import type { TypedUseSelectorHook } from "react-redux";
 import logger from "redux-logger";
 import authSlice from "./sharedSlice/authSlice";
-import mainPageSlice from "../components/mainPage/mainPageSlice";
 import profileSlice from "./sharedSlice/profileSlice";
 import productSlice from "../components/productPage/productSlice";
 import cartSlice from "./sharedSlice/cartSlice";
+import itemsCategoriesSlice from "../components/mainPage/itemCategories/itemsCategoriesSlice";
+import banerSlice from "../components/mainPage/Banner/banerSlice";
 
 
 const store = configureStore({
   reducer: {
     authState: authSlice,
-    mainPageState: mainPageSlice,
+    itemsCategoriesState:itemsCategoriesSlice,
+    bannerState: banerSlice,
     profileState: profileSlice,
     productState:productSlice,
     cartState:cartSlice

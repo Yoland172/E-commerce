@@ -1,7 +1,7 @@
 import React from "react";
 import { IconProps } from "../../../types/types";
 
-const CancelCross = ({width,height}:IconProps) => {
+const CancelCrossIcon = ({width,height}:IconProps) => {
   return (
     <>
       <svg
@@ -21,4 +21,4 @@ const CancelCross = ({width,height}:IconProps) => {
   );
 };
 
-export default CancelCross;
+export default CancelCrossIcon;

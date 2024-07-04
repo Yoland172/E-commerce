@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Carousel from "nuka-carousel";
 import { Link } from "react-router-dom";
 import classNames from "classnames";
-import AddToCartIcon from "../ui/icon/addToCarts";
+import AddToCartIcon from "../ui/icon/AddToCartIcon";
 import styles from "./product.module.scss";
 
 import "slick-carousel/slick/slick.css";

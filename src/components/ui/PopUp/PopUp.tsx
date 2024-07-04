@@ -10,7 +10,7 @@ interface PopUpProps {
 
 const PopUp = ({active,setActive, children}:PopUpProps) => {
   return (
-    <div className={classNames(styles.container, active && styles.active)} onClick={() => {setActive(false); console.log("gigi") }}>
+    <div className={classNames(styles.container, active && styles.active)} onClick={() => {setActive(false) }}>
       <div className={styles.main} onClick={(e: React.MouseEvent) => {e.stopPropagation();}}>
         {children}
       </div>

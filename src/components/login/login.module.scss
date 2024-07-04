@@ -22,7 +22,9 @@
 
       overflow: hidden;
       & > img {
-        width: 100%;
+        object-fit: cover;
+        height: 100%;
+        width: 100% ;
       }
     }
 
@@ -35,14 +37,20 @@
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      row-gap: 75px;
+      row-gap: 65px;
 
       .headerContainer {
         @include flexbox(column, start, center);
 
+        .active{
+          visibility: visible !important;
+
+        }
         & > p {
-          color: $red;
+          visibility: hidden;
+           color: $red;
           font-weight: 300;
+          height: 19px;
         }
       }
 
