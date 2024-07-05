@@ -7,7 +7,7 @@ import ProfilePageRouting from "../profile/ProfilePageRouting";
 import "./app.module.scss";
 import ProductContainer from "../productPage/ProductContainer";
 import { useAppSelector } from "../../store";
-import MainPage from "../mainPage/MainPage";
+import MainPage from "@components/mainPage/MainPage";
 
 const App = () => {
 
