@@ -1,15 +1,15 @@
-import React from "react";
-import Carousel from "nuka-carousel";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import classNames from "classnames";
-import AddToCartIcon from "../ui/icon/addToCarts";
-import styles from "./product.module.scss";
-
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
+import classNames from "classnames";
+import AddToCartIcon from "@components/ui/icon/AddToCartIcon";
+import PopUp from "@components/ui/PopUp/PopUp";
 import SampleNextArrow from "./sampleArrow/SampleNextArrow";
 import SamplePrevArrow from "./sampleArrow/SamplePrevArrow";
+import AddToCart from "./addToCart/AddToCart";
+import styles from "./product.module.scss";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 interface SettingForSlider {
   dots?: boolean;
@@ -29,6 +29,7 @@ interface SettingForSlider {
 }
 
 interface ProductProps {
+  id: number;
   title: string;
   description: string;
   price: number | null;
@@ -40,7 +41,8 @@ interface ProductProps {
   thumbnail: string;
   images: string[];
   isFetching: boolean;
-
+  changedQuantityProduct: (quantity: number) => void;
+  qunatityForAddToCart: number | null;
 }
 const Product = ({
   title,
@@ -54,6 +56,9 @@ const Product = ({
   thumbnail,
   images,
   isFetching,
+  id,
+  changedQuantityProduct,
+  qunatityForAddToCart,
 }: ProductProps) => {
   const settingsForSlider: SettingForSlider = {
     dots: true,
@@ -65,7 +70,7 @@ const Product = ({
     dotsClass: styles.dotsContainer,
     vertical: true,
     nextArrow: <SampleNextArrow />,
-    prevArrow:<SamplePrevArrow/>,
+    prevArrow: <SamplePrevArrow />,
     customPaging: (i) => {
       return (
         <a>
@@ -75,6 +80,7 @@ const Product = ({
     },
   };
 
+  const [activePopUp, setActivePopUp] = useState<boolean>(false);
   return (
     <div className={styles.main}>
       <div className={styles.sliderContainer}>
@@ -123,22 +129,44 @@ const Product = ({
         <div className={styles.buyContainer}>
           <div className={styles.priceContainer}>
             <div>
-              <h3 className={styles.topicTittle}>{price} UAH</h3>
               {discountPercentage && price ? (
-                <p className={styles.discount}>
-                  {Math.round(price + (discountPercentage * price) / 100)} UAH
-                </p>
+                <>
+                  <h3 className={styles.topicTittle}>
+                    {Math.round(price - (discountPercentage * price) / 100)} $
+                  </h3>
+                  <p className={styles.discount}>{price}</p>
+                </>
               ) : (
-                <></>
+                <h3 className={styles.topicTittle}> {price}$</h3>
               )}
             </div>
-            <button className={styles.addToCartsButton}>
+            <button
+              className={styles.addToCartsButton}
+              onClick={() => {
+                setActivePopUp(true);
+              }}
+            >
               <AddToCartIcon width={35} height={35} />
             </button>
           </div>
           <button className={styles.buyButton}>Buy</button>
         </div>
       </div>
+      <PopUp active={activePopUp} setActive={setActivePopUp}>
+        {activePopUp && (
+          <AddToCart
+            id={id}
+            price={price ? price : 0}
+            title={title}
+            quantity={8}
+            discountPercentage={discountPercentage ? discountPercentage : 0}
+            closWindow={setActivePopUp}
+            thumbnail={thumbnail}
+            changedQuantityProduct={changedQuantityProduct}
+            quntityForUserCart={qunatityForAddToCart}
+          />
+        )}
+      </PopUp>
     </div>
   );
 };

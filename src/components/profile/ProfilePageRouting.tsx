@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import ProfileNavBar from "./ProfileNavBar";
 import InfoContainer from "./info/InfoContainer";
 import SettingsContainer from "./settings/SettingsContainer";
+import WishlistContainer from "./whishlist/WhishlistContainer";
 import styles from "./profile.module.scss";
 
 const ProfilePageRouting = () => {
@@ -15,19 +16,17 @@ const ProfilePageRouting = () => {
         return <SettingsContainer />;
 
       case "wishlist":
-        return <p>sdnj</p>;
+        return <WishlistContainer />;
 
       default:
-        null
+        null;
         break;
     }
   };
   return (
     <>
       <ProfileNavBar tab={tab} />
-      <div className={styles.tabContainer}>
-      {renderUserUI()}
-      </div>
+      <div className={styles.tabContainer}>{renderUserUI()}</div>
     </>
   );
 };

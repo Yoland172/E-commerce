@@ -1,8 +1,10 @@
 import React from "react";
+import { ItemCategory } from "@lib/types/types";
+import LinkElement from "@components/ui/linkElement/LinkElement";
 import styles from "./itemsCategories.module.scss";
 
 interface ItemsCategoriesProps {
-  items: string[];
+  items: ItemCategory[];
 }
 
 const ItemsCategories = ({ items }: ItemsCategoriesProps) => {
@@ -10,9 +12,10 @@ const ItemsCategories = ({ items }: ItemsCategoriesProps) => {
     <div className={styles.main}>
       <h1>categories</h1>
       <div className={styles.categoriesContainer}>
-        {items.map((el, index) => (
-          <h3 key={index}>{el}</h3>
-        ))}
+        {items &&
+          items.map((el) => (
+            <LinkElement link="/" title={el.name} fontSize="1.1em" />
+          ))}
       </div>
     </div>
   );

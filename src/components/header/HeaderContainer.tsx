@@ -1,10 +1,10 @@
 import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { useAppDispatch, useAppSelector } from "@store/index";
+import { getProfileInfo } from "@store/sharedSlice/profileSlice";
+import { setredirectAfterLoginURL } from "@lib/helpers/redirectHelpers";
+import { getTokenFromStorage } from "@lib/helpers/authenticateHelper";
 import Header from "./Header";
-import { useAppDispatch, useAppSelector } from "../../store";
-import { setredirectAfterLoginURL } from "../../lib/helpers/redirectHelpers";
-import { getProfileInfo } from "../../store/sharedSlice/profileSlice";
-import { getTokenFromStorage } from "../../lib/helpers/authenticateHelper";
 
 const HeaderContainer = () => {
   const navigate = useNavigate();

@@ -1,12 +1,12 @@
 import React from "react";
 import { HashRouter as BrowserRouter, Route, Routes } from "react-router-dom";
-import LoginContainer from "../login/LoginContainer";
-import MainPageContainer from "../mainPage/MainPageContainer";
-import Footer from "../footer/Footer";
-import HeaderContainer from "../header/HeaderContainer";
-import ProfilePageRouting from "../profile/ProfilePageRouting";
+import LoginContainer from "@components/login/LoginContainer";
+import Footer from "@components/footer/Footer";
+import HeaderContainer from "@components/header/HeaderContainer";
+import ProfilePageRouting from "@components/profile/ProfilePageRouting";
+import ProductContainer from "@components/productPage/ProductContainer";
+import MainPage from "@components/mainPage/MainPage";
 import "./app.module.scss";
-import ProductContainer from "../productPage/ProductContainer";
 
 const App = () => {
   return (
@@ -15,7 +15,7 @@ const App = () => {
         <Routes>
           <Route
             path="profile/:tab"
-            element={
+            element={ 
               <>
                 <HeaderContainer />
                 <ProfilePageRouting />
@@ -28,7 +28,7 @@ const App = () => {
             element={
               <>
                 <HeaderContainer />
-                <MainPageContainer />
+                <MainPage />
                 <Footer />
               </>
             }

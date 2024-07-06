@@ -1,7 +1,7 @@
 import React from "react";
-import classNames from "classnames";
 import { SubmitHandler, useForm } from "react-hook-form";
-import Loader from "../ui/loader/Loader";
+import Loader from "@components/ui/loader/Loader";
+import InputField from "@components/ui/inputField/InputField";
 import styles from "./login.module.scss";
 
 interface AuthPprops {
@@ -26,65 +26,45 @@ const Login = ({ setLogin, error, isFetching }: AuthPprops) => {
     username,
     password,
   }: AuthInputs) => {
+    console.log(username, password);
     setLogin(username, password);
   };
 
   return (
     <div className={styles.mainContainer}>
       <div className={styles.main}>
-        <div className={styles.imageContainer}>
-          <img
-            src="https://i.pinimg.com/736x/5a/83/b5/5a83b5ceeb1b06247933a38ee180e9a8.jpg"
-            alt=""
-          />
-        </div>
+        <img
+          src="https://i.pinimg.com/736x/5a/83/b5/5a83b5ceeb1b06247933a38ee180e9a8.jpg"
+          alt=""
+        />
         <div className={styles.registerContainer}>
-          <div className={styles.headerContainer}>
-            <h1>LOG IN</h1>
-            {error && <p>{error}</p>}
-          </div>
+          <h1>LOG IN</h1>
+          <p className={error && styles.active}>{error}</p>
           <form
             className={styles.registerForm}
             onSubmit={handleSubmit(onSubmit)}
           >
-            <div className={styles.inputForm}>
-              <div className={styles.inputContainer}>
-                <input
-                  type="text"
-                  placeholder="Username"
-                  className={styles.input}
-                  {...register("username", {
-                    required: "Username is required",
-                    minLength: 3,
-                  })}
-                />
-                <div className={styles.line}></div>
-              </div>
-              {errors.username && (
-                <p className={styles.errorMessage}>{errors.username.message}</p>
-              )}
-            </div>
-            <div className={styles.inputForm}>
-              <div className={styles.inputContainer}>
-                <input
-                  type="text"
-                  placeholder="Password"
-                  className={styles.input}
-                  {...register("password", {
-                    required: "Password is required",
-                  })}
-                />
-                <div
-                  className={classNames(
-                    styles.line,
-                    errors.password && styles.error
-                  )}
-                ></div>
-              </div>
-              {errors.password && (
-                <p className={styles.errorMessage}>{errors.password.message}</p>
-              )}
-            </div>
+            <InputField
+              type="text"
+              placeholder="Username"
+              registerReq={{
+                ...register("username", {
+                  required: "Username is required",
+                  minLength: 3,
+                }),
+              }}
+              error={errors.username}
+            />
+            <InputField
+              type="password"
+              placeholder="Password"
+              registerReq={{
+                ...register("password", {
+                  required: "Password is required",
+                }),
+              }}
+              error={errors.password}
+            />
             <button className={styles.submitButton} disabled={isFetching}>
               {isFetching ? <Loader /> : <span>Log in</span>}
             </button>

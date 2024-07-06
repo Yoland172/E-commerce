@@ -58,11 +58,8 @@
     @include flexbox(row, center, center);
     column-gap: 20px;
 
-    & > h3 {
-      cursor: pointer;
-      font-weight: 300;
-      transition: color 250ms;
-      cursor: pointer;
+    &> a>h3 {
+      transition: all 250ms ;
 
       &:hover {
         color: $green;

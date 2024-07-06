@@ -1,7 +1,7 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
+import { currentUserToken } from "@api/request";
+import { setTokenToStorage } from "@lib/helpers/authenticateHelper";
 import { AppThunk } from "..";
-import { currentUserToken } from "../../api/request";
-import { setTokenToStorage } from "../../lib/helpers/authenticateHelper";
 import { clearToken, setSuccesLogin } from "./authSlice";
 
 interface ProfileState {
@@ -11,6 +11,7 @@ interface ProfileState {
   email: string;
   username: string;
   phone: string;
+  isFetching: boolean;
 }
 
 const initialState: ProfileState = {
@@ -20,6 +21,7 @@ const initialState: ProfileState = {
   email: "",
   username: "",
   phone: "",
+  isFetching: false,
 };
 
 const profileSlice = createSlice({
@@ -27,12 +29,16 @@ const profileSlice = createSlice({
   initialState,
   reducers: {
     setProfileInfo: (state, action: PayloadAction<ProfileState>) => {
-      state.id = action.payload.id,
-      state.firstName = action.payload.firstName,
-      state.lastName = action.payload.lastName,
-      state.email = action.payload.email,
-      state.username = action.payload.username,
-      state.phone = action.payload.phone;
+      (state.id = action.payload.id),
+        (state.firstName = action.payload.firstName),
+        (state.lastName = action.payload.lastName),
+        (state.email = action.payload.email),
+        (state.username = action.payload.username),
+        (state.phone = action.payload.phone);
+      state.isFetching = false;
+    },
+    setIsFetching: (state) => {
+      state.isFetching = true;
     },
   },
 });
@@ -40,6 +46,7 @@ const profileSlice = createSlice({
 export const getProfileInfo = (token: string): AppThunk => {
   return async (dispatch) => {
     try {
+      dispatch(setIsFetching());
       const res = await currentUserToken(token);
       if (res) {
         dispatch(setProfileInfo(res));
@@ -53,5 +60,5 @@ export const getProfileInfo = (token: string): AppThunk => {
   };
 };
 
-export const { setProfileInfo } = profileSlice.actions;
+export const { setProfileInfo, setIsFetching } = profileSlice.actions;
 export default profileSlice.reducer;

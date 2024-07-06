@@ -1,5 +1,12 @@
 {
     "compilerOptions": {
+      "baseUrl": "./src",
+      "paths": {
+        "@components/*": ["components/*"],
+        "@store/*":["store/*"],
+        "@lib/*":["lib/*"],
+        "@api/*":["api/*"]
+      },
       "esModuleInterop": true,
       "jsx": "react",
       "module": "esnext",

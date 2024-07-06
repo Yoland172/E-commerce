@@ -1,0 +1,37 @@
+@import "../../../styles/variables.scss";
+
+    .linkElement {
+    font-family: $Montserrat;
+    font-size: 1.1em;
+    color: $black;
+    font-weight: 300 !important;
+    transition: all 250ms;
+    position: relative;
+    cursor: pointer;
+    text-decoration: none;
+    text-transform: uppercase;
+
+    &::after {
+      content: "";
+      display: block;
+      position: absolute;
+      right: 0;
+      bottom: -3px;
+      width: 0;
+      height: 0.5px;
+      background-color: $black;
+      transition: width 250ms;
+    }
+
+    &:hover::after {
+      content: "";
+      width: 100%;
+      display: block;
+      position: absolute;
+      left: 0;
+      bottom: -3px;
+      height: 0.5px;
+      background-color: $black;
+      transition: width 250ms;
+    }
+  }

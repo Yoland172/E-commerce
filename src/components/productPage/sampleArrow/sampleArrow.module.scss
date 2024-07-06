@@ -10,6 +10,7 @@
     rotate: 90deg;
     right: 0;
     @include arrowContainer;
+    z-index: 1;
 }
 
 .prevArrowContainer{

@@ -3,12 +3,22 @@ const prod = process.env.NODE_ENV === "production";
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const Dotenv = require("dotenv-webpack");
+const path = require("path");
 
 module.exports = {
   mode: prod ? "production" : "development",
   entry: "./src/index.tsx",
   output: {
     path: __dirname + "/dist/",
+  },
+  resolve: {
+    extensions: [".ts", ".tsx", ".js", ".json"],
+    alias: {
+      "@components": path.resolve(__dirname, "src/components/"),
+      "@store": path.resolve(__dirname, "src/store/"),
+      "@lib": path.resolve(__dirname, "src/lib/"),
+      "@api":path.resolve(__dirname,"src/api"),
+    },
   },
   module: {
     rules: [

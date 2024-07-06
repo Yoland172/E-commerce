@@ -1,8 +1,9 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
-import { AppThunk } from "../../store";
-import { getProduct } from "../../api/request";
+import { AppThunk } from "@store/index";
+import { getProduct } from "@api/request";
 
 interface ProductState {
+  id: number;
   title: string;
   description: string;
   price: number | null;
@@ -17,6 +18,7 @@ interface ProductState {
 }
 
 const initialState: ProductState = {
+  id: 0,
   title: "",
   description: "",
   price: null,
@@ -35,7 +37,8 @@ const productSlice = createSlice({
   initialState,
   reducers: {
     setProductInfo: (state, action: PayloadAction<ProductState>) => {
-      (state.title = action.payload.title),
+      (state.id = action.payload.id),
+        (state.title = action.payload.title),
         (state.description = action.payload.description),
         (state.price = action.payload.price),
         (state.discountPercentage = action.payload.discountPercentage),
@@ -80,5 +83,6 @@ export const getProductThunk = (id: string): AppThunk => {
   };
 };
 
-export const { setProductInfo, setIsFetching,clearProductInfo } = productSlice.actions;
+export const { setProductInfo, setIsFetching, clearProductInfo } =
+  productSlice.actions;
 export default productSlice.reducer;
