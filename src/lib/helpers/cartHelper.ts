@@ -1,4 +1,4 @@
-import { CartItem, extractedProductsList } from "../../types/types";
+import { CartItem, extractedProductsList } from "../types/types";
 
 export const getUserCartFromStorage = () => {
   const data = localStorage.getItem("userCart");

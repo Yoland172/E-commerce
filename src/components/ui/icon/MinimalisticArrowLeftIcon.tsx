@@ -1,5 +1,5 @@
 import React from "react";
-import { IconProps } from "../../../types/types";
+import { IconProps } from "@lib/types/types";
 
 const MinimalisticArrowLeftIcon = ({ width, height }: IconProps) => {
   return (

@@ -1,9 +1,8 @@
 import React from "react";
-import classNames from "classnames";
 import { SubmitHandler, useForm } from "react-hook-form";
-import Loader from "../ui/loader/Loader";
+import Loader from "@components/ui/loader/Loader";
+import InputField from "@components/ui/inputField/InputField";
 import styles from "./login.module.scss";
-import InputField from "../ui/inputField/InputField";
 
 interface AuthPprops {
   setLogin: (username: string, password: string) => void;

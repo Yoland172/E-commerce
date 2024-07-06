@@ -1,7 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import LinkElement from "@components/ui/linkElement/LinkElement";
 import styles from "./header.module.scss";
-import LinkElement from "../ui/linkElement/LinkElement";
+
 interface HeaderProps {
   IsAuthenticated: boolean;
   onProfileClick: () => void;

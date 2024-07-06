@@ -1,5 +1,5 @@
 import React from "react";
-import { IconProps } from "../../../types/types";
+import { IconProps } from "@lib/types/types";
 
 const ArrowIcon = ({ width, height }: IconProps) => {
   return (
@@ -13,7 +13,6 @@ const ArrowIcon = ({ width, height }: IconProps) => {
     >
       <path d="M20,66.44a1,1,0,0,1-.72-1.7l30-30.89a1,1,0,1,1,1.43,1.39l-30,30.89A1,1,0,0,1,20,66.44Z" />
       <path d="M80,66.44a1,1,0,0,1-.72-.3l-30-30.89a1,1,0,1,1,1.43-1.39l30,30.89a1,1,0,0,1-.72,1.7Z" />
-
     </svg>
   );
 };

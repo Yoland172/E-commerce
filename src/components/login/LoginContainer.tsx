@@ -1,12 +1,12 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { login } from "../../store/sharedSlice/authSlice";
-import { useAppDispatch, useAppSelector } from "../../store";
-import Login from "./Login";
+import { login } from "@store/sharedSlice/authSlice";
+import { useAppDispatch, useAppSelector } from "@store/index";
 import {
   getredirectAfterLoginURL,
   setredirectAfterLoginURL,
-} from "../../lib/helpers/redirectHelpers";
+} from "@lib/helpers/redirectHelpers";
+import Login from "./Login";
 
 const LoginContainer = () => {
   const dispatch = useAppDispatch();

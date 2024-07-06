@@ -1,7 +1,7 @@
 import React from "react";
-import { IconProps } from "../../../types/types";
+import { IconProps } from "@lib/types/types";
 
-const CancelCrossIcon = ({width,height}:IconProps) => {
+const CancelCrossIcon = ({ width, height }: IconProps) => {
   return (
     <>
       <svg

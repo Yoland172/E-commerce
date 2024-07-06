@@ -1,18 +1,13 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
-import { AppDispatch, AppThunk } from "..";
-import {
-  currentUserToken,
-  getCartOfUser,
-  login as loginAPI,
-  putChangedQuantityProduct,
-} from "../../api/request";
-import { Axios, AxiosError } from "axios";
-import { CartItem, extractedProductsList } from "../../types/types";
+import { AxiosError } from "axios";
+import { login as loginAPI, putChangedQuantityProduct } from "@api/request";
+import { CartItem, extractedProductsList } from "@lib/types/types";
 import {
   deleteItemFromCart,
   mergeStockArray,
   setUserCartTotorage,
-} from "../../lib/helpers/cartHelper";
+} from "@lib/helpers/cartHelper";
+import { AppThunk } from "..";
 
 interface CartState {
   id: number | null;

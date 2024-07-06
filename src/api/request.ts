@@ -6,7 +6,7 @@ import {
   GET_ITEM_CATEGORIES,
   GET_PRODUCTS,
 } from "./constants";
-import { extractedProductsList } from "../types/types";
+import { extractedProductsList } from "../lib/types/types";
 
 const instance = axios.create({
   baseURL:process.env.API_SERVER_URL

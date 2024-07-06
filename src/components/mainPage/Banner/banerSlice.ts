@@ -1,8 +1,7 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
-import { CartItem, ItemCategory } from "../../../types/types";
-import { AppThunk } from "../../../store";
-import { getProducts } from "../../../api/request";
-import { ProductItem } from "../../../api/types";
+import { AppThunk } from "@store/index";
+import { getProducts } from "@api/request";
+import { ProductItem } from "@api/types";
 
 interface MainPageState {
   products: ProductItem[];
@@ -40,6 +39,5 @@ export const setProductsThunk = (): AppThunk => {
   };
 };
 
-export const { setProducts, setIsFetching } =
-bannerSlice.actions;
+export const { setProducts, setIsFetching } = bannerSlice.actions;
 export default bannerSlice.reducer;

@@ -18,10 +18,10 @@ export interface CartItem {
 export interface ItemCategory {
   slug: string;
   name: string;
-  url:string;
+  url: string;
 }
 
 export interface extractedProductsList {
-  id:number,
-  quantity: number
+  id: number;
+  quantity: number;
 }

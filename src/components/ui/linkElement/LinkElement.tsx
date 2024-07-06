@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
-import styles from "./linkElement.module.scss";
 import React from "react";
+import styles from "./linkElement.module.scss";
 
 interface LinkElementProps {
   link: string;
@@ -8,10 +8,12 @@ interface LinkElementProps {
   fontSize: string;
 }
 
-const LinkElement = ({ link,title, fontSize }: LinkElementProps) => {
+const LinkElement = ({ link, title, fontSize }: LinkElementProps) => {
   return (
     <Link to={link}>
-      <h3 className={styles.linkElement} style={{fontSize : fontSize}}>{title}</h3>
+      <h3 className={styles.linkElement} style={{ fontSize: fontSize }}>
+        {title}
+      </h3>
     </Link>
   );
 };

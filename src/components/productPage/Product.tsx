@@ -1,17 +1,15 @@
 import React, { useState } from "react";
-import Carousel from "nuka-carousel";
 import { Link } from "react-router-dom";
-import classNames from "classnames";
-import AddToCartIcon from "../ui/icon/AddToCartIcon";
-import styles from "./product.module.scss";
-
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
+import classNames from "classnames";
+import AddToCartIcon from "@components/ui/icon/AddToCartIcon";
+import PopUp from "@components/ui/PopUp/PopUp";
 import SampleNextArrow from "./sampleArrow/SampleNextArrow";
 import SamplePrevArrow from "./sampleArrow/SamplePrevArrow";
-import PopUp from "../ui/PopUp/PopUp";
 import AddToCart from "./addToCart/AddToCart";
+import styles from "./product.module.scss";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 interface SettingForSlider {
   dots?: boolean;
@@ -60,7 +58,7 @@ const Product = ({
   isFetching,
   id,
   changedQuantityProduct,
-  qunatityForAddToCart
+  qunatityForAddToCart,
 }: ProductProps) => {
   const settingsForSlider: SettingForSlider = {
     dots: true,
@@ -165,7 +163,7 @@ const Product = ({
             closWindow={setActivePopUp}
             thumbnail={thumbnail}
             changedQuantityProduct={changedQuantityProduct}
-            quntityForUserCart = {qunatityForAddToCart}
+            quntityForUserCart={qunatityForAddToCart}
           />
         )}
       </PopUp>

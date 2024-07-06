@@ -1,8 +1,8 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
-import { AppThunk } from "..";
-import { currentUserToken, login as loginAPI } from "../../api/request";
-import { setTokenToStorage } from "../../lib/helpers/authenticateHelper";
 import { AxiosError } from "axios";
+import { currentUserToken, login as loginAPI } from "@api/request";
+import { setTokenToStorage } from "@lib/helpers/authenticateHelper";
+import { AppThunk } from "..";
 
 interface AuthState {
   token: string;
@@ -63,8 +63,8 @@ export const login = (
           dispatch(setError("Network error"));
           break;
         case "ERR_BAD_REQUEST":
-        dispatch(setError("Username or password are incorrect"));
-        break;
+          dispatch(setError("Username or password are incorrect"));
+          break;
         default:
           dispatch(setError("Server Error"));
           break;

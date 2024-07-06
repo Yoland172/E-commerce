@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
-import Banner from './Banner'
-import { useAppDispatch, useAppSelector } from '../../../store';
+import { useAppDispatch, useAppSelector } from "@store/index";
 import { setProductsThunk } from './banerSlice';
+import Banner from './Banner'
 
 function BannerContainer() {
     const dispatch = useAppDispatch();

@@ -1,9 +1,7 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import styles from "./banner.module.scss";
-import { ProductItem } from "../../../api/types";
-import HeartIcon from "../../ui/icon/HeartIcon";
+import { ProductItem } from "@api/types";
 import BannerItem from "./bannerItem/BannerItem";
+import styles from "./banner.module.scss";
 
 interface BannerProps {
   products: ProductItem[];

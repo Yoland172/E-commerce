@@ -1,6 +1,6 @@
 import React from "react";
+import ArrowIcon from "@components/ui/icon/ArrowIcon";
 import styles from "./sampleArrow.module.scss";
-import ArrowIcon from "../../ui/icon/ArrowIcon";
 
 export interface SampleArrowProps {
   onClick?: () => void;

@@ -1,21 +1,22 @@
 import React, { useEffect } from "react";
-import Wishlist from "./Whishlist";
-import { getUserCartFromStorage } from "../../../lib/helpers/cartHelper";
-import { useAppDispatch, useAppSelector } from "../../../store";
+import { useNavigate } from "react-router-dom";
+import { getUserCartFromStorage } from "@lib/helpers/cartHelper";
+import { useAppDispatch, useAppSelector } from "@store/index";
 import {
-  deleteItem,
   deleteProductFromCart,
   getUserCartThunk,
   putChangedQuantityProductThunk,
   setCart,
   setProductsQuantityAndId,
-} from "../../../store/sharedSlice/cartSlice";
-import { useNavigate } from "react-router-dom";
-import { setredirectAfterLoginURL } from "../../../lib/helpers/redirectHelpers";
+} from "@store/sharedSlice/cartSlice";
+import { setredirectAfterLoginURL } from "@lib/helpers/redirectHelpers";
+import Wishlist from "./Whishlist";
 
 const WishlistContainer = () => {
   const dispatch = useAppDispatch();
-  const {id:userId, isFetching:isFetchingP } = useAppSelector((state) => state.profileState);
+  const { id: userId, isFetching: isFetchingP } = useAppSelector(
+    (state) => state.profileState
+  );
   const navigate = useNavigate();
   const cartfromStorage = getUserCartFromStorage();
   const {
@@ -27,16 +28,16 @@ const WishlistContainer = () => {
     totalQuantity,
     isFetching,
   } = useAppSelector((state) => state.cartState);
-  
+
   useEffect(() => {
     if (cartfromStorage == null && userId != null) {
       dispatch(getUserCartThunk(userId));
-    } else if(userId != null) {
+    } else if (userId != null) {
       dispatch(setCart(cartfromStorage.res));
       dispatch(setProductsQuantityAndId(cartfromStorage.productsQuantityAndId));
-    } else if (isFetchingP == false && userId == null){
+    } else if (isFetchingP == false && userId == null) {
       navigate("/login");
-      setredirectAfterLoginURL("/profile/wishlist")
+      setredirectAfterLoginURL("/profile/wishlist");
     }
   }, []);
 

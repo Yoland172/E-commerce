@@ -1,9 +1,9 @@
-import React, { EffectCallback, useEffect } from "react";
-import Product from "./Product";
+import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
+import { useAppDispatch, useAppSelector } from "@store/index";
+import { putChangedQuantityProductThunk } from "@store/sharedSlice/cartSlice";
+import Product from "./Product";
 import { clearProductInfo, getProductThunk } from "./productSlice";
-import { useAppDispatch, useAppSelector } from "../../store";
-import { putChangedQuantityProductThunk } from "../../store/sharedSlice/cartSlice";
 
 const ProductContainer = () => {
   const id = useParams().id;
@@ -18,7 +18,7 @@ const ProductContainer = () => {
   }, [id]);
 
   const {
-    id:productId,
+    id: productId,
     title,
     description,
     price,
@@ -33,17 +33,21 @@ const ProductContainer = () => {
   } = useAppSelector((state) => state.productState);
 
   const userId = useAppSelector((state) => state.profileState.id) || 1; //fix soon...
-  const productsQuantityAndId = useAppSelector((state) => state.cartState.productsQuantityAndId);
+  const productsQuantityAndId = useAppSelector(
+    (state) => state.cartState.productsQuantityAndId
+  );
 
   useEffect(() => {
-    if(productId != null) {
+    if (productId != null) {
       getQuantityOfProduct();
     }
-  },[])
+  }, []);
   const getQuantityOfProduct = () => {
-    const findedElement = productsQuantityAndId.find((el) => el.id === productId)
+    const findedElement = productsQuantityAndId.find(
+      (el) => el.id === productId
+    );
     return findedElement ? findedElement.quantity : null;
-  }
+  };
 
   return (
     <Product
@@ -59,8 +63,10 @@ const ProductContainer = () => {
       thumbnail={thumbnail}
       images={images}
       isFetching={isFetching}
-      changedQuantityProduct = {(quantity: number) => {dispatch(putChangedQuantityProductThunk(userId,productId,quantity ))}}
-      qunatityForAddToCart = {getQuantityOfProduct()}
+      changedQuantityProduct={(quantity: number) => {
+        dispatch(putChangedQuantityProductThunk(userId, productId, quantity));
+      }}
+      qunatityForAddToCart={getQuantityOfProduct()}
     />
   );
 };

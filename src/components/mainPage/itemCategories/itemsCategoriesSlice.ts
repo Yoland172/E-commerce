@@ -1,7 +1,7 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
-import { ItemCategory } from "../../../types/types";
-import { AppThunk } from "../../../store";
-import {getItemsCategories} from "../../../api/request";
+import { ItemCategory } from "@lib/types/types";
+import { AppThunk } from "@store/index";
+import { getItemsCategories } from "@api/request";
 
 interface MainPageState {
   itemsCategories: ItemCategory[];
@@ -39,5 +39,6 @@ export const setItemsCategoriesThunk = (): AppThunk => {
   };
 };
 
-export const { setItemCategories, setIsFetching } = itemsCategoriesSlice.actions;
+export const { setItemCategories, setIsFetching } =
+  itemsCategoriesSlice.actions;
 export default itemsCategoriesSlice.reducer;

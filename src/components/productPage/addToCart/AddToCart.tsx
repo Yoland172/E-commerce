@@ -1,8 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
+import CancelCrossIcon from "@components/ui/icon/CancelCrossIcon";
+import QunatityCounter from "@components/ui/qunatityCounter/QunatityCounter";
 import styles from "./addToCart.module.scss";
-import CancelCrossIcon from "../../ui/icon/CancelCrossIcon";
-import QunatityCounter from "../../ui/qunatityCounter/QunatityCounter";
-import { getQunatityProductByIdFromStorage } from "../../../lib/helpers/cartHelper";
 
 interface AddToCartProps {
   id: number;
@@ -25,7 +24,7 @@ const AddToCart = ({
   thumbnail,
   closWindow,
   changedQuantityProduct,
-  quntityForUserCart
+  quntityForUserCart,
 }: AddToCartProps) => {
   const [newQuantity, setNewQuantity] = useState<any>(
     quntityForUserCart ? quntityForUserCart : 1
@@ -69,7 +68,14 @@ const AddToCart = ({
         </h3>
       </div>
       <div className={styles.submitContainer}>
-        <button className={styles.cancelButton} onClick={() => {closWindow(false)}}>Cancel</button>
+        <button
+          className={styles.cancelButton}
+          onClick={() => {
+            closWindow(false);
+          }}
+        >
+          Cancel
+        </button>
         <button
           onClick={() => {
             changedQuantityProduct(newQuantity);

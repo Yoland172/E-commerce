@@ -1,6 +1,6 @@
 import React from "react";
+import LinkElement from "@components/ui/linkElement/LinkElement";
 import styles from "./footer.module.scss";
-import LinkElement from "../ui/linkElement/LinkElement";
 
 const Footer = () => {
   const socilas = [

@@ -1,10 +1,9 @@
 import React from "react";
-import styles from "./wishlist.module.scss";
-import { CartItem, extractedProductsList } from "../../../types/types";
-import CancelCross from "../../ui/icon/CancelCrossIcon";
 import { Link } from "react-router-dom";
-import QunatityCounter from "../../ui/qunatityCounter/QunatityCounter";
-
+import { CartItem } from "@lib/types/types";
+import CancelCross from "@components/ui/icon/CancelCrossIcon";
+import QunatityCounter from "@components/ui/qunatityCounter/QunatityCounter";
+import styles from "./wishlist.module.scss";
 
 interface WishlistProp {
   id: number | null;
@@ -14,13 +13,9 @@ interface WishlistProp {
   totalProducts: number | null;
   totalQuantity: number | null;
   isFetching: boolean;
-  changeProductQuantity: (
-    productId: number,
-    quantity: number
-  ) => void;
-  deleteItem: (productId:number) => void
+  changeProductQuantity: (productId: number, quantity: number) => void;
+  deleteItem: (productId: number) => void;
 }
-
 
 const Wishlist = ({
   products,
@@ -30,7 +25,7 @@ const Wishlist = ({
   total,
   isFetching,
   changeProductQuantity,
-  deleteItem
+  deleteItem,
 }: WishlistProp) => {
   return (
     <>
@@ -104,10 +99,10 @@ const Wishlist = ({
                           quantity={el.quantity}
                           isFetching={isFetching}
                           decrement={() => {
-                            changeProductQuantity(el.id, el.quantity-1);
+                            changeProductQuantity(el.id, el.quantity - 1);
                           }}
                           increment={() => {
-                            changeProductQuantity(el.id, el.quantity+1);
+                            changeProductQuantity(el.id, el.quantity + 1);
                           }}
                         />
                         <h3 className={styles.action}></h3>
