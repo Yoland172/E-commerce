@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import LinkElement from "@components/ui/linkElement/LinkElement";
 import styles from "./header.module.scss";
+import SearchBarContainer from "./searchBar/SearchBarContainer";
 
 interface HeaderProps {
   IsAuthenticated: boolean;
@@ -19,8 +20,7 @@ const Header = ({ onProfileClick, username }: HeaderProps) => {
           </Link>
         </div>
         <div className={styles.searchContainer}>
-          <input type="text" className={styles.searchInput} />
-          <button className={styles.searchButton}>Search</button>
+          <SearchBarContainer/>
         </div>
         <div className={styles.navBarContainer}>
           <LinkElement title="Liked" fontSize="1em" link="/"/>

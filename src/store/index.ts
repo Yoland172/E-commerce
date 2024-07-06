@@ -8,6 +8,7 @@ import banerSlice from "@components/mainPage/Banner/banerSlice";
 import cartSlice from "./sharedSlice/cartSlice";
 import authSlice from "./sharedSlice/authSlice";
 import profileSlice from "./sharedSlice/profileSlice";
+import serachSlice from "@components/header/searchBar/serachSlice";
 
 const store = configureStore({
   reducer: {
@@ -17,6 +18,7 @@ const store = configureStore({
     profileState: profileSlice,
     productState: productSlice,
     cartState: cartSlice,
+    searchState: serachSlice,
   },
   middleware: (getDefaultMiddleware) =>
     process.env.NODE_ENV === "production"

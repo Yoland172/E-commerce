@@ -1,0 +1,22 @@
+@import "../../../../styles/mixin.scss";
+@import "../../../../styles/variables.scss";
+
+.itemContainer{
+    @include flexbox(row, start,center);
+    transition: all 250ms;
+
+    &>img{
+        width: 5vh;
+        height: 5vh;
+    }
+
+    &>h3{
+        font-size: 1em;
+        font-weight: 300;
+    }
+
+    &:hover{
+        background: $white;
+    }
+  
+}
