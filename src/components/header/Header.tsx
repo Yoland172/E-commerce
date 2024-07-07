@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import LinkElement from "@components/ui/linkElement/LinkElement";
-import styles from "./header.module.scss";
+import styles from "./Header.module.scss";
 import SearchBarContainer from "./searchBar/SearchBarContainer";
 
 interface HeaderProps {

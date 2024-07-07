@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "./recProductItem.module.scss";
+import styles from "./RecProductItem.module.scss";
 import { Link } from "react-router-dom";
 
 interface RecProductItemProps {

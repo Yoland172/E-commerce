@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { useAppDispatch, useAppSelector } from "@store/index";
-import { setProductsThunk } from './banerSlice';
+import { setProductsThunk } from './BanerSlice';
 import Banner from './Banner'
 
 function BannerContainer() {

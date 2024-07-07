@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import ArrowIcon from "@components/ui/icon/ArrowIcon";
-import styles from "./settings.module.scss";
+import styles from "./Settings.module.scss";
 
 const Settings = () => {
   return (

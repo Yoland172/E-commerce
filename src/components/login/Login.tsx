@@ -2,7 +2,7 @@ import React from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import Loader from "@components/ui/loader/Loader";
 import InputField from "@components/ui/inputField/InputField";
-import styles from "./login.module.scss";
+import styles from "./Login.module.scss";
 
 interface AuthPprops {
   setLogin: (username: string, password: string) => void;

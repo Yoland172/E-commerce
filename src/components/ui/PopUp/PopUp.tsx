@@ -1,6 +1,6 @@
 import React, { ReactNode } from "react";
 import classNames from "classnames";
-import styles from "./popUp.module.scss";
+import styles from "./PopUp.module.scss";
 
 interface PopUpProps {
   active: boolean;

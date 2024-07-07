@@ -1,6 +1,6 @@
 import React from "react";
 import classNames from "classnames";
-import styles from "./inputField.module.scss";
+import styles from "./InputField.module.scss";
 
 interface InputFieldProps {
   type: string;

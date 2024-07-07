@@ -6,7 +6,7 @@ import HeaderContainer from "@components/header/HeaderContainer";
 import ProfilePageRouting from "@components/profile/ProfilePageRouting";
 import ProductContainer from "@components/productPage/ProductContainer";
 import MainPage from "@components/mainPage/MainPage";
-import "./app.module.scss";
+import "./App.module.scss";
 
 const App = () => {
   return (

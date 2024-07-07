@@ -2,9 +2,10 @@ import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 import { AxiosError } from "axios";
 import { AppThunk } from "@store/index";
 import { getRecProductsBySearch } from "@api/request";
+import { RecProductItem } from "@lib/types/Types";
 
 interface SearchState {
-  recProducts: any[], //what type?!!!
+  recProducts: RecProductItem[], 
   isFetching:boolean,
 
 }
@@ -18,8 +19,8 @@ const searchSlice= createSlice({
   name: "searchSlice",
   initialState,
   reducers: {
-    setRecProducts: (state, action: PayloadAction<any>) => {
-      state.recProducts = action.payload.products;
+    setRecProducts: (state, action: PayloadAction<RecProductItem[]>) => {
+      state.recProducts = action.payload;
       state.isFetching = false;
     },
     setIsFetching: (state) => {
@@ -38,7 +39,7 @@ export const setRecProductThunk = (searchValue:string): AppThunk => {
     try {
       dispatch(setIsFetching());
       const res = await getRecProductsBySearch(searchValue);
-      dispatch(setRecProducts(res))
+      dispatch(setRecProducts(res.products))
     } catch (arr: AxiosError | any) {}
   };
 };

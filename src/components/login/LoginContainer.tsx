@@ -1,11 +1,11 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { login } from "@store/sharedSlice/authSlice";
+import { login } from "@store/sharedSlice/AuthSlice";
 import { useAppDispatch, useAppSelector } from "@store/index";
 import {
-  getredirectAfterLoginURL,
-  setredirectAfterLoginURL,
-} from "@lib/helpers/redirectHelpers";
+  getRedirectAfterLoginURL,
+  setRedirectAfterLoginURL,
+} from "@lib/helpers/RedirectHelpers";
 import Login from "./Login";
 
 const LoginContainer = () => {
@@ -13,9 +13,9 @@ const LoginContainer = () => {
   const navigate = useNavigate();
 
   const redirectAfterLogin = () => {
-    const path = getredirectAfterLoginURL();
+    const path = getRedirectAfterLoginURL();
     navigate(path);
-    setredirectAfterLoginURL("");
+    setRedirectAfterLoginURL("");
   };
 
   const { error, isFetching } = useAppSelector((state) => state.authState);

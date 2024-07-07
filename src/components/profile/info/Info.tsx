@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "./info.module.scss";
+import styles from "./Info.module.scss";
 
 interface UserInfo {
   id: number | null;

@@ -1,9 +1,9 @@
 import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "@store/index";
-import { putChangedQuantityProductThunk } from "@store/sharedSlice/cartSlice";
+import { putChangedQuantityProductThunk } from "@store/sharedSlice/CartSlice";
 import Product from "./Product";
-import { clearProductInfo, getProductThunk } from "./productSlice";
+import { clearProductInfo, getProductThunk } from "./ProductSlice";
 
 const ProductContainer = () => {
   const id = useParams().id;

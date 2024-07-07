@@ -1,5 +1,5 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
-import { ItemCategory } from "@lib/types/types";
+import { ItemCategory } from "@lib/types/Types";
 import { AppThunk } from "@store/index";
 import { getItemsCategories } from "@api/request";
 

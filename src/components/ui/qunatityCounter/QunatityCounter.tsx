@@ -1,7 +1,7 @@
 import React from "react";
 import MinimalisticArrowLeftIcon from "@components/ui/icon/MinimalisticArrowLeftIcon";
 import MinimalisticArrowRightIcon from "@components/ui/icon/MinimalisticArrowRightIcon";
-import styles from "./qunatityCounter.module.scss";
+import styles from "./QunatityCounter.module.scss";
 
 interface QunatityCounterProps {
   increment: () => void;

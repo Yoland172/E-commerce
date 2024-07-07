@@ -4,6 +4,7 @@
 .itemContainer{
     @include flexbox(row, start,center);
     transition: all 250ms;
+    column-gap: 10px;
 
     &>img{
         width: 5vh;

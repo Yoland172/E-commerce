@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { getUserCartFromStorage } from "@lib/helpers/cartHelper";
+import { getUserCartFromStorage } from "@lib/helpers/CartHelper";
 import { useAppDispatch, useAppSelector } from "@store/index";
 import {
   deleteProductFromCart,
@@ -8,8 +8,8 @@ import {
   putChangedQuantityProductThunk,
   setCart,
   setProductsQuantityAndId,
-} from "@store/sharedSlice/cartSlice";
-import { setredirectAfterLoginURL } from "@lib/helpers/redirectHelpers";
+} from "@store/sharedSlice/CartSlice";
+import { setRedirectAfterLoginURL } from "@lib/helpers/RedirectHelpers";
 import Wishlist from "./Whishlist";
 
 const WishlistContainer = () => {
@@ -37,7 +37,7 @@ const WishlistContainer = () => {
       dispatch(setProductsQuantityAndId(cartfromStorage.productsQuantityAndId));
     } else if (isFetchingP == false && userId == null) {
       navigate("/login");
-      setredirectAfterLoginURL("/profile/wishlist");
+      setRedirectAfterLoginURL("/profile/wishlist");
     }
   }, []);
 

@@ -1,7 +1,7 @@
 import React from "react";
-import { ItemCategory } from "@lib/types/types";
+import { ItemCategory } from "@lib/types/Types";
 import LinkElement from "@components/ui/linkElement/LinkElement";
-import styles from "./itemsCategories.module.scss";
+import styles from "./ItemsCategories.module.scss";
 
 interface ItemsCategoriesProps {
   items: ItemCategory[];

@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
-import classNames from "classnames";
 import useDebounce from "@lib/hooks/useDebounce";
-import styles from "./searchBar.module.scss";
+import {RecProductItem as RecProductItemType} from "@lib/types/Types";
+import styles from "./SearchBar.module.scss";
 import RecProductItem from "./recProductItem/RecProductItem";
 
 interface SearchBarProps {
   searchAction: (serachProp: string) => void;
-  recProducts: any[];
+  recProducts: RecProductItemType[];
   clearRecProducts: () => void;
 }
 
@@ -39,14 +39,9 @@ const SearchBar = ({
             setSearch(event.target.value);
           }}
         />
-        <div
-          className={classNames(
-            styles.hide,
-            recProducts.length > 0 && styles.recProductsContainer
-          )}
-        >
-          {recProducts.length > 0 &&
-            recProducts.map((el: any) => {
+        {recProducts.length > 0 && (
+          <div className={styles.recProductsContainer}>
+            {recProducts.map((el) => {
               return (
                 <RecProductItem
                   id={el.id}
@@ -58,8 +53,10 @@ const SearchBar = ({
                 />
               );
             })}
-        </div>
+          </div>
+        )}
       </div>
+
       <button className={styles.searchButton}>Search</button>
     </div>
   );
