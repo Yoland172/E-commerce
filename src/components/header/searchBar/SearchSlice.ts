@@ -1,7 +1,7 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 import { AxiosError } from "axios";
 import { AppThunk } from "@store/index";
-import { getRecProductsBySearch } from "@api/request";
+import { getRecProductsBySearch } from "@api/Request";
 import { RecProductItem } from "@lib/types/Types";
 
 interface SearchState {

@@ -1,6 +1,6 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 import { AxiosError } from "axios";
-import { login as loginAPI, putChangedQuantityProduct } from "@api/request";
+import { login as loginAPI, putChangedQuantityProduct } from "@api/Request";
 import { CartItem, extractedProductsList } from "@lib/types/Types";
 import {
   deleteItemFromCart,

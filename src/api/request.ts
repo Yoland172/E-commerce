@@ -6,7 +6,7 @@ import {
   GET_ITEM_CATEGORIES,
   GET_PRODUCTS,
   GET_REC_PRODUCTS_BY_SEARCH,
-} from "./constants";
+} from "./Constants";
 import { extractedProductsList } from "../lib/types/Types";
 
 const instance = axios.create({
