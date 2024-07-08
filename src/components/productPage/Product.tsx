@@ -7,7 +7,7 @@ import PopUp from "@components/ui/PopUp/PopUp";
 import SampleNextArrow from "./sampleArrow/SampleNextArrow";
 import SamplePrevArrow from "./sampleArrow/SamplePrevArrow";
 import AddToCart from "./addToCart/AddToCart";
-import styles from "./product.module.scss";
+import styles from "./Product.module.scss";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 

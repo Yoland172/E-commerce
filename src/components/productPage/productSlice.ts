@@ -1,6 +1,6 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 import { AppThunk } from "@store/index";
-import { getProduct } from "@api/request";
+import { getProduct } from "@api/Request";
 
 interface ProductState {
   id: number;

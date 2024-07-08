@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useAppDispatch, useAppSelector } from "@store/index";
-import { setItemsCategoriesThunk } from "./itemsCategoriesSlice";
+import { setItemsCategoriesThunk } from "./ItemsCategoriesSlice";
 import ItemsCategories from "./ItemsCategories";
 
 const ItemsCategoriesContainer = () => {

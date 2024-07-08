@@ -1,0 +1,47 @@
+@import "../../../styles/mixin.scss";
+@import "../../../styles/variables.scss";
+
+.container {
+  @include flexbox(row, center, center);
+
+  .inputContainer {
+    &>input {
+      border: 1px solid $black;
+      background-color: $light-white;
+      box-sizing: border-box;
+      padding: 0px 6px;
+      height: 30px;
+      width: 20vw;
+      font-weight: 300;
+    }
+
+    .hide{
+      visibility: hidden;
+    }
+    .recProductsContainer{
+      visibility: visible !important;
+      border: 1px solid $black;
+      border-top: none;
+      background-color: $light-white;
+      width: 20vw;
+      height: auto;
+      position: absolute;
+    }
+  }
+
+  .searchButton {
+    background-color: $light-white;
+    border: 1px solid $black;
+    border-left: none;
+    height: 30px;
+    width: 5vw;
+    cursor: pointer;
+    font-weight: 300;
+    transition: all 250ms;
+
+    &:hover {
+      background-color: $black;
+      color: $light-white;
+    }
+  }
+}

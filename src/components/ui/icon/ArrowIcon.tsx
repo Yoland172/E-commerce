@@ -1,5 +1,5 @@
 import React from "react";
-import { IconProps } from "@lib/types/types";
+import { IconProps } from "@lib/types/Types";
 
 const ArrowIcon = ({ width, height }: IconProps) => {
   return (

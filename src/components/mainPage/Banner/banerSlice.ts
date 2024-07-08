@@ -1,7 +1,7 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 import { AppThunk } from "@store/index";
-import { getProducts } from "@api/request";
-import { ProductItem } from "@api/types";
+import { getProducts } from "@api/Request";
+import { ProductItem } from "@api/Types";
 
 interface MainPageState {
   products: ProductItem[];

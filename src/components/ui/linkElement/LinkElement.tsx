@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import React from "react";
-import styles from "./linkElement.module.scss";
+import styles from "./LinkElement.module.scss";
 
 interface LinkElementProps {
   link: string;

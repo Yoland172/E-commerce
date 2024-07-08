@@ -5,8 +5,9 @@ import {
   GET_CART,
   GET_ITEM_CATEGORIES,
   GET_PRODUCTS,
-} from "./constants";
-import { extractedProductsList } from "../lib/types/types";
+  GET_REC_PRODUCTS_BY_SEARCH,
+} from "./Constants";
+import { extractedProductsList } from "../lib/types/Types";
 
 const instance = axios.create({
   baseURL:process.env.API_SERVER_URL
@@ -72,3 +73,12 @@ export const putChangedQuantityProduct = async (
   );
   return res.data;
 };
+
+
+
+//search
+
+export const getRecProductsBySearch = async (searchValue: string) => {
+  const res = await instance.get(`${GET_REC_PRODUCTS_BY_SEARCH}?q=${searchValue}&limit=5`);
+  return res.data;
+}

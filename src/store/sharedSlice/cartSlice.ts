@@ -1,12 +1,12 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 import { AxiosError } from "axios";
-import { login as loginAPI, putChangedQuantityProduct } from "@api/request";
-import { CartItem, extractedProductsList } from "@lib/types/types";
+import { login as loginAPI, putChangedQuantityProduct } from "@api/Request";
+import { CartItem, extractedProductsList } from "@lib/types/Types";
 import {
   deleteItemFromCart,
   mergeStockArray,
-  setUserCartTotorage,
-} from "@lib/helpers/cartHelper";
+  setUserCartToStorage,
+} from "@lib/helpers/CartHelper";
 import { AppThunk } from "..";
 
 interface CartState {
@@ -98,7 +98,7 @@ export const getUserCartThunk = (id: number): AppThunk => {
       );
       if (res) {
         dispatch(setCart(res));
-        setUserCartTotorage({
+        setUserCartToStorage({
           res,
           productsQuantityAndId: stockProductsQuantityAndId,
         });
@@ -126,7 +126,7 @@ export const putChangedQuantityProductThunk = (
       if (res) {
         dispatch(setCart(res));
         dispatch(setProductsQuantityAndId(extractedArray));
-        setUserCartTotorage({ res, productsQuantityAndId: extractedArray });
+        setUserCartToStorage({ res, productsQuantityAndId: extractedArray });
       }
     } catch (err: AxiosError | any) {}
   };
@@ -150,7 +150,7 @@ export const deleteProductFromCart = (
       if (res) {
         dispatch(setCart(res));
         dispatch(setProductsQuantityAndId(editedProductsQuantityAndId));
-        setUserCartTotorage({
+        setUserCartToStorage({
           res,
           productsQuantityAndId: editedProductsQuantityAndId,
         });

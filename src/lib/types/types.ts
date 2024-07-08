@@ -25,3 +25,12 @@ export interface extractedProductsList {
   id: number;
   quantity: number;
 }
+
+
+
+export interface RecProductItem {
+  id:number
+  title:string,
+  thumbnail:string
+
+}

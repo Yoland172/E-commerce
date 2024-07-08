@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { CartItem } from "@lib/types/types";
+import { CartItem } from "@lib/types/Types";
 import CancelCross from "@components/ui/icon/CancelCrossIcon";
 import QunatityCounter from "@components/ui/qunatityCounter/QunatityCounter";
 import styles from "./wishlist.module.scss";

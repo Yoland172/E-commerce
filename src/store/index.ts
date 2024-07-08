@@ -2,12 +2,13 @@ import { Action, ThunkAction, configureStore } from "@reduxjs/toolkit";
 import { useDispatch, useSelector } from "react-redux";
 import type { TypedUseSelectorHook } from "react-redux";
 import logger from "redux-logger";
-import productSlice from "@components/productPage/productSlice";
-import itemsCategoriesSlice from "@components/mainPage/itemCategories/itemsCategoriesSlice";
-import banerSlice from "@components/mainPage/Banner/banerSlice";
-import cartSlice from "./sharedSlice/cartSlice";
-import authSlice from "./sharedSlice/authSlice";
-import profileSlice from "./sharedSlice/profileSlice";
+import productSlice from "@components/productPage/ProductSlice";
+import itemsCategoriesSlice from "@components/mainPage/itemCategories/ItemsCategoriesSlice";
+import banerSlice from "@components/mainPage/Banner/BanerSlice";
+import cartSlice from "./sharedSlice/CartSlice";
+import authSlice from "./sharedSlice/AuthSlice";
+import profileSlice from "./sharedSlice/ProfileSlice";
+import serachSlice from "@components/header/searchBar/SearchSlice";
 
 const store = configureStore({
   reducer: {
@@ -17,6 +18,7 @@ const store = configureStore({
     profileState: profileSlice,
     productState: productSlice,
     cartState: cartSlice,
+    searchState: serachSlice,
   },
   middleware: (getDefaultMiddleware) =>
     process.env.NODE_ENV === "production"

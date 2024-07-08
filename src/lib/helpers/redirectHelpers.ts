@@ -1,8 +1,8 @@
-export const setredirectAfterLoginURL = (url: string) => {
+export const setRedirectAfterLoginURL = (url: string) => {
   localStorage.setItem("redirectAfterLoginURL", url);
 };
 
-export const getredirectAfterLoginURL = () => {
+export const getRedirectAfterLoginURL = () => {
   const path = localStorage.getItem("redirectAfterLoginURL");
   return path || "/mainPage";
 };

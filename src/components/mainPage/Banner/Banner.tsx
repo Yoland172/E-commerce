@@ -1,7 +1,7 @@
 import React from "react";
-import { ProductItem } from "@api/types";
+import { ProductItem } from "@api/Types";
 import BannerItem from "./bannerItem/BannerItem";
-import styles from "./banner.module.scss";
+import styles from "./Banner.module.scss";
 
 interface BannerProps {
   products: ProductItem[];
