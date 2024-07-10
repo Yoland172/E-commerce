@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import HeartIcon from "@components/ui/icon/HeartIcon";
-import styles from "./bannerItem.module.scss";
+import styles from "./BannerItem.module.scss";
 
 interface BannerItemProps {
   id: number;

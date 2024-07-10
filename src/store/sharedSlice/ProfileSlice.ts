@@ -1,8 +1,8 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 import { currentUserToken } from "@api/Request";
-import { setTokenToStorage } from "@lib/helpers/AuthenticateHelper1";
+import { setTokenToStorage } from "@lib/helpers/AuthenticateHelper";
 import { AppThunk } from "..";
-import { clearToken, setSuccesLogin } from "./AuthSlice1";
+import { clearToken, setSuccesLogin } from "./AuthSlice";
 
 interface ProfileState {
   id: number | null;

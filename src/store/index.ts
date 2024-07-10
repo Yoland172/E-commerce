@@ -5,9 +5,9 @@ import logger from "redux-logger";
 import productSlice from "@components/productPage/ProductSlice";
 import itemsCategoriesSlice from "@components/mainPage/itemCategories/ItemsCategoriesSlice";
 import banerSlice from "@components/mainPage/Banner/BanerSlice";
-import cartSlice from "./sharedSlice/CartSlice1";
-import authSlice from "./sharedSlice/AuthSlice1";
-import profileSlice from "./sharedSlice/ProfileSlice1";
+import cartSlice from "./sharedSlice/CartSlice";
+import authSlice from "./sharedSlice/AuthSlice";
+import profileSlice from "./sharedSlice/ProfileSlice";
 import serachSlice from "@components/header/searchBar/SearchSlice";
 
 const store = configureStore({

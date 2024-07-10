@@ -1,7 +1,7 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 import { AxiosError } from "axios";
 import { currentUserToken, login as loginAPI } from "@api/Request";
-import { setTokenToStorage } from "@lib/helpers/AuthenticateHelper1";
+import { setTokenToStorage } from "@lib/helpers/AuthenticateHelper";
 import { AppThunk } from "..";
 
 interface AuthState {

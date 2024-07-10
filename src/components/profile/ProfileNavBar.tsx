@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import classNames from "classnames";
-import styles from "./profile.module.scss";
+import styles from "./Profile.module.scss";
 
 interface ProfileNavBarProps {
   tab: any;

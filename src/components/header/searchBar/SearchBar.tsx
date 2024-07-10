@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import useDebounce from "@lib/hooks/useDebounce";
 import { RecProductItem as RecProductItemType } from "@lib/types/Types";
-import styles from "./SearchBar.module.scss";
 import RecProductItem from "./recProductItem/RecProductItem";
 import Divider from "@components/ui/divider/Divider";
+import styles from "./SearchBar.module.scss";
 
 interface SearchBarProps {
   searchAction: (serachProp: string) => void;

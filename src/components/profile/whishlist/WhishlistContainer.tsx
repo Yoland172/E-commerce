@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { getUserCartFromStorage } from "@lib/helpers/CartHelper1";
+import { getUserCartFromStorage } from "@lib/helpers/CartHelper";
 import { useAppDispatch, useAppSelector } from "@store/index";
 import {
   deleteProductFromCart,
@@ -9,7 +9,7 @@ import {
   setCart,
   setProductsQuantityAndId,
 } from "@store/sharedSlice/CartSlice";
-import { setRedirectAfterLoginURL } from "@lib/helpers/RedirectHelpers1";
+import { setRedirectAfterLoginURL } from "@lib/helpers/RedirectHelpers";
 import Wishlist from "./Whishlist";
 
 const WishlistContainer = () => {

@@ -4,7 +4,7 @@ import ProfileNavBar from "./ProfileNavBar";
 import InfoContainer from "./info/InfoContainer";
 import SettingsContainer from "./settings/SettingsContainer";
 import WishlistContainer from "./whishlist/WhishlistContainer";
-import styles from "./profile.module.scss";
+import styles from "./Profile.module.scss";
 
 const ProfilePageRouting = () => {
   const tab = useParams().tab;

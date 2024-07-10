@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import CancelCrossIcon from "@components/ui/icon/CancelCrossIcon";
 import QunatityCounter from "@components/ui/qunatityCounter/QunatityCounter";
-import styles from "./addToCart.module.scss";
+import styles from "./AddToCart.module.scss";
 
 interface AddToCartProps {
   id: number;
