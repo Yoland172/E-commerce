@@ -6,7 +6,7 @@ import {
   deleteItemFromCart,
   mergeStockArray,
   setUserCartToStorage,
-} from "@lib/helpers/CartHelper";
+} from "@lib/helpers/CartHelper1";
 import { AppThunk } from "..";
 
 interface CartState {

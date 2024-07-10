@@ -5,7 +5,7 @@ import { useAppDispatch, useAppSelector } from "@store/index";
 import {
   getRedirectAfterLoginURL,
   setRedirectAfterLoginURL,
-} from "@lib/helpers/RedirectHelpers";
+} from "@lib/helpers/RedirectHelpers1";
 import Login from "./Login";
 
 const LoginContainer = () => {
