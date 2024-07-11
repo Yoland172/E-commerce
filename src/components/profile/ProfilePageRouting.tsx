@@ -3,8 +3,8 @@ import { useParams } from "react-router-dom";
 import ProfileNavBar from "./ProfileNavBar";
 import InfoContainer from "./info/InfoContainer";
 import SettingsContainer from "./settings/SettingsContainer";
-import WishlistContainer from "./whishlist/WhishlistContainer";
 import styles from "./Profile.module.scss";
+
 
 const ProfilePageRouting = () => {
   const tab = useParams().tab;
@@ -16,7 +16,7 @@ const ProfilePageRouting = () => {
         return <SettingsContainer />;
 
       case "wishlist":
-        return <WishlistContainer />;
+        return <></>;
 
       default:
         null;

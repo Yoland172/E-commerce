@@ -23,7 +23,7 @@ const Header = ({ onProfileClick, username }: HeaderProps) => {
           <SearchBarContainer/>
         </div>
         <div className={styles.navBarContainer}>
-          <LinkElement title="Liked" fontSize="1em" link="/"/>
+          <LinkElement title="Cart" fontSize="1em" link="/cart"/>
           <div onClick={onProfileClick}><LinkElement title={username || "Profile"} link="*" fontSize="1em"/></div>
         </div>
       </div>

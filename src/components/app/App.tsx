@@ -7,6 +7,8 @@ import ProfilePageRouting from "@components/profile/ProfilePageRouting";
 import ProductContainer from "@components/productPage/ProductContainer";
 import MainPage from "@components/mainPage/MainPage";
 import "./App.module.scss";
+import Cart from "@components/cart/Cart";
+import CartContainer from "@components/cart/CartContainer";
 
 const App = () => {
   return (
@@ -15,7 +17,7 @@ const App = () => {
         <Routes>
           <Route
             path="profile/:tab"
-            element={ 
+            element={
               <>
                 <HeaderContainer />
                 <ProfilePageRouting />
@@ -40,6 +42,17 @@ const App = () => {
               <>
                 <HeaderContainer />
                 <ProductContainer />
+                <Footer />
+              </>
+            }
+          />
+
+          <Route
+            path="cart"
+            element={
+              <>
+                <HeaderContainer />
+                <CartContainer />
                 <Footer />
               </>
             }
