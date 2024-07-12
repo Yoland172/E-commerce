@@ -12,7 +12,7 @@ interface BannerItemProps {
 
 function BannerItem({ id, thumbnail, price, title }: BannerItemProps) {
   return (
-    <div className={styles.productContainer} key={id}>
+    <div className={styles.productContainer}>
       <Link to={`/product/${id}`}>
         <img src={thumbnail} alt="product" />
       </Link>

@@ -6,9 +6,8 @@ import HeaderContainer from "@components/header/HeaderContainer";
 import ProfilePageRouting from "@components/profile/ProfilePageRouting";
 import ProductContainer from "@components/productPage/ProductContainer";
 import MainPage from "@components/mainPage/MainPage";
-import "./App.module.scss";
-import Cart from "@components/cart/Cart";
 import CartContainer from "@components/cart/CartContainer";
+import "./App.module.scss";
 
 const App = () => {
   return (
@@ -49,6 +48,17 @@ const App = () => {
 
           <Route
             path="cart"
+            element={
+              <>
+                <HeaderContainer />
+                <CartContainer />
+                <Footer />
+              </>
+            }
+          />
+
+          <Route
+            path="checkout"
             element={
               <>
                 <HeaderContainer />

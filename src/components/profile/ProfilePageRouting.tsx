@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import ProfileNavBar from "./ProfileNavBar";
 import InfoContainer from "./info/InfoContainer";
 import SettingsContainer from "./settings/SettingsContainer";
-import styles from "./profile.module.scss";
+import styles from "./Profile.module.scss";
 
 const ProfilePageRouting = () => {
   const tab = useParams().tab;

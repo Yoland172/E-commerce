@@ -26,28 +26,28 @@ const Footer = () => {
     <div className={styles.main}>
       <div className={styles.sectionLine}></div>
       <ul className={styles.socialsContainer}>
-        {socilas.map((el) => {
-       return <LinkElement title={el} link="/" fontSize="0.8em"/>;
+        {socilas.map((el, index) => {
+       return <LinkElement title={el} link="/" fontSize="0.8em" key={index}/>;
         })}
       </ul>
 
       <div className={styles.infoContainer}>
         <ul className={styles.infoSection}>
           <li className={styles.title}> Help</li>
-          {helpContainer.map((el) => {
-          return <LinkElement title={el} link="/" fontSize="0.8em"/>;
+          {helpContainer.map((el, index) => {
+          return <LinkElement title={el} link="/" fontSize="0.8em" key={index}/>;
           })}
         </ul>
         <ul className={styles.infoSection}>
           <li className={styles.title}>Company</li>
-          {companyContainer.map((el) => {
-             return <LinkElement title={el} link="/" fontSize="0.8em"/>;
+          {companyContainer.map((el, index) => {
+             return <LinkElement title={el} link="/" fontSize="0.8em" key={index}/>;
           })}
         </ul>
         <ul className={styles.infoSection}>
           <li className={styles.title}>Policies</li>
-          {policiesContainer.map((el) => {
-            return <LinkElement title={el} link="/" fontSize="0.8em"/>;
+          {policiesContainer.map((el, index) => {
+            return <LinkElement title={el} link="/" fontSize="0.8em" key={index}/>;
           })}
         </ul>
       </div>
