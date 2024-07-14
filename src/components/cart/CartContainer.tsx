@@ -16,7 +16,6 @@ const CartContainer = () => {
   const { id: userId, isFetching: isFetchingP } = useAppSelector(
     (state) => state.profileState
   );
-  const navigate = useNavigate();
   const cartfromStorage = getUserCartFromStorage();
   const {
     id,

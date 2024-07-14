@@ -8,6 +8,7 @@ import ProductContainer from "@components/productPage/ProductContainer";
 import MainPage from "@components/mainPage/MainPage";
 import CartContainer from "@components/cart/CartContainer";
 import "./App.module.scss";
+import CheckoutContainer from "@components/checkout/CheckoutContainer";
 
 const App = () => {
   return (
@@ -58,11 +59,11 @@ const App = () => {
           />
 
           <Route
-            path="checkout"
+            path="cart/checkout"
             element={
               <>
                 <HeaderContainer />
-                <CartContainer />
+                <CheckoutContainer />
                 <Footer />
               </>
             }

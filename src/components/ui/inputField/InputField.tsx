@@ -7,6 +7,7 @@ interface InputFieldProps {
   placeholder: string;
   registerReq: any;
   error: any;
+  width?: string
 }
 
 const InputField = ({
@@ -14,9 +15,10 @@ const InputField = ({
   placeholder,
   registerReq,
   error,
+  width
 }: InputFieldProps) => {
   return (
-    <div className={styles.inputForm}>
+    <div className={styles.inputForm} style={{width:width}}>
       <div className={styles.inputContainer}>
         <input
           type={type}
