@@ -16,21 +16,17 @@ import RoutingLayout from "@components/routingLayout/RoutingLayout";
 
 const App = () => {
   return (
-    <div>
-      <BrowserRouter>
-        <Routes>
-          <Route path="/login" element={<LoginContainer />} />
-          <Route path="/" element={<RoutingLayout />}>
-            <Route path="mainPage" element={<MainPage />} />
-            <Route path="profile/:tab" element={<ProfilePageRouting />} />
-            <Route path="product/:id" element={<ProductContainer />} />
-            <Route path="cart" element={<CartContainer />} />
-            <Route path="cart/checkout" element={<CheckoutContainer />} />
-            <Route path="*" element={<Navigate to="/mainPage" replace />} />
-          </Route>
-        </Routes>
-      </BrowserRouter>
-    </div>
+    <Routes>
+      <Route path="/login" element={<LoginContainer />} />
+      <Route path="/" element={<RoutingLayout />}>
+        <Route path="mainPage" element={<MainPage />} />
+        <Route path="profile/:tab" element={<ProfilePageRouting />} />
+        <Route path="product/:id" element={<ProductContainer />} />
+        <Route path="cart" element={<CartContainer />} />
+        <Route path="cart/checkout" element={<CheckoutContainer />} />
+        <Route path="*" element={<Navigate to="/mainPage" replace />} />
+      </Route>
+    </Routes>
   );
 };
 

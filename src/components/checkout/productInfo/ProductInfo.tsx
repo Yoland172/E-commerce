@@ -1,0 +1,54 @@
+import React from "react";
+import styles from "./ProductInfo.module.scss";
+import Divider from "@components/ui/divider/Divider";
+import { CartItem } from "@lib/types/Types";
+import ProductItem from "./ProductItem/ProductItem";
+
+interface PriceInfoProps {
+  products: CartItem[];
+  discountedTotal: number;
+}
+
+const ProductInfo = ({ products, discountedTotal }: PriceInfoProps) => {
+  return (
+    <div className={styles.cartInfoContainer}>
+      <div className={styles.productContianer}>
+        {products.length > 0 &&
+          products.map((el, index) => {
+            return (
+              <>
+                <ProductItem
+                  img={el.thumbnail}
+                  title={el.title}
+                  quantity={el.quantity}
+                />
+                {index !== products.length - 1 && <Divider />}
+              </>
+            );
+          })}
+      </div>
+      <Divider />
+      <div className={styles.priceInfoContainer}>
+        <div className={styles.priceInfo}>
+          <h2>Price for products</h2>
+          <h3>{discountedTotal}</h3>
+        </div>
+        <div className={styles.priceInfo}>
+          <h2>Shipining</h2>
+          <h3>--</h3>
+        </div>
+      </div>
+      <Divider />
+      <div className={styles.submitContainer}>
+        <div className={styles.priceInfo}>
+          <h2>Total</h2>
+          <h3>{discountedTotal}</h3>
+        </div>
+
+        <button className={styles.submitButton}>Order</button>
+      </div>
+    </div>
+  );
+};
+
+export default ProductInfo;
