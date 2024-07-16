@@ -1,17 +1,12 @@
-import React from "react";
+import React, { ChangeEvent, useEffect } from "react";
 import styles from "./Checkout.module.scss";
 import { useForm } from "react-hook-form";
-import InputField from "@components/ui/inputField/InputField";
-import PayPalIcon from "@components/ui/icon/paymentMethods/PayPalIcon";
-import GooglePayIcon from "@components/ui/icon/paymentMethods/GooglePayIcon";
-import ApplePayIcon from "@components/ui/icon/paymentMethods/ApplePayIcon";
-import classNames from "classnames";
-import Divider from "@components/ui/divider/Divider";
 import { CartItem } from "@lib/types/Types";
 import ProductInfo from "./productInfo/ProductInfo";
 import UserInfoForm from "./orderForms/UserInfoForm";
-import ShippiningForm from "./orderForms/shippiningForm";
-import PaymentForm from "./orderForms/paymentForm";
+import ShippiningForm from "./orderForms/ShippiningForm";
+import PaymentForm from "./orderForms/PaymentForm";
+import JSONFile from "../../assets/CountryCodesWithFlagsSVG.json";
 
 interface CheckoutProps {
   products: CartItem[];
@@ -21,7 +16,7 @@ interface CheckoutProps {
 interface CheckoutInputs {
   firstName?: string;
   lastName?: string;
-  countyPhoneCode?: string;
+  countryCode?: string;
   phoneNumber?: string;
   email?: string;
   country: string;
@@ -29,29 +24,61 @@ interface CheckoutInputs {
   street: string;
   houseNum: string;
   zipCode: string;
+  cardNum: string;
+  expDate: string;
+  CVV?: string;
 }
 
 const Checkout = ({ products, discountedTotal }: CheckoutProps) => {
   const {
     register,
     handleSubmit,
+    control,
+    watch,
+    setValue,
     formState: { errors },
-  } = useForm<CheckoutInputs>({
-    defaultValues: {
-      countyPhoneCode: "+",
-    },
-  });
+  } = useForm<CheckoutInputs>();
+  const cardNumber = watch("cardNum");
+
+  const handleCardInputChange = (event: ChangeEvent<HTMLInputElement>) => {
+    let { value } = event.target;
+    value = value
+      .replace(/\s+/g, "")
+      .replace(/(.{4})/g, "$1 ")
+      .trim();
+    setValue("cardNum", value, { shouldValidate: true });
+  };
+
+  const handleExpDataInputChange = (event: ChangeEvent<HTMLInputElement>) => {
+    const { value } = event.target;
+    const newValue = value.replace(/[^0-9]/g, "");
+    if (newValue.length === 2 && value.length === 2) {
+      setValue("expDate", `${newValue}/`, { shouldValidate: true });
+    } else if (newValue.length <= 2) {
+      setValue("expDate", newValue, { shouldValidate: true });
+    } else {
+      setValue("expDate", value, { shouldValidate: true });
+    }
+  };
+
+  const onSubmit = (data: any) => {
+    console.log(data); //noot working
+  };
 
   return (
-    <div className={styles.container}>
-      <form className={styles.infoContainer}>
-        <h2 className={styles.title}>Your order is almost ready</h2>
-        <UserInfoForm register={register} errors={errors} />
+    <form className={styles.container} onSubmit={handleSubmit(onSubmit)}>
+      <div className={styles.infoContainer}>
+        <UserInfoForm register={register} errors={errors} control={control} />
         <ShippiningForm register={register} errors={errors} />
-        <PaymentForm register={register} errors={errors} />
-      </form>
+        <PaymentForm
+          register={register}
+          errors={errors}
+          expDataOnChangeAction={handleExpDataInputChange}
+          cardNumOnChangeAction={handleCardInputChange}
+        />
+      </div>
       <ProductInfo products={products} discountedTotal={discountedTotal} />
-    </div>
+    </form>
   );
 };
 

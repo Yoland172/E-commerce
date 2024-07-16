@@ -19,17 +19,14 @@
     .priceInfoContainer {
       @include flexbox(column, start, start);
       row-gap: 10px;
-      padding: 20px 0px;
+      padding: 20px 10px;
     }
 
     .submitContainer {
-      padding-top: 10px;
+      padding: 12px 10px;
       .submitButton {
         margin-top: 10px;
         @include styledButton(100%, 30px);
-        border-bottom: none;
-        border-left: none;
-        border-right: none;
         border-radius: 0;
       }
     }
@@ -37,7 +34,6 @@
     .priceInfo {
       @include flexbox(row, space-between, center);
       width: 100%;
-      padding: 0px 10px;
       & > h2 {
         font-size: 1.2em;
         font-weight: 300;

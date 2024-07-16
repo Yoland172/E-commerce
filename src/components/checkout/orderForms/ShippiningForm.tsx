@@ -1,10 +1,11 @@
 import InputField from "@components/ui/inputField/InputField";
 import React from "react";
 import styles from "./OrderForms.module.scss";
+import { FieldErrors } from "react-hook-form";
 
 interface ShippiningFormProps {
   register: any;
-  errors: any;
+  errors: FieldErrors;
 }
 
 const ShippiningForm = ({ register, errors }: ShippiningFormProps) => {
@@ -45,7 +46,7 @@ const ShippiningForm = ({ register, errors }: ShippiningFormProps) => {
         <div>
           <h2>ZIP code</h2>
           <InputField
-            type="text"
+            type="number"
             placeholder=""
             registerReq={{
               ...register("zipCode", {
@@ -54,6 +55,7 @@ const ShippiningForm = ({ register, errors }: ShippiningFormProps) => {
               }),
             }}
             width="70px"
+            maxLength={9}
             error={errors.zipCode}
           />
         </div>

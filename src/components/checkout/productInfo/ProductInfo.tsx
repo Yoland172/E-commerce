@@ -3,6 +3,7 @@ import styles from "./ProductInfo.module.scss";
 import Divider from "@components/ui/divider/Divider";
 import { CartItem } from "@lib/types/Types";
 import ProductItem from "./ProductItem/ProductItem";
+import { Link } from "react-router-dom";
 
 interface PriceInfoProps {
   products: CartItem[];
@@ -17,12 +18,16 @@ const ProductInfo = ({ products, discountedTotal }: PriceInfoProps) => {
           products.map((el, index) => {
             return (
               <>
+              <Link to={`/product/${el.id}`}>
                 <ProductItem
                   img={el.thumbnail}
                   title={el.title}
                   quantity={el.quantity}
+                  key={el.id}
                 />
+                </Link>
                 {index !== products.length - 1 && <Divider />}
+                
               </>
             );
           })}
@@ -44,8 +49,7 @@ const ProductInfo = ({ products, discountedTotal }: PriceInfoProps) => {
           <h2>Total</h2>
           <h3>{discountedTotal}</h3>
         </div>
-
-        <button className={styles.submitButton}>Order</button>
+        <button className={styles.submitButton} type="submit">Order</button>
       </div>
     </div>
   );

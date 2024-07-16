@@ -28,6 +28,10 @@
   }
 }
 
+.userInfoContainer {
+  margin-top: 0px;
+}
+
 .paymentInfo {
   .expressPaymentContainer {
     @include flexbox(row, center, start);

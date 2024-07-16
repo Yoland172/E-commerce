@@ -1,0 +1,27 @@
+@import "../../../../styles/Variables.scss";
+
+.container {
+  width: fit-content;
+  display: flex;
+  align-items: center;
+  background-color: $light-white;
+
+  & > img {
+    width: 19px;
+    height: auto;
+    margin-right: 4px;
+  }
+
+  & > h3 {
+    font-size: 1em;
+    font-weight: 300;
+  }
+}
+
+.wrapper {
+  border-bottom: 1px solid $grey;
+
+  &.error {
+    border-bottom: 1px solid $red;
+  }
+}

@@ -1,12 +1,15 @@
 import React from "react";
 import styles from "./OrderForms.module.scss";
 import InputField from "@components/ui/inputField/InputField";
+import CountryNumberSelector from "./CountryNumberSelector/CountryNumberSelector";
+import { FieldErrors } from "react-hook-form";
 interface UserInfoFormProps {
   register: any;
-  errors: any;
+  errors: FieldErrors;
+  control: any;
 }
 
-const UserInfoForm = ({ register, errors }: UserInfoFormProps) => {
+const UserInfoForm = ({ register, errors, control }: UserInfoFormProps) => {
   return (
     <div className={styles.userInfoContainer}>
       <h2>First Step. Enter infromation about yourself</h2>
@@ -59,19 +62,7 @@ const UserInfoForm = ({ register, errors }: UserInfoFormProps) => {
       <div>
         <h2>Phone Number</h2>
         <div className={styles.combineContainer}>
-          <InputField
-            type="text"
-            placeholder=""
-            registerReq={{
-              ...register("countyPhoneCode", {
-                required: "Code is required",
-                minLength: 3,
-                maxLength: 4,
-              }),
-            }}
-            error={errors.countyPhoneCode}
-            width="1vw"
-          />
+          <CountryNumberSelector error={errors.countryCode} control={control} />
           <InputField
             type="text"
             placeholder=""
