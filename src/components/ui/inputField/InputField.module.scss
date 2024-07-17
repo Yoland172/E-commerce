@@ -23,6 +23,10 @@
           transform: scaleX(1);
         }
       }
+
+      &:disabled {
+        cursor:not-allowed;
+      }
     }
     .line {
       width: 100%;

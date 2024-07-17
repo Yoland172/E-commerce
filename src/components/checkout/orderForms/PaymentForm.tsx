@@ -1,4 +1,4 @@
-import React, { ChangeEvent } from "react";
+import React, { ChangeEvent, useState } from "react";
 import styles from "./OrderForms.module.scss";
 import classNames from "classnames";
 import PayPalIcon from "@components/ui/icon/paymentMethods/PayPalIcon";
@@ -21,22 +21,30 @@ const PaymentForm = ({
   expDataOnChangeAction,
   cardNumOnChangeAction,
 }: PaymentFormProps) => {
+  const [disabled, setDisabled] = useState<boolean>(false);
+
   return (
     <div className={styles.paymentInfo}>
       <h2>Third Step. Pay for the order</h2>
       <div className={styles.expressPaymentContainer}>
         <button
           className={classNames(styles.paymentButton, styles.paypalTheme)}
+          type="button"
+          onClick={() => {
+            setDisabled(true);
+          }}
         >
           <PayPalIcon width={50} height={20} />
         </button>
         <button
           className={classNames(styles.paymentButton, styles.googlePayTheme)}
+          type="button"
         >
           <GooglePayIcon width={50} height={20} />
         </button>
         <button
           className={classNames(styles.paymentButton, styles.applePayTheme)}
+          type="button"
         >
           <ApplePayIcon width={50} height={20} />
         </button>
@@ -53,13 +61,15 @@ const PaymentForm = ({
           placeholder="xxxx xxxx xxxx xxxx"
           registerReq={{
             ...register("cardNum", {
-              required: "house is required",
+              required: "Required field",
               minLength: 19,
               maxLength: 19,
+              disabled: disabled,
             }),
           }}
+          disabled={disabled}
           width="11vw"
-          error={errors.zipCode}
+          error={errors.cardNum}
           maxLength={19}
           action={cardNumOnChangeAction}
         />
@@ -74,10 +84,12 @@ const PaymentForm = ({
               ...register("expDate", {
                 required: "street is required",
                 minLength: 3,
+                disabled: disabled,
               }),
             }}
+            disabled={disabled}
             action={expDataOnChangeAction}
-            error={errors.street}
+            error={errors.expDate}
             maxLength={5}
           />
         </div>
@@ -91,10 +103,12 @@ const PaymentForm = ({
                 required: "house is required",
                 minLength: 3,
                 maxLength: 3,
+                disabled: disabled,
               }),
             }}
+            disabled={disabled}
             width="30px"
-            error={errors.zipCode}
+            error={errors.CVV}
             maxLength={3}
           />
         </div>

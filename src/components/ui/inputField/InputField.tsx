@@ -8,8 +8,9 @@ interface InputFieldProps {
   registerReq: any;
   error: any;
   width?: string;
-  action?: (event:ChangeEvent<HTMLInputElement>) => void,
-  maxLength?:number
+  action?: (event: ChangeEvent<HTMLInputElement>) => void;
+  maxLength?: number;
+  disabled?: boolean;
 }
 
 const InputField = ({
@@ -19,10 +20,11 @@ const InputField = ({
   error,
   width,
   action,
-  maxLength
+  maxLength,
+  disabled,
 }: InputFieldProps) => {
   return (
-    <div className={styles.inputForm} style={{width:width}}>
+    <div className={styles.inputForm} style={{ width: width }}>
       <div className={styles.inputContainer}>
         <input
           type={type}
@@ -31,6 +33,7 @@ const InputField = ({
           {...registerReq}
           maxlength={maxLength}
           onChange={action}
+          disabled={disabled}
         />
         <div className={classNames(styles.line, error && styles.error)}></div>
       </div>

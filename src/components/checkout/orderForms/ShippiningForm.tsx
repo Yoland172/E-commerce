@@ -19,7 +19,7 @@ const ShippiningForm = ({ register, errors }: ShippiningFormProps) => {
           placeholder=""
           registerReq={{
             ...register("country", {
-              required: "Country name is required",
+              required: "Required field",
               minLength: 3,
             }),
           }}
@@ -35,7 +35,7 @@ const ShippiningForm = ({ register, errors }: ShippiningFormProps) => {
             placeholder=""
             registerReq={{
               ...register("city", {
-                required: "City is required",
+                required: "Required field",
                 minLength: 3,
               }),
             }}
@@ -50,7 +50,7 @@ const ShippiningForm = ({ register, errors }: ShippiningFormProps) => {
             placeholder=""
             registerReq={{
               ...register("zipCode", {
-                required: "Zip code is required",
+                required: "Required",
                 minLength: 3,
               }),
             }}
@@ -68,7 +68,7 @@ const ShippiningForm = ({ register, errors }: ShippiningFormProps) => {
             placeholder=""
             registerReq={{
               ...register("street", {
-                required: "street is required",
+                required: "Required field",
                 minLength: 3,
               }),
             }}
@@ -83,7 +83,7 @@ const ShippiningForm = ({ register, errors }: ShippiningFormProps) => {
             placeholder=""
             registerReq={{
               ...register("houseNum", {
-                required: "house is required",
+                required: "Required",
                 minLength: 3,
               }),
             }}
