@@ -27,6 +27,7 @@ interface CheckoutInputs {
   cardNum: string;
   expDate: string;
   CVV?: string;
+  paymentMethod:string;
 }
 
 const Checkout = ({ products, discountedTotal }: CheckoutProps) => {
@@ -34,11 +35,13 @@ const Checkout = ({ products, discountedTotal }: CheckoutProps) => {
     register,
     handleSubmit,
     control,
-    watch,
     setValue,
     formState: { errors },
-  } = useForm<CheckoutInputs>();
-  const cardNumber = watch("cardNum");
+  } = useForm<CheckoutInputs>({
+    defaultValues:{
+      paymentMethod:"creditCard"
+    }
+  });
 
   const handleCardInputChange = (event: ChangeEvent<HTMLInputElement>) => {
     let { value } = event.target;
@@ -61,6 +64,10 @@ const Checkout = ({ products, discountedTotal }: CheckoutProps) => {
     }
   };
 
+  const setPaymentMethod = (method:string) => {
+    setValue("paymentMethod", method)
+  }
+
   const onSubmit = (data: any) => {
     console.log(data); //noot working
   };
@@ -75,6 +82,7 @@ const Checkout = ({ products, discountedTotal }: CheckoutProps) => {
           errors={errors}
           expDataOnChangeAction={handleExpDataInputChange}
           cardNumOnChangeAction={handleCardInputChange}
+          expressPaymentAction={(method:string) => {setPaymentMethod(method)}}
         />
       </div>
       <ProductInfo products={products} discountedTotal={discountedTotal} />

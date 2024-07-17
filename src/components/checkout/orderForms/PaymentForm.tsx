@@ -14,6 +14,7 @@ interface PaymentFormProps {
   errors: FieldErrors;
   expDataOnChangeAction: (event: ChangeEvent<HTMLInputElement>) => void;
   cardNumOnChangeAction: (event: ChangeEvent<HTMLInputElement>) => void;
+  expressPaymentAction: (method: string) => void;
 }
 
 const PaymentForm = ({
@@ -21,6 +22,7 @@ const PaymentForm = ({
   errors,
   expDataOnChangeAction,
   cardNumOnChangeAction,
+  expressPaymentAction,
 }: PaymentFormProps) => {
   const [disabled, setDisabled] = useState<boolean>(false);
   const [loadingPaymentMethod, setLoadingPaymentMethod] = useState<
@@ -44,6 +46,7 @@ const PaymentForm = ({
           onClick={() => {
             setDisabled(true);
             handlePaymentClick("payPal");
+            expressPaymentAction("PayPal")
           }}
           disabled={disabled}
         >
@@ -59,6 +62,7 @@ const PaymentForm = ({
           onClick={() => {
             setDisabled(true);
             handlePaymentClick("googlePay");
+            expressPaymentAction("GooglePay")
           }}
           disabled={disabled}
         >
@@ -74,6 +78,7 @@ const PaymentForm = ({
           onClick={() => {
             setDisabled(true);
             handlePaymentClick("applePay");
+            expressPaymentAction("ApplePay")
           }}
           disabled={disabled}
         >
