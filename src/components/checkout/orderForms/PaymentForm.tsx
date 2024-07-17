@@ -7,6 +7,7 @@ import ApplePayIcon from "@components/ui/icon/paymentMethods/ApplePayIcon";
 import Divider from "@components/ui/divider/Divider";
 import InputField from "@components/ui/inputField/InputField";
 import { FieldErrors } from "react-hook-form";
+import Loader from "@components/ui/loader/Loader";
 
 interface PaymentFormProps {
   register: any;
@@ -22,6 +23,16 @@ const PaymentForm = ({
   cardNumOnChangeAction,
 }: PaymentFormProps) => {
   const [disabled, setDisabled] = useState<boolean>(false);
+  const [loadingPaymentMethod, setLoadingPaymentMethod] = useState<
+    string | null
+  >(null);
+
+  const handlePaymentClick = (method: string) => {
+    setLoadingPaymentMethod(method);
+    setTimeout(() => {
+      setLoadingPaymentMethod(null);
+    }, 3000);
+  };
 
   return (
     <div className={styles.paymentInfo}>
@@ -32,21 +43,45 @@ const PaymentForm = ({
           type="button"
           onClick={() => {
             setDisabled(true);
+            handlePaymentClick("payPal");
           }}
+          disabled={disabled}
         >
-          <PayPalIcon width={50} height={20} />
+          {loadingPaymentMethod === "payPal" ? (
+            <Loader />
+          ) : (
+            <PayPalIcon width={50} height={20} />
+          )}
         </button>
         <button
           className={classNames(styles.paymentButton, styles.googlePayTheme)}
           type="button"
+          onClick={() => {
+            setDisabled(true);
+            handlePaymentClick("googlePay");
+          }}
+          disabled={disabled}
         >
-          <GooglePayIcon width={50} height={20} />
+          {loadingPaymentMethod === "googlePay" ? (
+            <Loader />
+          ) : (
+            <GooglePayIcon width={50} height={20} />
+          )}
         </button>
         <button
           className={classNames(styles.paymentButton, styles.applePayTheme)}
           type="button"
+          onClick={() => {
+            setDisabled(true);
+            handlePaymentClick("applePay");
+          }}
+          disabled={disabled}
         >
-          <ApplePayIcon width={50} height={20} />
+          {loadingPaymentMethod === "applePay" ? (
+            <Loader />
+          ) : (
+            <ApplePayIcon width={50} height={20} />
+          )}
         </button>
       </div>
       <Divider />

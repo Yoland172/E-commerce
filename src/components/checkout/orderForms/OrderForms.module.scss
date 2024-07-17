@@ -40,7 +40,7 @@
 
     .paymentButton {
       @include flexbox(row, center, center);
-      width: auto;
+      width: 9vw;
       height: auto;
       padding: 8px 50px;
       border-radius: 4px;
