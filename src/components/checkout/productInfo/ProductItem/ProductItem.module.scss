@@ -9,6 +9,11 @@
   grid-template-rows: 1fr;
   grid-column-gap: 20px;
   align-items: center;
+  transition: all 250ms;
+  &:hover{
+    background-color: $white;
+  }
+
   & > img {
     width: 10vh;
     grid-area: 1 / 1 / 2 / 2;

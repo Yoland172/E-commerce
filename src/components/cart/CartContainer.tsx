@@ -6,8 +6,6 @@ import {
   deleteProductFromCart,
   getUserCartThunk,
   putChangedQuantityProductThunk,
-  setCart,
-  setProductsQuantityAndId,
 } from "@store/sharedSlice/CartSlice";
 import Cart from "./Cart";
 
@@ -16,7 +14,6 @@ const CartContainer = () => {
   const { id: userId, isFetching: isFetchingP } = useAppSelector(
     (state) => state.profileState
   );
-  const cartfromStorage = getUserCartFromStorage();
   const {
     id,
     products,
@@ -28,12 +25,7 @@ const CartContainer = () => {
   } = useAppSelector((state) => state.cartState);
 
   useEffect(() => {
-    if (cartfromStorage == null && userId != null) {
       dispatch(getUserCartThunk(userId));
-    } else  {
-      dispatch(setCart(cartfromStorage.res));
-      dispatch(setProductsQuantityAndId(cartfromStorage.productsQuantityAndId));
-    }
   }, []);
 
   return (
