@@ -1,27 +1,16 @@
 import InputField from '@components/ui/inputField/InputField';
 import React from 'react';
 import styles from './OrderForms.module.scss';
-import { FieldError, FieldErrors } from 'react-hook-form';
+import { FieldErrors } from 'react-hook-form';
+import {InputFieldItem} from './Types';
 
 interface ShippiningFormProps {
     register: any;
     errors: FieldErrors;
 }
 
-interface InputFiledItem {
-    containerClassName: any;
-    title: string;
-    inputProps: {
-        type: string;
-        placeholder: string;
-        registerReq: any;
-        error: any;
-        maxLength?: number;
-    };
-}
-
 const ShippiningForm = ({ register, errors }: ShippiningFormProps) => {
-    const inputFields: InputFiledItem[] = [
+    const inputFields: InputFieldItem[] = [
         {
             containerClassName: styles.countryForm,
             title: 'Country',

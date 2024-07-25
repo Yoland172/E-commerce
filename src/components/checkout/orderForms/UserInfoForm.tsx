@@ -3,26 +3,15 @@ import styles from './OrderForms.module.scss';
 import InputField from '@components/ui/inputField/InputField';
 import CountryNumberSelector from './CountryNumberSelector/CountryNumberSelector';
 import { FieldErrors } from 'react-hook-form';
+import { InputFieldItem } from './Types';
 interface UserInfoFormProps {
     register: any;
     errors: FieldErrors;
     control: any;
 }
 
-interface InputFiledItem {
-    containerClassName: any;
-    title: string;
-    inputProps: {
-        type: string;
-        placeholder: string;
-        registerReq: any;
-        error: any;
-        maxLength?: number;
-    };
-}
-
 const UserInfoForm = ({ register, errors, control }: UserInfoFormProps) => {
-    const inputFields: InputFiledItem[] = [
+    const inputFields: InputFieldItem[] = [
         {
             containerClassName: styles.fNameForm,
             title: 'First Name',

@@ -1,14 +1,9 @@
 import React, { ChangeEvent, useState } from 'react';
 import styles from './OrderForms.module.scss';
-import classNames from 'classnames';
-import PayPalIcon from '@components/ui/icon/paymentMethods/PayPalIcon';
-import GooglePayIcon from '@components/ui/icon/paymentMethods/GooglePayIcon';
-import ApplePayIcon from '@components/ui/icon/paymentMethods/ApplePayIcon';
-import Divider from '@components/ui/divider/Divider';
 import InputField from '@components/ui/inputField/InputField';
 import { FieldErrors } from 'react-hook-form';
-import Loader from '@components/ui/loader/Loader';
 import { PaymentsMethod } from '@lib/types/Types';
+import { InputFieldItem } from './Types';
 
 interface PaymentFormProps {
     register: any;
@@ -18,20 +13,6 @@ interface PaymentFormProps {
     paymentsMethod: PaymentsMethod;
 }
 
-interface InputFiledItem {
-    containerClassName: any;
-    title: string;
-    inputProps: {
-        type: string;
-        placeholder: string;
-        registerReq: any;
-        error: any;
-        maxLength?: number;
-        disabled?:boolean
-        action?:(event: ChangeEvent<HTMLInputElement>) => void
-    };
-}
-
 const PaymentForm = ({
     register,
     errors,
@@ -39,7 +20,7 @@ const PaymentForm = ({
     cardNumOnChangeAction,
     paymentsMethod,
 }: PaymentFormProps) => {
-    const inputFields: InputFiledItem[] = [
+    const inputFields: InputFieldItem[] = [
         {
             containerClassName: styles.cardNumberForm,
             title: 'Card Number',
@@ -54,11 +35,10 @@ const PaymentForm = ({
                         disabled: paymentsMethod !== PaymentsMethod.CreditCard,
                     }),
                 },
-                disabled:paymentsMethod !== PaymentsMethod.CreditCard,
+                disabled: paymentsMethod !== PaymentsMethod.CreditCard,
                 error: errors.cardNum,
-                maxLength:19,
-                action:cardNumOnChangeAction
-
+                maxLength: 19,
+                action: cardNumOnChangeAction,
             },
         },
         {
@@ -81,7 +61,7 @@ const PaymentForm = ({
                                     if (
                                         month <= 12 &&
                                         (forematedYear > currentYear ||
-                                        (forematedYear === currentYear && month >= currentMonth))
+                                            (forematedYear === currentYear && month >= currentMonth))
                                     ) {
                                         return true;
                                     } else {
@@ -95,10 +75,10 @@ const PaymentForm = ({
                         disabled: paymentsMethod !== PaymentsMethod.CreditCard,
                     }),
                 },
-                disabled:paymentsMethod !== PaymentsMethod.CreditCard,
-                error:errors.expDate,
-                maxLength:5,
-                action:expDataOnChangeAction
+                disabled: paymentsMethod !== PaymentsMethod.CreditCard,
+                error: errors.expDate,
+                maxLength: 5,
+                action: expDataOnChangeAction,
             },
         },
         {
@@ -107,7 +87,7 @@ const PaymentForm = ({
             inputProps: {
                 type: 'password',
                 placeholder: '···',
-                registerReq:{
+                registerReq: {
                     ...register('CVV', {
                         required: 'Required',
                         minLength: 3,
@@ -115,32 +95,32 @@ const PaymentForm = ({
                         disabled: paymentsMethod !== PaymentsMethod.CreditCard,
                     }),
                 },
-                disabled:paymentsMethod !== PaymentsMethod.CreditCard,
-                error:errors.CVV,
-                maxLength:3
+                disabled: paymentsMethod !== PaymentsMethod.CreditCard,
+                error: errors.CVV,
+                maxLength: 3,
             },
         },
-
-    ]
+    ];
     return (
         <div className={styles.paymentInfo}>
             <h2>Third Step. Pay for the order</h2>
-            
-            <div className={styles.paymentFormContainer}>
-                {inputFields.map(el => {
-                    return <div className={el.containerClassName}>
-                        <h2>{el.title}</h2>
-                        <InputField
-                            type={el.inputProps.type}
-                            placeholder={el.inputProps.placeholder}
-                            registerReq={el.inputProps.registerReq}
-                            disabled={el.inputProps.disabled}
-                            error={el.inputProps.error}
-                            maxLength={el.inputProps.maxLength}
-                            action={el.inputProps.action}
-                        />
 
-                    </div>
+            <div className={styles.paymentFormContainer}>
+                {inputFields.map((el) => {
+                    return (
+                        <div className={el.containerClassName}>
+                            <h2>{el.title}</h2>
+                            <InputField
+                                type={el.inputProps.type}
+                                placeholder={el.inputProps.placeholder}
+                                registerReq={el.inputProps.registerReq}
+                                disabled={el.inputProps.disabled}
+                                error={el.inputProps.error}
+                                maxLength={el.inputProps.maxLength}
+                                action={el.inputProps.action}
+                            />
+                        </div>
+                    );
                 })}
             </div>
         </div>
