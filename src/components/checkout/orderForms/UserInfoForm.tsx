@@ -14,68 +14,70 @@ const UserInfoForm = ({ register, errors, control }: UserInfoFormProps) => {
     <div className={styles.userInfoContainer}>
       <h2>First Step. Enter infromation about yourself</h2>
       <div>
-        <h2>First Name</h2>
-        <InputField
-          type="text"
-          placeholder=""
-          registerReq={{
-            ...register("firstName", {
-              required: "First name is required",
-              minLength: 3,
-            }),
-          }}
-          error={errors.firstName}
-        />
-      </div>
-      <div>
-        <h2>Last Name</h2>
-        <InputField
-          type="text"
-          placeholder=""
-          registerReq={{
-            ...register("lastName", {
-              required: "Last name is required",
-              minLength: 3,
-            }),
-          }}
-          error={errors.lastName}
-        />
-      </div>
-      <div>
-        <h2>Email</h2>
-        <InputField
-          type="text"
-          placeholder=""
-          registerReq={{
-            ...register("email", {
-              required: "Email is required",
-              pattern: {
-                value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-                message: "invalid email address",
-              },
-              minLength: 3,
-            }),
-          }}
-          error={errors.email}
-        />
-      </div>
-      <div>
-        <h2>Phone Number</h2>
-        <div className={styles.combineContainer}>
-          <CountryNumberSelector error={errors.countryCode} control={control} />
+        <div>
+          <h2>First Name</h2>
           <InputField
             type="text"
             placeholder=""
             registerReq={{
-              ...register("phoneNumber", {
-                required: "Number is required",
-                minLength: 9,
+              ...register("firstName", {
+                required: "First name is required",
+                minLength: 3,
               }),
             }}
-            width="12vw"
-            error={errors.phoneNumber}
+            error={errors.firstName}
           />
         </div>
+        <div>
+          <h2>Last Name</h2>
+          <InputField
+            type="text"
+            placeholder=""
+            registerReq={{
+              ...register("lastName", {
+                required: "Last name is required",
+                minLength: 3,
+              }),
+            }}
+            error={errors.lastName}
+          />
+        </div>
+        <div>
+          <h2>Email</h2>
+          <InputField
+            type="text"
+            placeholder=""
+            registerReq={{
+              ...register("email", {
+                required: "Email is required",
+                pattern: {
+                  value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                  message: "invalid email address",
+                },
+                minLength: 3,
+              }),
+            }}
+            error={errors.email}
+          />
+        </div>
+          <h2>Phone Number</h2>
+          <div className={styles.phoneFormContainer}>
+            <CountryNumberSelector
+              error={errors.countryCode}
+              control={control}
+            />
+            <InputField
+              type="text"
+              placeholder=""
+              registerReq={{
+                ...register("phoneNumber", {
+                  required: "Number is required",
+                  minLength: 9,
+                }),
+              }}
+              error={errors.phoneNumber}
+            />
+          </div>
       </div>
     </div>
   );

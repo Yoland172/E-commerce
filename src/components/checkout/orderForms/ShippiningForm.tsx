@@ -12,23 +12,22 @@ const ShippiningForm = ({ register, errors }: ShippiningFormProps) => {
   return (
     <div className={styles.adressInfo}>
       <h2>Second Step. Enter shipping information</h2>
-      <div>
-        <h2>Country</h2>
-        <InputField
-          type="text"
-          placeholder=""
-          registerReq={{
-            ...register("country", {
-              required: "Required field",
-              minLength: 3,
-            }),
-          }}
-          width="10vw"
-          error={errors.country}
-        />
-      </div>
-      <div className={styles.combineContainer}>
-        <div>
+      <div className={styles.adressFormContainer}>
+        <div className={styles.countryForm}>
+          <h2>Country</h2>
+          <InputField
+            type="text"
+            placeholder=""
+            registerReq={{
+              ...register("country", {
+                required: "Required field",
+                minLength: 3,
+              }),
+            }}
+            error={errors.country}
+          />
+        </div>
+        <div className={styles.cityForm}>
           <h2>City</h2>
           <InputField
             type="text"
@@ -40,10 +39,9 @@ const ShippiningForm = ({ register, errors }: ShippiningFormProps) => {
               }),
             }}
             error={errors.city}
-            width="11vw"
           />
         </div>
-        <div>
+        <div className={styles.zipCodeForm}>
           <h2>ZIP code</h2>
           <InputField
             type="number"
@@ -54,14 +52,11 @@ const ShippiningForm = ({ register, errors }: ShippiningFormProps) => {
                 minLength: 3,
               }),
             }}
-            width="70px"
             maxLength={9}
             error={errors.zipCode}
           />
         </div>
-      </div>
-      <div className={styles.combineContainer}>
-        <div>
+        <div className={styles.streetForm}>
           <h2>Street</h2>
           <InputField
             type="text"
@@ -73,10 +68,9 @@ const ShippiningForm = ({ register, errors }: ShippiningFormProps) => {
               }),
             }}
             error={errors.street}
-            width="11vw"
           />
         </div>
-        <div>
+        <div className={styles.houseNumForm}>
           <h2>House</h2>
           <InputField
             type="text"
@@ -87,7 +81,6 @@ const ShippiningForm = ({ register, errors }: ShippiningFormProps) => {
                 minLength: 3,
               }),
             }}
-            width="20px"
             error={errors.zipCode}
           />
         </div>

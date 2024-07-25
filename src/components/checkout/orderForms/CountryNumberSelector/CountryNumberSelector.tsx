@@ -4,6 +4,7 @@ import countryJSON from "../../../../assets/CountryCodesWithFlagsSVG.json";
 import classNames from "classnames";
 import Select, { GroupBase, StylesConfig } from "react-select";
 import { Control, Controller, FieldErrors } from "react-hook-form";
+import { containerCSS } from "react-select/dist/declarations/src/components/containers";
 
 interface CountryNumberSelectorProps {
   error?: any;
@@ -32,9 +33,8 @@ const CountryNumberSelector = ({
 
     control: () => ({
       width: 91,
-      height: 31,
+      height: 30,
       color: "#1f1f1f",
-      marginTop:-5
     }),
     singleValue: (provided: any, state: { isDisabled: boolean }) => {
       const opacity = state.isDisabled ? 0.5 : 1;

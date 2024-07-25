@@ -7,7 +7,6 @@ interface InputFieldProps {
   placeholder: string;
   registerReq: any;
   error: any;
-  width?: string;
   action?: (event: ChangeEvent<HTMLInputElement>) => void;
   maxLength?: number;
   disabled?: boolean;
@@ -18,13 +17,12 @@ const InputField = ({
   placeholder,
   registerReq,
   error,
-  width,
   action,
   maxLength,
   disabled,
 }: InputFieldProps) => {
   return (
-    <div className={styles.inputForm} style={{ width: width }}>
+    <div className={styles.inputForm}>
       <div className={styles.inputContainer}>
         <input
           type={type}
