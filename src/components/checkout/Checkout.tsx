@@ -7,6 +7,8 @@ import UserInfoForm from './orderForms/UserInfoForm';
 import ShippiningForm from './orderForms/ShippiningForm';
 import PaymentForm from './orderForms/PaymentForm';
 import JSONFile from '../../assets/CountryCodesWithFlagsSVG.json';
+import PopUp from '@components/ui/PopUp/PopUp';
+import SuccesPayment from './SuccesPayment/SuccesPayment';
 
 interface CheckoutProps {
     products: CartItem[];
@@ -38,11 +40,21 @@ const Checkout = ({ products, discountedTotal }: CheckoutProps) => {
         formState: { errors },
     } = useForm<CheckoutInputs>({});
 
+    const [activePopUp, setActivePopUp] = useState<boolean>(false);
     const [paymentsMethod, setPaymentsMethod] = useState<PaymentsMethod>(PaymentsMethod.CreditCard);
 
     const handelSetIsExpressPayment = (paymentsMethod:PaymentsMethod) => {
         setPaymentsMethod(paymentsMethod);
         setTimeout(() => setPaymentsMethod(PaymentsMethod.CreditCard), 3000);
+    };
+
+    const onSubmit = (data: any, paymentType: string) => {
+        console.log('sdkdjdsjn');
+        setActivePopUp(true);
+    };
+
+    const onFormSubmit = (paymentType: string) => {
+        handleSubmit((data, e) => onSubmit(data, paymentType))();
     };
 
     //<handel for imputs
@@ -69,14 +81,6 @@ const Checkout = ({ products, discountedTotal }: CheckoutProps) => {
 
 
     //handel for imputs>
-
-    const onSubmit = (data: any, paymentType: string) => {
-        console.log('sdkdjdsjn');
-    };
-
-    const onFormSubmit = (paymentType: string) => {
-        handleSubmit((data, e) => onSubmit(data, paymentType))();
-    };
 
     return (
         <form
@@ -105,6 +109,10 @@ const Checkout = ({ products, discountedTotal }: CheckoutProps) => {
                 setPaymentsMethod={handelSetIsExpressPayment}
                 paymentsMethod={paymentsMethod}
             />
+
+            <PopUp active={activePopUp} setActive={setActivePopUp}>
+                <SuccesPayment closeWindow={()=>{setActivePopUp(false)}}/>
+            </PopUp>
         </form>
     );
 };

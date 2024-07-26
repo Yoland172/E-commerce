@@ -74,17 +74,17 @@ const ShippiningForm = ({ register, errors }: ShippiningFormProps) => {
         },
         {
             containerClassName: styles.houseNumForm,
-            title: 'Street',
+            title: 'House',
             inputProps: {
                 type: 'text',
                 placeholder: '',
                 registerReq: {
-                    ...register('street', {
-                        required: 'Required field',
-                        minLength: 3,
+                    ...register("houseNum", {
+                      required: "Required",
+                      minLength: 3,
                     }),
-                },
-                error: errors.street,
+                  },
+                error: errors.houseNum,
             },
         },
     ];

@@ -25,8 +25,6 @@ const ProductInfo = ({
     setPaymentsMethod,
     paymentsMethod,
 }: PriceInfoProps) => {
-    
-
     return (
         <div className={styles.cartInfoContainer}>
             <div className={styles.productContianer}>

@@ -1,6 +1,4 @@
 import React, { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
-import { getUserCartFromStorage } from "@lib/helpers/CartHelper";
 import { useAppDispatch, useAppSelector } from "@store/index";
 import {
   deleteProductFromCart,
