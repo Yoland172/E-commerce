@@ -1,0 +1,20 @@
+@import '../../../../styles/Mixin.scss';
+@import '../../../../styles/Variables.scss';
+
+.expressPaymentContainer {
+    @include flexbox(row, center, start);
+    column-gap: 10px;
+    padding: 10px;
+
+    .paymentButton {
+        @include flexbox(row, center, center);
+        padding: 8px 40px;
+        border-radius: 4px;
+        border: 1px solid $black;
+        transition: background-color 250ms;
+
+        &:hover {
+            background-color: $white;
+        }
+    }
+}

@@ -9,13 +9,14 @@ import Loader from '@components/ui/loader/Loader';
 import PayPalIcon from '@components/ui/icon/paymentMethods/PayPalIcon';
 import GooglePayIcon from '@components/ui/icon/paymentMethods/GooglePayIcon';
 import ApplePayIcon from '@components/ui/icon/paymentMethods/ApplePayIcon';
+import PaymentButtonGroup from './PaymentButtonGroup/PaymentButtonGroup';
 
 interface PriceInfoProps {
     products: CartItem[];
     discountedTotal: number;
     expressPaymentAction: (paymentType: string) => void;
     paymentsMethod: PaymentsMethod;
-    setPaymentsMethod: (paymentMethod:PaymentsMethod) => void;
+    setPaymentsMethod: (paymentMethod: PaymentsMethod) => void;
 }
 
 const ProductInfo = ({
@@ -69,39 +70,11 @@ const ProductInfo = ({
             <div className={styles.textContainer}>
                 <h2>or buy with</h2>
             </div>
-            <div className={styles.expressPaymentContainer}>
-                <button
-                    className={classNames(styles.paymentButton, styles.paypalTheme)}
-                    value={'payPal'}
-                    onClick={(e) => {
-                        expressPaymentAction(PaymentsMethod.PayPal);
-                        setPaymentsMethod(PaymentsMethod.PayPal);
-                    }}
-                    disabled={paymentsMethod === PaymentsMethod.PayPal}
-                >
-                    {paymentsMethod === PaymentsMethod.PayPal ? <Loader /> : <PayPalIcon width={50} height={20} />}
-                </button>
-                <button
-                    className={classNames(styles.paymentButton, styles.googlePayTheme)}
-                    onClick={(e) => {
-                        expressPaymentAction(PaymentsMethod.GooglePay);
-                        setPaymentsMethod(PaymentsMethod.GooglePay);
-                    }}
-                    disabled={paymentsMethod === PaymentsMethod.GooglePay}
-                >
-                    {paymentsMethod === PaymentsMethod.GooglePay ? <Loader /> : <GooglePayIcon width={50} height={20} />}
-                </button>
-                <button
-                    className={classNames(styles.paymentButton, styles.applePayTheme)}
-                    onClick={(e) => {
-                        expressPaymentAction(PaymentsMethod.ApplePay);
-                        setPaymentsMethod(PaymentsMethod.ApplePay);
-                    }}
-                    disabled={paymentsMethod === PaymentsMethod.ApplePay}
-                >
-                    {paymentsMethod === PaymentsMethod.ApplePay ? <Loader /> : <ApplePayIcon width={50} height={20} />}
-                </button>
-            </div>
+            <PaymentButtonGroup
+                expressPaymentAction={expressPaymentAction}
+                paymentsMethod={paymentsMethod}
+                setPaymentsMethod={setPaymentsMethod}
+            />
         </div>
     );
 };

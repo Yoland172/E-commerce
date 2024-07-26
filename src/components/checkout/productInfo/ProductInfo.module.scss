@@ -1,75 +1,56 @@
-@import "../../../styles/Variables.scss";
-@import "../../../styles/Mixin.scss";
+@import '../../../styles/Variables.scss';
+@import '../../../styles/Mixin.scss';
 
 .cartInfoContainer {
-  position: sticky;
-  top: 40px;
-  width: 30%;
-  height: fit-content;
-  background-color: $light-white;
-  border: 1px solid $black;
-
-  .productContianer {
-    max-height: 40vh;
-    width: 100%;
-    overflow: scroll;
-    overflow-x: hidden;
-    overflow-y: auto
-  }
-
-  .priceInfoContainer {
-    @include flexbox(column, start, start);
-    row-gap: 10px;
-    padding: 20px 10px;
-  }
-
-  .submitContainer {
-    padding: 12px 10px;
-    .submitButton {
-      margin-top: 10px;
-      @include styledButton(100%, 30px);
-      border-radius: 0;
-    }
-  }
-
-  .priceInfo {
-    @include flexbox(row, space-between, center);
-    width: 100%;
-    & > h2 {
-      font-size: 1.2em;
-      font-weight: 300;
-    }
-
-    & > h3 {
-      font-weight: 400;
-    }
-  }
-}
-
-.expressPaymentContainer {
-  @include flexbox(row, center, start);
-  column-gap: 10px;
-  padding:10px;
-
-  .paymentButton {
-    @include flexbox(row, center, center);
-    padding: 8px 40px;
-    border-radius: 4px;
+    position: sticky;
+    top: 40px;
+    width: 30%;
+    height: fit-content;
+    background-color: $light-white;
     border: 1px solid $black;
-    transition: background-color 250ms;
-    
 
-    &:hover{
-      background-color: $white
+    .productContianer {
+        max-height: 40vh;
+        width: 100%;
+        overflow: scroll;
+        overflow-x: hidden;
+        overflow-y: auto;
     }
-  }
+
+    .priceInfoContainer {
+        @include flexbox(column, start, start);
+        row-gap: 10px;
+        padding: 20px 10px;
+    }
+
+    .submitContainer {
+        padding: 12px 10px;
+        .submitButton {
+            margin-top: 10px;
+            @include styledButton(100%, 30px);
+            border-radius: 0;
+        }
+    }
+
+    .priceInfo {
+        @include flexbox(row, space-between, center);
+        width: 100%;
+        & > h2 {
+            font-size: 1.2em;
+            font-weight: 300;
+        }
+
+        & > h3 {
+            font-weight: 400;
+        }
+    }
 }
 
 .textContainer {
-  @include flexbox(row, center, center);
-  & > h2 {
-    font-size: 1em;
-    font-weight: 300;
-    text-transform: uppercase;
-  }
+    @include flexbox(row, center, center);
+    & > h2 {
+        font-size: 1em;
+        font-weight: 300;
+        text-transform: uppercase;
+    }
 }
