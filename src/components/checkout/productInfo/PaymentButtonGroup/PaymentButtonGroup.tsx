@@ -8,12 +8,11 @@ import ApplePayIcon from '@components/ui/icon/paymentMethods/ApplePayIcon';
 import { PaymentsMethod } from '@lib/types/Types';
 
 interface PaymentButtonGroupProps {
-    expressPaymentAction: (paymentType: PaymentsMethod) => void;
     paymentsMethod: PaymentsMethod;
     setPaymentsMethod: (paymentMethod: PaymentsMethod) => void;
 }
 
-const PaymentButtonGroup = ({ expressPaymentAction, paymentsMethod, setPaymentsMethod }: PaymentButtonGroupProps) => {
+const PaymentButtonGroup = ({ paymentsMethod, setPaymentsMethod }: PaymentButtonGroupProps) => {
     const paymentMethods = [
         { method: PaymentsMethod.PayPal, theme: styles.paypalTheme, icon: <PayPalIcon width={50} height={20} /> },
         {
@@ -30,8 +29,7 @@ const PaymentButtonGroup = ({ expressPaymentAction, paymentsMethod, setPaymentsM
                 <button
                     key={method}
                     className={classNames(styles.paymentButton, theme)}
-                    onClick={(e) => {
-                        expressPaymentAction(method);
+                    onClick={() => {
                         setPaymentsMethod(method);
                     }}
                     disabled={paymentsMethod === method}

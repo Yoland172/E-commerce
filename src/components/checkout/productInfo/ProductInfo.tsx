@@ -4,17 +4,11 @@ import Divider from '@components/ui/divider/Divider';
 import { CartItem, PaymentsMethod } from '@lib/types/Types';
 import ProductItem from './ProductItem/ProductItem';
 import { Link } from 'react-router-dom';
-import classNames from 'classnames';
-import Loader from '@components/ui/loader/Loader';
-import PayPalIcon from '@components/ui/icon/paymentMethods/PayPalIcon';
-import GooglePayIcon from '@components/ui/icon/paymentMethods/GooglePayIcon';
-import ApplePayIcon from '@components/ui/icon/paymentMethods/ApplePayIcon';
 import PaymentButtonGroup from './PaymentButtonGroup/PaymentButtonGroup';
 
 interface PriceInfoProps {
     products: CartItem[];
     discountedTotal: number;
-    expressPaymentAction: (paymentType: string) => void;
     paymentsMethod: PaymentsMethod;
     setPaymentsMethod: (paymentMethod: PaymentsMethod) => void;
 }
@@ -22,7 +16,6 @@ interface PriceInfoProps {
 const ProductInfo = ({
     products,
     discountedTotal,
-    expressPaymentAction,
     setPaymentsMethod,
     paymentsMethod,
 }: PriceInfoProps) => {
@@ -71,7 +64,6 @@ const ProductInfo = ({
                 <h2>or buy with</h2>
             </div>
             <PaymentButtonGroup
-                expressPaymentAction={expressPaymentAction}
                 paymentsMethod={paymentsMethod}
                 setPaymentsMethod={setPaymentsMethod}
             />

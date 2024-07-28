@@ -43,19 +43,26 @@ const Checkout = ({ products, discountedTotal }: CheckoutProps) => {
     const [activePopUp, setActivePopUp] = useState<boolean>(false);
     const [paymentsMethod, setPaymentsMethod] = useState<PaymentsMethod>(PaymentsMethod.CreditCard);
 
-    const handelSetIsExpressPayment = (paymentsMethod:PaymentsMethod) => {
+    const handelSetIsExpressPayment = (paymentsMethod: PaymentsMethod) => {
         setPaymentsMethod(paymentsMethod);
         setTimeout(() => setPaymentsMethod(PaymentsMethod.CreditCard), 3000);
     };
 
     const onSubmit = (data: any, paymentType: string) => {
-        console.log('sdkdjdsjn');
+        console.log(data);
         setActivePopUp(true);
+        console.log(paymentType);
     };
 
     const onFormSubmit = (paymentType: string) => {
         handleSubmit((data, e) => onSubmit(data, paymentType))();
     };
+
+    useEffect(() => {
+        if (paymentsMethod != PaymentsMethod.CreditCard) {
+            onFormSubmit(paymentsMethod);
+        }
+    }, [paymentsMethod]);
 
     //<handel for imputs
     const formatCardInput = (event: ChangeEvent<HTMLInputElement>) => {
@@ -78,7 +85,6 @@ const Checkout = ({ products, discountedTotal }: CheckoutProps) => {
             setValue('expDate', value, { shouldValidate: true });
         }
     };
-
 
     //handel for imputs>
 
@@ -105,13 +111,16 @@ const Checkout = ({ products, discountedTotal }: CheckoutProps) => {
             <ProductInfo
                 products={products}
                 discountedTotal={discountedTotal}
-                expressPaymentAction={(paymentType) => onFormSubmit(paymentType)}
                 setPaymentsMethod={handelSetIsExpressPayment}
                 paymentsMethod={paymentsMethod}
             />
 
-            <PopUp active={activePopUp} setActive={setActivePopUp}>
-                <SuccesPayment closeWindow={()=>{setActivePopUp(false)}}/>
+            <PopUp active={activePopUp} setActive={setActivePopUp} closeByClickOutside={false}>
+                <SuccesPayment
+                    closeWindow={() => {
+                        setActivePopUp(false);
+                    }}
+                />
             </PopUp>
         </form>
     );
