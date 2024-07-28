@@ -1,4 +1,4 @@
-import React from "react";
+import React, { ChangeEvent } from "react";
 import classNames from "classnames";
 import styles from "./InputField.module.scss";
 
@@ -7,6 +7,9 @@ interface InputFieldProps {
   placeholder: string;
   registerReq: any;
   error: any;
+  action?: (event: ChangeEvent<HTMLInputElement>) => void;
+  maxLength?: number;
+  disabled?: boolean;
 }
 
 const InputField = ({
@@ -14,6 +17,9 @@ const InputField = ({
   placeholder,
   registerReq,
   error,
+  action,
+  maxLength,
+  disabled,
 }: InputFieldProps) => {
   return (
     <div className={styles.inputForm}>
@@ -23,6 +29,9 @@ const InputField = ({
           placeholder={placeholder}
           className={styles.input}
           {...registerReq}
+          maxlength={maxLength}
+          onChange={action}
+          disabled={disabled}
         />
         <div className={classNames(styles.line, error && styles.error)}></div>
       </div>

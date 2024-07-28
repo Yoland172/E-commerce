@@ -3,9 +3,9 @@ import { Link } from "react-router-dom";
 import { CartItem } from "@lib/types/Types";
 import CancelCross from "@components/ui/icon/CancelCrossIcon";
 import QunatityCounter from "@components/ui/qunatityCounter/QunatityCounter";
-import styles from "./wishlist.module.scss";
+import styles from "./Cart.module.scss";
 
-interface WishlistProp {
+interface CartProps {
   id: number | null;
   products: CartItem[];
   total: number | null;
@@ -17,7 +17,7 @@ interface WishlistProp {
   deleteItem: (productId: number) => void;
 }
 
-const Wishlist = ({
+const Cart = ({
   products,
   totalProducts,
   discountedTotal,
@@ -26,7 +26,7 @@ const Wishlist = ({
   isFetching,
   changeProductQuantity,
   deleteItem,
-}: WishlistProp) => {
+}: CartProps) => {
   return (
     <>
       <div className={styles.main}>
@@ -69,32 +69,6 @@ const Wishlist = ({
                             $
                           </h3>
                         </div>
-                        {/* <div className={styles.quantityContainer}>
-                          <button
-                            onClick={() => {
-                              
-                            }}
-                            disabled={isFetching || el.quantity < 2}
-                          >
-                            <MinimalisticArrowLeft width={25} height={25} />
-                          </button>
-                          <h3 className={styles.productStock}>{el.quantity}</h3>{" "}
-                          <button
-                            onClick={() => {
-                              changeProductQuantity(
-                                extractIdAndQuantity(
-                                  products,
-                                  el.id,
-                                  el.quantity + 1
-                                )
-                              );
-                            }}
-                            disabled={isFetching}
-                          >
-                            <MinimalisticArrowRight width={25} height={25} />
-                          </button>
-                        </div> */}
-
                         <QunatityCounter
                           quantity={el.quantity}
                           isFetching={isFetching}
@@ -116,22 +90,26 @@ const Wishlist = ({
         </div>
       </div>
       <div className={styles.whishlistStatusCantainer}>
-        <h1 className={styles.title}>Order info</h1>
-        <div className={styles.sectionLine}></div>
-        <div className={styles.whishlistStatusInfoContainer}>
-          <div className={styles.whishlistStatusInfo}>
-            <h2>
-              Odrder: <span>{discountedTotal?.toFixed(2)}$</span>
-            </h2>
-            <h2>
-              Total products: <span>{totalProducts}</span>
-            </h2>
-            <h2>
-              Total quantity: <span>{totalQuantity}</span>
-            </h2>
-          </div>
-          <div className={styles.shippining}>
-            <h2>shippining contianer...</h2>
+        <div className={styles.whishlistStatus}>
+          <h1 className={styles.title}>Order info</h1>
+          <div className={styles.sectionLine}></div>
+          <div className={styles.whishlistStatusInfoContainer}>
+            <div className={styles.whishlistStatusInfo}>
+              <h2>
+                Odrder: <span>{discountedTotal?.toFixed(2)}$</span>
+              </h2>
+              <h2>
+                Total products: <span>{totalProducts}</span>
+              </h2>
+              <h2>
+                Total quantity: <span>{totalQuantity}</span>
+              </h2>
+            </div>
+            <Link to={"checkout"}>
+              <button onClick={() => {}} className={styles.orderButton}>
+                To order
+              </button>
+            </Link>
           </div>
         </div>
       </div>
@@ -139,4 +117,4 @@ const Wishlist = ({
   );
 };
 
-export default Wishlist;
+export default Cart;

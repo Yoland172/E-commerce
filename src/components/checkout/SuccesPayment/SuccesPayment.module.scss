@@ -1,0 +1,28 @@
+@import './../../../styles/Variables.scss';
+@import './../../../styles/Mixin.scss';
+
+.main{
+    @include flexbox(column, center,center);
+    padding: 20px;
+    width: 30vw;
+    height: auto;
+
+    &>h1{
+        padding-top: 20px;
+    }
+
+    &>h3{
+        text-align: center;
+        padding-top: 10px;
+    }
+    &>svg{
+        fill: $green;
+        stroke-width: 200;
+    }
+
+    &>button {
+        @include styledButton(auto,auto);
+        margin-top: 30px;
+        padding: 10px 40px;
+    }
+}

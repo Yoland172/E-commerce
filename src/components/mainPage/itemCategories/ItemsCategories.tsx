@@ -14,7 +14,7 @@ const ItemsCategories = ({ items }: ItemsCategoriesProps) => {
       <div className={styles.categoriesContainer}>
         {items &&
           items.map((el) => (
-            <LinkElement link="/" title={el.name} fontSize="1.1em" />
+            <LinkElement link="/" title={el.name} fontSize="1.1em" key={el.slug} />
           ))}
       </div>
     </div>

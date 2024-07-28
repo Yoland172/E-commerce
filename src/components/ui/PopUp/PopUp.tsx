@@ -6,14 +6,15 @@ interface PopUpProps {
   active: boolean;
   setActive: (status: boolean) => void;
   children: ReactNode;
+  closeByClickOutside?: boolean
 }
 
-const PopUp = ({ active, setActive, children }: PopUpProps) => {
+const PopUp = ({ active, setActive, children,closeByClickOutside=true }: PopUpProps) => {
   return (
     <div
-      className={classNames(styles.container, active && styles.active)}
+      className={classNames(styles.container,  active && styles.active)}
       onClick={() => {
-        setActive(false);
+        closeByClickOutside &&  setActive(false);
       }}
     >
       <div

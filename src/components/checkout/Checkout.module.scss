@@ -1,0 +1,14 @@
+@import "../../styles/Variables.scss";
+@import "../../styles/Mixin.scss";
+
+.container {
+  padding: 40px;
+  @include flexbox(row, center, start);
+  column-gap: 80px;
+  .infoContainer {
+    & > h2 {
+      font-size: 1.5em;
+      font-weight: 300;
+    }
+  }
+}

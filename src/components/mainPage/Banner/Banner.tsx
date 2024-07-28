@@ -13,7 +13,7 @@ const Banner = ({ products }: BannerProps) => {
       <h1>TOP PRODUCTS</h1>
       <div className={styles.productsContainer}>
         {products.map((el) => (
-          <BannerItem id={el.id} price={el.price} thumbnail={el.thumbnail} title={el.title}/>
+          <BannerItem id={el.id} price={el.price} thumbnail={el.thumbnail} title={el.title} key={el.id}/>
         ))}
       </div>
     </div>

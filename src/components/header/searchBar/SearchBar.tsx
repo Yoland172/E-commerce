@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import useDebounce from "@lib/hooks/useDebounce";
 import { RecProductItem as RecProductItemType } from "@lib/types/Types";
 import RecProductItem from "./recProductItem/RecProductItem";
@@ -18,6 +18,8 @@ const SearchBar = ({
 }: SearchBarProps) => {
   const [search, setSearch] = useState<string>("");
   const debouncedSerachTerm = useDebounce(search, 500);
+
+  const searchInput = useRef(null);
 
   useEffect(() => {
     if (debouncedSerachTerm) {
@@ -39,6 +41,7 @@ const SearchBar = ({
           onChange={(event) => {
             setSearch(event.target.value);
           }}
+          ref={searchInput}
         />
         {recProducts.length > 0 && (
           <div className={styles.recProductsContainer}>

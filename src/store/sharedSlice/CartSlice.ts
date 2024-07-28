@@ -4,6 +4,7 @@ import { login as loginAPI, putChangedQuantityProduct } from "@api/Request";
 import { CartItem, extractedProductsList } from "@lib/types/Types";
 import {
   deleteItemFromCart,
+  getUserCartFromStorage,
   mergeStockArray,
   setUserCartToStorage,
 } from "@lib/helpers/CartHelper";
@@ -86,22 +87,30 @@ const cartSlice = createSlice({
     // },
   },
 });
-export const getUserCartThunk = (id: number): AppThunk => {
+export const getUserCartThunk = (id: number | null): AppThunk => {
   return async (dispatch, getState) => {
     try {
-      const stockProductsQuantityAndId =
-        getState().cartState.productsQuantityAndId;
-      dispatch(setIsFetching());
-      const res = await putChangedQuantityProduct(
-        id,
-        stockProductsQuantityAndId
-      );
-      if (res) {
-        dispatch(setCart(res));
-        setUserCartToStorage({
-          res,
-          productsQuantityAndId: stockProductsQuantityAndId,
-        });
+      const cartfromStorage = getUserCartFromStorage();
+      if (cartfromStorage == null && id) {
+        const stockProductsQuantityAndId =
+          getState().cartState.productsQuantityAndId;
+        dispatch(setIsFetching());
+        const res = await putChangedQuantityProduct(
+          id,
+          stockProductsQuantityAndId
+        );
+        if (res) {
+          dispatch(setCart(res));
+          setUserCartToStorage({
+            res,
+            productsQuantityAndId: stockProductsQuantityAndId,
+          });
+        }
+      } else {
+        dispatch(setCart(cartfromStorage.res));
+        dispatch(
+          setProductsQuantityAndId(cartfromStorage.productsQuantityAndId)
+        );
       }
     } catch (err: AxiosError | any) {}
   };

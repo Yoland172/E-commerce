@@ -1,0 +1,33 @@
+@import "../../../../styles/Variables.scss";
+@import "../../../../styles/Mixin.scss";
+
+.container {
+  width: 100%;
+  padding: 10px;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: 1fr;
+  grid-column-gap: 20px;
+  align-items: center;
+  transition: all 250ms;
+  &:hover{
+    background-color: $white;
+  }
+
+  & > img {
+    width: 10vh;
+    grid-area: 1 / 1 / 2 / 2;
+  }
+
+  .title {
+    grid-area: 1 / 2 / 2 / 5;
+  }
+
+  .quantity{
+    grid-area: 1 / 5 / 2 / 6;
+  }
+
+  &>h3{
+    font-size: 1.1em;
+  }
+}
