@@ -1,0 +1,46 @@
+@import '../../../../styles/Mixin.scss';
+@import '../../../../styles/Variables.scss';
+
+.button {
+    margin-top: 10px;
+    padding: 5px;
+    font-size: 1em;
+    font-weight: 300;
+    transition: color 250ms;
+
+    &:hover {
+        color: $red;
+    }
+}
+
+
+.main{
+    width: 24vw;
+    height: auto;
+    @include flexbox(column, center,center);
+    padding: 10px;
+    row-gap: 20px;
+    &>h2{
+        font-size: 1.2em;
+        font-weight: 400;
+
+    }
+
+    &>h3{
+        text-align: center;
+        font-weight: 300;
+        font-size: 1em;
+    }
+
+    .buttonContainer{
+        @include flexbox(row,start,start);
+        column-gap: 20px;
+        &>button{
+            @include styledButton(5vw,3vh)
+        }
+
+        .exitButton:hover{
+            background-color: $red;
+        }
+    }
+}

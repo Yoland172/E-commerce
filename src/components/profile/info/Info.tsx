@@ -3,6 +3,7 @@ import styles from './Info.module.scss';
 import { useForm } from 'react-hook-form';
 import InputField from '@components/ui/inputField/InputField';
 import { UserDataType } from '@lib/types/Types';
+import SignOut from './SignOut/SignOut';
 
 interface UserInfo {
     id: number | null;
@@ -15,6 +16,7 @@ interface UserInfo {
 interface InfoProps {
     userInfo: UserInfo;
     changeUserInfo: (data: string, dataType: UserDataType) => void;
+    exit:() => void
 }
 
 interface UserInputs {
@@ -23,7 +25,7 @@ interface UserInputs {
     phone?: string;
 }
 
-const Info = ({ userInfo, changeUserInfo }: InfoProps) => {
+const Info = ({ userInfo, changeUserInfo,exit }: InfoProps) => {
     const [activeInput, setActiveInput] = useState<UserDataType | null>(null);
 
     useEffect(() => {
@@ -33,10 +35,6 @@ const Info = ({ userInfo, changeUserInfo }: InfoProps) => {
             setValue(UserDataType.Username, userInfo.username);
         }
     }, [userInfo, activeInput]);
-
-    useEffect(() => {
-        if (userInfo) console.log(userInfo['phone']);
-    }, [userInfo]);
 
     // <hook form
 
@@ -127,11 +125,7 @@ const Info = ({ userInfo, changeUserInfo }: InfoProps) => {
                     );
                 })}
             </form>
-
-            <div className={styles.accountFunc}>
-                <button>Sign out</button>
-                <button>Delete your account</button>
-            </div>
+            <SignOut exit={exit}/>
         </div>
     );
 };

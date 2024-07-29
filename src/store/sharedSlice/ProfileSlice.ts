@@ -49,6 +49,7 @@ const profileSlice = createSlice({
         setNewPhone: (state, action: PayloadAction<string>) => {
             state.phone = action.payload;
         },
+        removeAllData:()=>initialState
     },
 });
 
@@ -69,5 +70,5 @@ export const getProfileInfo = (token: string): AppThunk => {
     };
 };
 
-export const { setProfileInfo, setIsFetching, setNewUserName, setNewEmail, setNewPhone } = profileSlice.actions;
+export const { setProfileInfo, setIsFetching, setNewUserName, setNewEmail, setNewPhone,removeAllData } = profileSlice.actions;
 export default profileSlice.reducer;

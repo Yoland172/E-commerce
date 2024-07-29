@@ -59,32 +59,7 @@ const cartSlice = createSlice({
     ) => {
       state.productsQuantityAndId = action.payload;
     },
-    // setChangedQuantityProduct: (
-    //   state,
-    //   action: PayloadAction<{ productId: number; quantity: number }>
-    // ) => {
-    //   const product = state.products.find(el => el.id == action.payload.productId);
-    //   if (!product) return; // Якщо продукт не знайдено, вийти з функції
-
-    //   // Вирахування змін у кількості
-    //   const quantityDelta = action.payload.quantity - product.quantity;
-
-    //   // Оновлення загальних значень до перерахунку продукту
-    //  if(state.total != null) state.total -= product.total;
-    //  if(state.discountedTotal != null) state.discountedTotal -= product.discountedTotal;
-
-    //   // Перерахунок полів для конкретного продукту
-    //   product.quantity =action.payload.quantity;
-    //   product.total = product.price * action.payload.quantity;
-    //   product.discountedTotal = product.total * (1 - product.discountPercentage / 100);
-
-    //   // Додавання нових значень до загальних полів замовлення
-    //   if(state.total != null) state.total += product.total;
-    //   if(state.discountedTotal != null) state.discountedTotal += product.discountedTotal;
-    //   if(state.totalQuantity != null) state.totalQuantity += quantityDelta;
-
-    //   state.isFetching = false;
-    // },
+    removeAllData: () => initialState
   },
 });
 export const getUserCartThunk = (id: number | null): AppThunk => {
@@ -168,6 +143,6 @@ export const deleteProductFromCart = (
   };
 };
 
-export const { setCart, setIsFetching, deleteItem, setProductsQuantityAndId } =
+export const { setCart, setIsFetching, deleteItem, setProductsQuantityAndId,removeAllData } =
   cartSlice.actions;
 export default cartSlice.reducer;
