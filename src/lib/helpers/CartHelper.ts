@@ -18,6 +18,7 @@ export const deleteUserCartToStorage = () => {
 };
 
 export const mergeStockArray = (initArray: extractedProductsList[], id: number, quantity: number) => {
+    console.log(initArray);
     const copyInitArray = structuredClone(initArray);
     const findedProductIndex = copyInitArray.findIndex((el) => el.id == id);
     if (findedProductIndex == -1) {

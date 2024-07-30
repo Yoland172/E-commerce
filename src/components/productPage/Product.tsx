@@ -158,7 +158,6 @@ const Product = ({
             id={id}
             price={price ? price : 0}
             title={title}
-            quantity={8}
             discountPercentage={discountPercentage ? discountPercentage : 0}
             closWindow={setActivePopUp}
             thumbnail={thumbnail}
