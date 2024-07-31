@@ -9,7 +9,7 @@ interface PopUpProps {
   closeByClickOutside?: boolean
 }
 
-const PopUp = ({ active, setActive, children,closeByClickOutside=true }: PopUpProps) => {
+const PopUp = ({ active , setActive, children,closeByClickOutside=true }: PopUpProps) => {
   return (
     <div
       className={classNames(styles.container,  active && styles.active)}

@@ -7,7 +7,6 @@ interface AddToCartProps {
   id: number;
   title: string;
   price: number;
-  quantity: number | null;
   discountPercentage: number;
   thumbnail: string;
   closWindow: (status: boolean) => void;
@@ -19,7 +18,6 @@ const AddToCart = ({
   id,
   title,
   price,
-  quantity,
   discountPercentage,
   thumbnail,
   closWindow,

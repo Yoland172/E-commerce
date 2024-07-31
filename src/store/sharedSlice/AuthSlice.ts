@@ -40,6 +40,7 @@ const authSlice = createSlice({
         (state.isFetching = false),
         (state.error = action.payload);
     },
+    removeAllData: () => initialState
   },
 });
 
@@ -85,6 +86,6 @@ export const checkToken = (token: string): AppThunk => {
   };
 };
 
-export const { setSuccesLogin, clearToken, setIsFetching, setError } =
+export const { setSuccesLogin, clearToken, setIsFetching, setError,removeAllData } =
   authSlice.actions;
 export default authSlice.reducer;

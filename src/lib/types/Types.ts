@@ -40,3 +40,9 @@ export enum PaymentsMethod {
     GooglePay = 'GooglePay',
     ApplePay = 'ApplePay',
 }
+
+export enum UserDataType {
+    Email = 'email',
+    Username = 'username',
+    Phone = 'phone'
+}
