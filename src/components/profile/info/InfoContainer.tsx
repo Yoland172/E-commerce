@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useAppDispatch, useAppSelector } from '@store/index';
 import Info from './Info';
 import { UserDataType } from '@lib/types/Types';
@@ -13,22 +13,11 @@ import { deleteTokenFromStorage } from '@lib/helpers/AuthenticateHelper';
 import { removeAllData as removeAllDataFromCartSlice } from '@store/sharedSlice/CartSlice';
 import { removeAllData as removeAllDataFromAuthSlice } from '@store/sharedSlice/AuthSlice';
 import { useNavigate } from 'react-router-dom';
-import { setRedirectAfterLoginURL } from '@lib/helpers/RedirectHelpers';
 
 const InfoContainer = () => {
     const userInfo = useAppSelector((state) => state.profileState);
     const dispatch = useAppDispatch();
     const navigate = useNavigate();
-
-    const token = useAppSelector(state => state.authState.token);
-
-    useEffect(()=>{
-      if(!token) {
-        navigate('/login');
-        setRedirectAfterLoginURL("/profile/info");
-      }
-    },[token])
-
     const handleChangeUserInfo = (data: string, dataType: UserDataType) => {
         switch (dataType) {
             case UserDataType.Username:
