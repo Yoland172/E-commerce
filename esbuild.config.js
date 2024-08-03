@@ -75,6 +75,7 @@ else {
     if(!fs.existsSync('dist')) {
       fs.mkdirSync('dist/');
     }
+    fs.copyFileSync('index.esbuild.html', 'dist/index.html');
     ctx.serve(servingOptions);
     console.log(yellowColorEscape, 'Esbuild compiled successfully 🚀');
     console.log(greenColorEscape, `Started serving directory ${servingOptions.servedir} at ${servingOptions.host}:${servingOptions.port} 👀`) 
